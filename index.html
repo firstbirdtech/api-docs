@@ -790,11 +790,11 @@ Authorization: Bearer youraccesstoken
 
 <p>This endpoint retrieves all departments that are configured for you company.</p>
 
+<h3 id="http-request">HTTP Request</h3>
+
 <blockquote>
 <p>This request returns JSON structured like this:</p>
 </blockquote>
-
-<h3 id="http-request">HTTP Request</h3>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50018463-d804-46ae-90a7-8187a12e6540"</span><span class="p">,</span><span class="w">
@@ -897,6 +897,366 @@ Authorization: Bearer youraccesstoken
 <td style="text-align: left">New status of a the Department. Possible values are: INACTIVE, ACTIVE</td>
 </tr>
 </tbody></table>
+
+          <h1 id="jobs">Jobs</h1>
+
+<p>Jobs are one of the main pillars of Firstbird</p>
+
+<p>Jobs can have different statuses:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Status</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">DRAFT</td>
+<td style="text-align: left">Those Jobs are only visible to Company Administrators and Recruiters before they get published to all Talent Scouts</td>
+</tr>
+<tr>
+<td style="text-align: left">ACTIVE_PUBLISHED</td>
+<td style="text-align: left">Those Jobs are visible to all Talent Scouts and can be shared and candidates can be referred for those Jobs</td>
+</tr>
+<tr>
+<td style="text-align: left">ACTIVE_CLOSED</td>
+<td style="text-align: left">Those Jobs are only visible to Recruiters and Company Administrators, candidates who got a shared link to that job before can’t apply anymore.</td>
+</tr>
+<tr>
+<td style="text-align: left">ARCHIVED</td>
+<td style="text-align: left">Candidates can’t apply to those Jobs anymore</td>
+</tr>
+<tr>
+<td style="text-align: left">DELETED</td>
+<td style="text-align: left">Those jobs aren’t visible anymore</td>
+</tr>
+</tbody></table>
+
+<p>Jobs can also be flagged as <strong>Hot</strong> which means they are hard to achieve. Most of the time this flag is used for visual indication on the UI.</p>
+
+<h2 id="get-all-jobs">Get All Jobs</h2>
+
+<p>To get a list of all your Jobs you have to issue following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&amp;offset=0&amp;limit=2147483647"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483647</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&amp;offset=0&amp;limit=2147483647"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&amp;offset=0&amp;limit=2147483647"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-22T09:57:21Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nr. 1 System Engineer/Administrator (m/w)"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50018463-d804-46ae-90a7-8187a12e6540"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/50018463-d804-46ae-90a7-8187a12e6540"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"contactPerson"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;This is a description&lt;/h1&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE_PUBLISHED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nt">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/statistics"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"shareLink"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://1bird.1brd.lvh.me/job/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a?referrer=dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/jobs</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Query Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">Comma separated list of statuses which should be included in the response.</td>
+</tr>
+<tr>
+<td style="text-align: left">endDateBefore</td>
+<td style="text-align: left">Jobs where the endDate is before the given date. (e.g. 2017-01-05)</td>
+</tr>
+<tr>
+<td style="text-align: left">department</td>
+<td style="text-align: left">Comma separated list of Department Ids to filter after</td>
+</tr>
+<tr>
+<td style="text-align: left">location</td>
+<td style="text-align: left">Comma separated list of Location Ids to filter after</td>
+</tr>
+<tr>
+<td style="text-align: left">contact</td>
+<td style="text-align: left">Comma separated list of User Ids to filter the Job’s Contact Person after</td>
+</tr>
+<tr>
+<td style="text-align: left">isHot</td>
+<td style="text-align: left">Show Hot Jobs only</td>
+</tr>
+<tr>
+<td style="text-align: left">fields</td>
+<td style="text-align: left">See Fields documentation</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">See Pagination documentation</td>
+</tr>
+<tr>
+<td style="text-align: left">offset</td>
+<td style="text-align: left">See Pagination documentation</td>
+</tr>
+<tr>
+<td style="text-align: left">hot</td>
+<td style="text-align: left">See Sorting documentation</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-single-job">Get a Single Job</h2>
+
+<p>To get a single Job by Id you have to use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nr. 1 System Engineer/Administrator (m/w)"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/jobs/{jobId}</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Query Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">fields</td>
+<td style="text-align: left">See Fields documentation.</td>
+</tr>
+<tr>
+<td style="text-align: left">expand</td>
+<td style="text-align: left">See Resource Expansion documentation. Available are: <code class="prettyprint">company</code>, <code class="prettyprint">location</code>, <code class="prettyprint">department</code> and <code class="prettyprint">reward</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-job">Create a Job</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50018463-d804-46ae-90a7-8187a12e6540"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"contactPerson"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;This is HTML Description of a Job&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"referenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54d49fa7-97cb-4502-bb55-4217cb281b3f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To create a new Job for your Company use following request</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /v1/companies/{companyId}/jobs</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">department</td>
+<td style="text-align: left">The Id of the Department this Job is associated with</td>
+</tr>
+<tr>
+<td style="text-align: left">contactPerson</td>
+<td style="text-align: left">The Id of the Recruiter who is responsible for this Job</td>
+</tr>
+<tr>
+<td style="text-align: left">description</td>
+<td style="text-align: left">HTMl describing the Job. Please consider the //TODO HTML documentation to know about allowed HTML tags etc.</td>
+</tr>
+<tr>
+<td style="text-align: left">endDate</td>
+<td style="text-align: left">The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED</td>
+</tr>
+<tr>
+<td style="text-align: left">hot</td>
+<td style="text-align: left">The Hot flag</td>
+</tr>
+<tr>
+<td style="text-align: left">location</td>
+<td style="text-align: left">The Location of your Company the Job is associated with</td>
+</tr>
+<tr>
+<td style="text-align: left">referenceNumber</td>
+<td style="text-align: left">This field allows to enter reference numbers of external systems</td>
+</tr>
+<tr>
+<td style="text-align: left">reward</td>
+<td style="text-align: left">The Reward that will be payed as soon as an Applicant gets hired for that Job</td>
+</tr>
+<tr>
+<td style="text-align: left">title</td>
+<td style="text-align: left">The title of the Job. This field is limited to 255 characters</td>
+</tr>
+<tr>
+<td style="text-align: left">responsiblePersons</td>
+<td style="text-align: left">An array of objects containing the User Ids of Recruiters being responsible for this Job as well</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-job">Update a Job</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50018463-d804-46ae-90a7-8187a12e6540"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"contactPerson"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;This is HTML Description of a Job&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"referenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>After creating a Job you maybe want to change some fields. All fields used during Job creation can be updated with following request</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/jobs/{jobId}</code></p>
+
+<h2 id="update-a-jobs-status">Update a Jobs Status</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"ACTIVE_PUBLISHED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To change the status of a Job you need following request. Please keep in mind that not all status transitions are allowed.</p>
+
+<p><img alt="status transitions" src="images/fsm_job_life_cycle.png" /></p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/jobs/{jobId}/status</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">New status of a the Job. Possible values are: ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED (you can’t set DRAFT and DELETED directly)</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-job">Delete a Job</h2>
+
+<p>After a while you may want to delete a Job because it is outdated to do so use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /v1/companies/{companyId}/jobs/{jobId}</code></p>
 
       </div>
       <div class="dark-box">
