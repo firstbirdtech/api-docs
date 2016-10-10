@@ -707,7 +707,7 @@ Authorization: Bearer youraccesstoken
 </thead><tbody>
 <tr>
 <td style="text-align: left">query</td>
-<td style="text-align: left">A comma seperated list of fields that should be contained in the response. See Fields documentation.</td>
+<td style="text-align: left">A comma seperated list of fields that should be contained in the response. See <a href="#customizing-response-fields">Fields</a> documentation.</td>
 </tr>
 </tbody></table>
 
@@ -1038,19 +1038,19 @@ Authorization: Bearer youraccesstoken
 </tr>
 <tr>
 <td style="text-align: left">fields</td>
-<td style="text-align: left">See Fields documentation</td>
+<td style="text-align: left">See <a href="#customizing-response-fields">Fields</a> documentation</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
-<td style="text-align: left">See Pagination documentation</td>
+<td style="text-align: left">See <a href="#pagination">Pagination</a> documentation</td>
 </tr>
 <tr>
 <td style="text-align: left">offset</td>
-<td style="text-align: left">See Pagination documentation</td>
+<td style="text-align: left">See <a href="#pagination">Pagination</a> documentation</td>
 </tr>
 <tr>
-<td style="text-align: left">hot</td>
-<td style="text-align: left">See Sorting documentation</td>
+<td style="text-align: left">sort</td>
+<td style="text-align: left">See <a href="#sorting">Sorting</a> documentation</td>
 </tr>
 </tbody></table>
 
@@ -1082,11 +1082,11 @@ Authorization: Bearer youraccesstoken
 </thead><tbody>
 <tr>
 <td style="text-align: left">fields</td>
-<td style="text-align: left">See Fields documentation.</td>
+<td style="text-align: left">See <a href="#customizing-response-fields">Fields</a> documentation.</td>
 </tr>
 <tr>
 <td style="text-align: left">expand</td>
-<td style="text-align: left">See Resource Expansion documentation. Available are: <code class="prettyprint">company</code>, <code class="prettyprint">location</code>, <code class="prettyprint">department</code> and <code class="prettyprint">reward</code></td>
+<td style="text-align: left">See <a href="#links-and-resource-expansion">Resource Expansion</a> documentation. Available are: <code class="prettyprint">company</code>, <code class="prettyprint">location</code>, <code class="prettyprint">department</code> and <code class="prettyprint">reward</code></td>
 </tr>
 </tbody></table>
 
@@ -1257,6 +1257,281 @@ Authorization: Bearer youraccesstoken
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">DELETE /v1/companies/{companyId}/jobs/{jobId}</code></p>
+
+          <h1 id="job-applications">Job Applications</h1>
+
+<p>Job Applications are the other main pillar of your Account at Firstbird.</p>
+
+<p>Job Applications can have following statuses:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Status</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">IN_PROGRESS</td>
+<td style="text-align: left">This Job Application is currently in progress and waits for your Recruiters decisions</td>
+</tr>
+<tr>
+<td style="text-align: left">HIRED</td>
+<td style="text-align: left">The candidate of this Job Application got hired</td>
+</tr>
+<tr>
+<td style="text-align: left">CLOSED</td>
+<td style="text-align: left">The Job Application has been withdrawn by your Recruiters</td>
+</tr>
+</tbody></table>
+
+<p>Your recruiters can give a Job Application different ratings:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Rating</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">A</td>
+<td style="text-align: left">The A rating corresponds to the 3-star rating from the web applications</td>
+</tr>
+<tr>
+<td style="text-align: left">B</td>
+<td style="text-align: left">The B rating corresponds to the 2-star rating from the web applications</td>
+</tr>
+<tr>
+<td style="text-align: left">C</td>
+<td style="text-align: left">The C rating corresponds to the 1-star rating from the web applications</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-job-applications">Get All Job Applications</h2>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=0&amp;limit=2147483647"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483647</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=0&amp;limit=2147483647"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=1&amp;limit=2147483647"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d648096f-c3f4-4121-af9a-5377753e467e"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23T08:37:15Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d029da5-0a39-45d2-a26a-eb14a5d05d36"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/1d029da5-0a39-45d2-a26a-eb14a5d05d36"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"share"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d61dae4-8444-4e7d-a73b-20aa6aa02093"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/shares/4d61dae4-8444-4e7d-a73b-20aa6aa02093"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"referrals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/referrals"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"applicantImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.eu-central-1.amazonaws.com/hummingbird-development/applicantimg/150x150/b642441c-2dc4-4cd1-8873-c5d7e2e725f2.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20160323T083722Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=1800&amp;X-Amz-Credential=AKIAJX7FDXXZDKC4NZVA%2F20160323%2Feu-central-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=06981e7b0b46d4d43cd407bd2848391a01195714f6ce0df2a8cb67358efaa598"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"rewardPaid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To get a list of all your Job Applications user following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/applications</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Query Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">A comma separated list of statuses. Possible values are IN_PROGRESS, HIRED and CLOSED</td>
+</tr>
+<tr>
+<td style="text-align: left">rating</td>
+<td style="text-align: left">A comma separated list of ratings. Possible values are A, B and C</td>
+</tr>
+<tr>
+<td style="text-align: left">rated</td>
+<td style="text-align: left">A boolean value filtering for Job Applications that are whether rated or not. Possible values are true and false</td>
+</tr>
+<tr>
+<td style="text-align: left">fields</td>
+<td style="text-align: left">See <a href="#customizing-response-fields">Fields</a> documentation</td>
+</tr>
+<tr>
+<td style="text-align: left">expand</td>
+<td style="text-align: left">See <a href="#links-and-resource-expansion">Resource Expansion</a> documentation. Expandable fields are: applicant, referrer, job, referrals</td>
+</tr>
+<tr>
+<td style="text-align: left">offset</td>
+<td style="text-align: left">See <a href="#pagination">Pagination</a> documentation</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">See <a href="#pagination">Pagination</a> documentation</td>
+</tr>
+<tr>
+<td style="text-align: left">sort</td>
+<td style="text-align: left">See Sorting documentation</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-single-job-application">Get a Single Job Application</h2>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d648096f-c3f4-4121-af9a-5377753e467e"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23T08:37:15Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d029da5-0a39-45d2-a26a-eb14a5d05d36"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/1d029da5-0a39-45d2-a26a-eb14a5d05d36"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"share"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d61dae4-8444-4e7d-a73b-20aa6aa02093"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/shares/4d61dae4-8444-4e7d-a73b-20aa6aa02093"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/referrals"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"applicantImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.eu-central-1.amazonaws.com/hummingbird-development/applicantimg/150x150/b642441c-2dc4-4cd1-8873-c5d7e2e725f2.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20160323T083722Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=1800&amp;X-Amz-Credential=AKIAJX7FDXXZDKC4NZVA%2F20160323%2Feu-central-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=06981e7b0b46d4d43cd407bd2848391a01195714f6ce0df2a8cb67358efaa598"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"read"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rewardPaid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To get a single Job Application you have to use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/applications/{jobApplicationId}</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Query Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">fields</td>
+<td style="text-align: left">See <a href="#customizing-response-fields">Fields</a> documentation.</td>
+</tr>
+<tr>
+<td style="text-align: left">expand</td>
+<td style="text-align: left">See <a href="#links-and-resource-expansion">Resource Expansion</a> documentation. Expandable fields are: applicant, referrer, job, referrals</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-feedback-of-a-job-application">Get Feedback of a Job Application</h2>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/referrals"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b93bb536-c964-4e11-9d30-11da0c362e09"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"referralType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REFERRAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"connection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Does is a former coworker"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I highly recommend this candidate"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This is the feedback of the Talent Scout who shared/referred this candidate. Feedback can have different types whether the Talent Scout wants to support the applicant or not:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">REFERRAL</td>
+<td style="text-align: left">The Talent Scout supports the Applicant and refers him for the position he applied on</td>
+</tr>
+<tr>
+<td style="text-align: left">NEUTRAL</td>
+<td style="text-align: left">The Talent Scout doesn’t want to give either negative or positive feedback</td>
+</tr>
+<tr>
+<td style="text-align: left">NEGATIVE</td>
+<td style="text-align: left">The Talent Scout doesn’t think that the candidate is a good fit for the postition</td>
+</tr>
+</tbody></table>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/applications/{jobApplicationId}/referrals</code></p>
 
       </div>
       <div class="dark-box">
