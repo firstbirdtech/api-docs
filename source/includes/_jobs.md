@@ -93,10 +93,10 @@ To get a list of all your Jobs you have to issue following request:
 | location        | Comma separated list of Location Ids to filter after                       |
 | contact         | Comma separated list of User Ids to filter the Job’s Contact Person after  |
 | isHot           | Show Hot Jobs only                                                         |
-| fields          | See Fields documentation                                                   |
-| limit           | See Pagination documentation                                               |
-| offset          | See Pagination documentation                                               |
-| hot             | See Sorting documentation                                                  |
+| fields          | See [Fields](#customizing-response-fields) documentation                   |
+| limit           | See [Pagination](#pagination) documentation                                |
+| offset          | See [Pagination](#pagination) documentation                                |
+| sort            | See [Sorting](#sorting) documentation                                      |
 
 ## Get a Single Job
 
@@ -118,10 +118,10 @@ To get a single Job by Id you have to use following request:
 
 ### Query Parameters
 
-| Query Parameter | Description                                                                                           |
-|:----------------|:------------------------------------------------------------------------------------------------------|
-| fields          | See Fields documentation.                                                                             |
-| expand          | See Resource Expansion documentation. Available are: `company`, `location`, `department` and `reward` |
+| Query Parameter | Description                                                                                                                            |
+|:----------------|:---------------------------------------------------------------------------------------------------------------------------------------|
+| fields          | See [Fields](#customizing-response-fields) documentation.                                                                              |
+| expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Available are: `company`, `location`, `department` and `reward` |
 
 ## Create a Job
 

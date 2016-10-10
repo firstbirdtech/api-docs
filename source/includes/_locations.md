@@ -30,9 +30,9 @@ This endpoint retrieves all locations that are configured for you company.
 `GET /v1/companies/{companyId}/locations`
 
 ### Query Parameters
-| Parameter | Description                                                                                          |
-|:----------|:-----------------------------------------------------------------------------------------------------|
-| query     | A comma seperated list of fields that should be contained in the response. See Fields documentation. |
+| Parameter | Description                                                                                                                          |
+|:----------|:-------------------------------------------------------------------------------------------------------------------------------------|
+| query     | A comma seperated list of fields that should be contained in the response. See [Fields](#customizing-response-fields) documentation. |
 
 ## Get a Single Location
 To get a single Location by it’s Id you have to use following request:

@@ -10,6 +10,7 @@ includes:
   - locations
   - departments
   - jobs
+  - applications
 
 search: false
 ---
