@@ -9,6 +9,7 @@ includes:
   - errors
   - locations
   - departments
+  - jobs
 
 search: false
 ---

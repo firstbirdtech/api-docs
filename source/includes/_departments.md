@@ -6,9 +6,9 @@ Departments represent any unit of organization within your company, as an exampl
 
 This endpoint retrieves all departments that are configured for you company.
 
-> This request returns JSON structured like this:
-
 ### HTTP Request
+
+> This request returns JSON structured like this:
 
 ```json
 [
