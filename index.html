@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
-      <script src="javascripts/all.js"></script>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;code&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,246 +101,807 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="code">code</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>This section covers the Core Concepts of the Firstbird REST API, as well as serving as a complete reference for all of the Firstbird resources as well as the operations that it is possible to perform with them.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+          <h1 id="concepts">Concepts</h1>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>The following information is essential to understanding how the Firstbird API functions. You should familiarize yourself with it before moving on to the rest of this guide.</p>
 
-<h1 id="authentication">Authentication</h1>
+<h2 id="base-url">Base URL</h2>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>All URLs referenced in the API documentation begin with the following base URL:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><code class="prettyprint">
+https://api.1brd.com/v1/
+</code></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<p>This is the base URL for Firstbird’s public API. Please note that we only support <code class="prettyprint">HTTPS</code></p>
 
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<h2 id="resource-format">Resource Format</h2>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>The Firstbird REST API currently only supports JSON resource representations.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<h2 id="authentication">Authentication</h2>
+<pre class="highlight plaintext"><code>POST https://api.1brd.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Authorization: Basic {apikey:apisecret base64 encoded}
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+grant_type=client_credentials&amp;scope=read%20write
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>This returns following response</p>
 </blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"youraccesstoken"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483646</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read write"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ede67ad4-60ac-4526-8c54-083d6e83ae46"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>As Firstbird uses OAuth2 authentication mechanism, you can authenticate your services using OAuth2 Client Credentials authentication method. To authenticate a Company Administrator needs to generate an API key and API secret within the account settings. With the key and the secret you can request a so called Bearer token from our API with the request to the right.</p>
+
+<h3 id="authenticating-requests">Authenticating Requests</h3>
+
+<blockquote>
+<p>The access token can be used to authenticate for any further request.</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /v1/{anyrequest}
+Authorization: Bearer youraccesstoken
+</code></pre>
+
+<p>To authenticate any request from now on you have to add the access token your received in <code class="prettyprint">access_token</code> field to the <code class="prettyprint">Authorization</code> header of the request, prefixed with “Bearer”.</p>
+
+<h2 id="creating-resources">Creating Resources</h2>
+
+<p>You create a resource by submitting an HTTP <strong>POST</strong> to a resource URL. Any POST body must be represented as <strong>JSON</strong>. Requests that contain body content must specify the HTTP <code class="prettyprint">Content-Type</code> header with a value of <code class="prettyprint">application/json</code>.</p>
+
+<p>Responses to your create POST calls will contain:</p>
+
+<ul>
+<li>An HTTP Status Code indicating success or failure (possible codes can be found below)</li>
+<li>Any HTTP Headers</li>
+<li>A Response Body, which will contain the created entity resource (if the call succeeded), or a detailed error (if the call failed)</li>
+</ul>
+
+<h3 id="status-codes">Status Codes</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Response Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code class="prettyprint">201 CREATED</code></td>
+<td style="text-align: left">The request was successful, we created a new resource, and the response body contains the representation.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">400 BAD REQUEST</code></td>
+<td style="text-align: left">The data given in the POST failed validation. Inspect the response body for details.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">401 UNAUTHORIZED</code></td>
+<td style="text-align: left">Authentication credentials are required to access the resource. All requests must be authenticated.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">403 FORBIDDEN</code></td>
+<td style="text-align: left">The supplied authentication credentials are not sufficient to access the resource.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">404 NOT FOUND</code></td>
+<td style="text-align: left">We could not locate the resource based on the specified URL.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">405 METHOD NOT ALLOWED</code></td>
+<td style="text-align: left">POST is not supported for the resource.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">409 CONFLICT</code></td>
+<td style="text-align: left">You cannot create or update a resource because another resource already exists or conflicts with one you are submitting.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">415 UNSUPPORTED MEDIA TYPE</code></td>
+<td style="text-align: left">You did not specify the request <code class="prettyprint">Content-Type</code> header to have a value of <code class="prettyprint">application/json</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">500 SERVER ERROR</code></td>
+<td style="text-align: left">We could not create or update the resource. Please try again.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">503 SERVICE UNAVAILABLE</code></td>
+<td style="text-align: left">We are temporarily unable to service the request. Please wait for a bit and try again.</td>
+</tr>
+</tbody></table>
+
+<h2 id="updating-resources">Updating Resources</h2>
+
+<p>If you want to update a resource, submit an HTTP PUT request to the resource’s URL. Any request body must be represented as JSON. You must submit all attributes. As with the creation POST calls, requests that contain body content must specify the HTTP <code class="prettyprint">Content-Type</code> header with a value of <code class="prettyprint">application/json</code>.</p>
+
+<p>Responses to your update requests will contain:</p>
+
+<ul>
+<li>An HTTP Status Code indicating success or failure (possible codes can be found below)</li>
+<li>Any HTTP Headers</li>
+<li>A Response Body, which will contain the created entity resource (if the call succeeded), or a detailed error (if the call failed)</li>
+</ul>
+
+<h3 id="status-codes">Status Codes</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Response Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code class="prettyprint">200 OK</code></td>
+<td style="text-align: left">The request was successful and the response body contains the resource requested.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">400 BAD REQUEST</code></td>
+<td style="text-align: left">The data given in the POST failed validation. Inspect the response body for details.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">401 UNAUTHORIZED</code></td>
+<td style="text-align: left">Authentication credentials are required to access the resource. All requests must be authenticated.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">403 FORBIDDEN</code></td>
+<td style="text-align: left">The supplied authentication credentials are not sufficient to access the resource.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">404 NOT FOUND</code></td>
+<td style="text-align: left">We could not locate the resource based on the specified URL.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">405 METHOD NOT ALLOWED</code></td>
+<td style="text-align: left">POST is not supported for the resource.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">409 CONFLICT</code></td>
+<td style="text-align: left">You cannot create or update a resource because another resource already exists or conflicts with one you are submitting.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">415 UNSUPPORTED MEDIA TYPE</code></td>
+<td style="text-align: left">You did not specify the request <code class="prettyprint">Content-Type</code> header to have a value of <code class="prettyprint">application/json</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">500 SERVER ERROR</code></td>
+<td style="text-align: left">We could not create or update the resource. Please try again.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">503 SERVICE UNAVAILABLE</code></td>
+<td style="text-align: left">We are temporarily unable to service the request. Please wait for a bit and try again.</td>
+</tr>
+</tbody></table>
+
+<h2 id="deleting-resources">Deleting Resources</h2>
+
+<p>To delete a resource, make an HTTP <code class="prettyprint">DELETE</code> request to the resource URL. Note that not all Firstbird API resources support <code class="prettyprint">DELETE</code>.</p>
+
+<h3 id="status-codes">Status Codes</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Response Code</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code class="prettyprint">200 OK</code></td>
+<td style="text-align: left">The request was successful and the response body contains the resource requested.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">401 UNAUTHORIZED</code></td>
+<td style="text-align: left">Authentication credentials are required to access the resource. All requests must be authenticated.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">403 FORBIDDEN</code></td>
+<td style="text-align: left">The supplied authentication credentials are not sufficient to access the resource.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">404 NOT FOUND</code></td>
+<td style="text-align: left">We could not locate the resource based on the specified URL.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">405 METHOD NOT ALLOWED</code></td>
+<td style="text-align: left">POST is not supported for the resource.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">500 SERVER ERROR</code></td>
+<td style="text-align: left">We could not create or update the resource. Please try again.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">503 SERVICE UNAVAILABLE</code></td>
+<td style="text-align: left">We are temporarily unable to service the request. Please wait for a bit and try again.</td>
+</tr>
+</tbody></table>
+
+<h2 id="error-responses">Error Responses</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4040"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oops!"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The resource you have called couldn't be found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>REST API responses indicating an error or warning are represented by a proper response HTTP status code (403, 404, etc) along with a response body containing the following information:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Attributes</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code class="prettyprint">status</code></td>
+<td style="text-align: left">Number</td>
+<td style="text-align: left">The corresponding HTTP status code.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">code</code></td>
+<td style="text-align: left">Number</td>
+<td style="text-align: left">A Firstbird specific error code that can be used to obtain more information.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">message</code></td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">A simple, easy to understand message that you can show directly to your application’s end-user.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">developerMessage</code></td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">A clear explanation with technical details that might assist a developer calling our API.</td>
+</tr>
+</tbody></table>
+
+<h2 id="collection-resource">Collection Resource</h2>
+
+<p>A Collection Resource is a resource containing other resources. It is known as a Collection Resource because it is itself a first class resource - it has its own attributes in addition to the resources it contains.</p>
+
+<p>If you want to interact with multiple resources, you must do so with a Collection Resource. Collection Resources also support additional behavior specific to collections, such as pagination, sorting, and searching.</p>
+
+<p>The Collection response will contain the elements of the collection in the array-field <code class="prettyprint">items</code>.</p>
+
+<h3 id="pagination">Pagination</h3>
+
+<blockquote>
+<p>The following example shows a paginated response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&amp;offset=0&amp;limit=25"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&amp;offset=0&amp;limit=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&amp;offset=0&amp;limit=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"next"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8081/api/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&amp;offset=25&amp;limit=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8081/api/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&amp;offset=75&amp;limit=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"..."</span><span class="p">:</span><span class="s2">"..."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/14e35b9e-669e-4e9a-bb23-2f2ea550318f"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14e35b9e-669e-4e9a-bb23-2f2ea550318f"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"..."</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>If a Collection Resource represents a large enough number of resource instances, it will not include them all in a single response. Instead a technique known as pagination is used to break up the results into one or more pages of data. You can request additional pages as separate requests.</p>
+
+<p>There are two optional query parameters that may be specified to control pagination:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Query Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code class="prettyprint">offset</code></td>
+<td style="text-align: left">The zero-based starting index in the entire collection of the first item to return. Default is 0.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">limit</code></td>
+<td style="text-align: left">The maximum number of collection items to return for a single request. Minimum value is 1. Maximum value is 100. Default is 25.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Field</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code class="prettyprint">href</code></td>
+<td style="text-align: left">The request line that has been used to get the current response</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">total</code></td>
+<td style="text-align: left">Total number of all elements for the request (e.g., All Jobs the request matches)</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">offset</code></td>
+<td style="text-align: left">The offset used in the current request</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">limit</code></td>
+<td style="text-align: left">The limit used in the current request</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">first</code></td>
+<td style="text-align: left">The URL to get the first limit items of the collection</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">next</code></td>
+<td style="text-align: left">The URL to the next limit items of the collection</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="prettyprint">last</code></td>
+<td style="text-align: left">The URL to the last limit or less items of the collection</td>
+</tr>
+</tbody></table>
+
+<h3 id="sorting">Sorting</h3>
+
+<p>To sort collection resources there is the <code class="prettyprint">sort</code> query parameter which allows you to specify the field and the sorting direction.</p>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/jobs?sort=title,asc</code></p>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/jobs?sort=title,desc</code></p>
+
+<p>Please keep in mind that sorting does not work for all collection resources. If it is possible to sort the response, it will be explicitly mentioned. You are not able to sort nested properties as well as you are not able to sort for non-primitive object properties.</p>
+
+<h2 id="customizing-response-fields">Customizing Response Fields</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To fit your needs we allow to customize which fields are included in our responses. By default all available fields are included in a response. To select fields to be included use the fields query parameter which takes a comma separated list of fields. Take a look at the following Job request for an example:</p>
+
+<p><code class="prettyprint">GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a?fields=id,location</code></p>
+
+<h2 id="links-and-resource-expansion">Links and Resource Expansion</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"..."</span><span class="p">:</span><span class="s2">"..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>At Firstbird we want to provide a powerful REST API which allows easy navigation through our services. Therefor we do not simply add the IDs of referenced resources to our responses but also provide links where you can find mor detailed information about the referenced resource. If you take a look at an example response where a single Job has been fetched you can see the properties company and location which reference the Company the Job belongs to and the Location which is associated to the Job. Both objects contain their ID in <code class="prettyprint">id</code> property and a link to the REST API Resource in property <code class="prettyprint">href</code>.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Firstbird"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1bird"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.firstbird.eu"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"..."</span><span class="p">:</span><span class="s2">"..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a</code></p>
+
+<p>To make it even easier for you to use our API it is possible to expand (include) often used referenced resources within the responses to avoid additional requests to those referenced resources. If you take a look on following Job requests as an example you can see that we expanded the company and location resources which adds the their values you are allowed to see to the response. To specify which resources should get expanded you have to specify a comma separated list of fields for the expand query parameter.</p>
+
+<p><code class="prettyprint">GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a?expand=company,location</code></p>
+
+          <h1 id="errors">Errors</h1>
+
+<p>The firstbird API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error Code</th>
+<th style="text-align: left">Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">0000</td>
+<td style="text-align: left">Unhandled error</td>
+</tr>
+<tr>
+<td style="text-align: left">0999</td>
+<td style="text-align: left">This functionality is not implemented right now</td>
+</tr>
+<tr>
+<td style="text-align: left">4000</td>
+<td style="text-align: left">A query parameter is invalid</td>
+</tr>
+<tr>
+<td style="text-align: left">4001</td>
+<td style="text-align: left">One of the fields requested in fields query parameter is not allowed for that request</td>
+</tr>
+<tr>
+<td style="text-align: left">4002</td>
+<td style="text-align: left">The validation of your request failed</td>
+</tr>
+<tr>
+<td style="text-align: left">4003</td>
+<td style="text-align: left">One of the path variables is invalid</td>
+</tr>
+<tr>
+<td style="text-align: left">4004</td>
+<td style="text-align: left">Inviting a User failed</td>
+</tr>
+<tr>
+<td style="text-align: left">4005</td>
+<td style="text-align: left">The company domain name is not allowed</td>
+</tr>
+<tr>
+<td style="text-align: left">4006</td>
+<td style="text-align: left">The requested email address is already in use for your company</td>
+</tr>
+<tr>
+<td style="text-align: left">4007</td>
+<td style="text-align: left">The social network token for a user is invalid</td>
+</tr>
+<tr>
+<td style="text-align: left">4010</td>
+<td style="text-align: left">The request was unauthorized</td>
+</tr>
+<tr>
+<td style="text-align: left">4020</td>
+<td style="text-align: left">The provided file was empty</td>
+</tr>
+<tr>
+<td style="text-align: left">4030</td>
+<td style="text-align: left">The used access token in Authorization HTTP header has been blacklisted.</td>
+</tr>
+<tr>
+<td style="text-align: left">4031</td>
+<td style="text-align: left">The request contained illegal arguments</td>
+</tr>
+<tr>
+<td style="text-align: left">4032</td>
+<td style="text-align: left">The invitation limit for one request exceeded</td>
+</tr>
+<tr>
+<td style="text-align: left">4041</td>
+<td style="text-align: left">The requested company does not exist</td>
+</tr>
+<tr>
+<td style="text-align: left">4042</td>
+<td style="text-align: left">The requested applicant does not exist</td>
+</tr>
+<tr>
+<td style="text-align: left">4043</td>
+<td style="text-align: left">The requested job application does not exist</td>
+</tr>
+<tr>
+<td style="text-align: left">40431</td>
+<td style="text-align: left">The requested job application file does not exist</td>
+</tr>
+<tr>
+<td style="text-align: left">4044</td>
+<td style="text-align: left">The requested file does not exist</td>
+</tr>
+<tr>
+<td style="text-align: left">4045</td>
+<td style="text-align: left">A password reset request does not exist for the current user</td>
+</tr>
+<tr>
+<td style="text-align: left">4046</td>
+<td style="text-align: left">The requested invitation does not exist</td>
+</tr>
+<tr>
+<td style="text-align: left">4047</td>
+<td style="text-align: left">The requested social network is not connected for the current user</td>
+</tr>
+<tr>
+<td style="text-align: left">4048</td>
+<td style="text-align: left">The requested activity feed does not exist</td>
+</tr>
+<tr>
+<td style="text-align: left">4049</td>
+<td style="text-align: left">The requested user does not exist</td>
+</tr>
+<tr>
+<td style="text-align: left">40410</td>
+<td style="text-align: left">The provided password for checking your current password is invalid</td>
+</tr>
+<tr>
+<td style="text-align: left">4290</td>
+<td style="text-align: left">Too many requests to social networks</td>
+</tr>
+<tr>
+<td style="text-align: left">5001</td>
+<td style="text-align: left">We were not able to create the provided resource</td>
+</tr>
+<tr>
+<td style="text-align: left">5002</td>
+<td style="text-align: left">We failed connecting you to the requested social network</td>
+</tr>
+</tbody></table>
+
+          <h1 id="locations">Locations</h1>
+
+<p>Locations represent the geographical entities of your company. We here at Firstbird have only one Location which is <strong>Vienna</strong></p>
+
+<h2 id="get-all-locations">Get All Locations</h2>
+
+<p>This endpoint retrieves all locations that are configured for you company.</p>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+
+<h3 id="http-request">HTTP Request</h3>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aac4ea9-09c3-41f0-868f-e1183dca3542"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Munich"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bfb10c01-fa32-499a-bbdd-34b5f166c272"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vienna"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">GET /v1/companies/{companyId}/locations</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td style="text-align: left">query</td>
+<td style="text-align: left">A comma seperated list of fields that should be contained in the response. See Fields documentation.</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<h2 id="get-a-single-location">Get a Single Location</h2>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>To get a single Location by it’s Id you have to use following request:</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<p><code class="prettyprint">GET /v1/companies/{companyId}/locations/{locationId}</code></p>
+
+<h2 id="create-a-location">Create a Location</h2>
+
+<p>To create a new Location for your Company use following request</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Chicago"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54d49fa7-97cb-4502-bb55-4217cb281b3f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">POST /v1/companies/{companyId}/locations</code></p>
+
+<h2 id="updating-a-locations-status">Updating a Locations Status</h2>
+
+<p>To allow correct displaying of your Jobs and other entities using Locations on the one side and the need to remove outdated Locations we allow to set Locations inactive which is done with the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"INACTIVE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/locations/{locationId}/status</code></p>
+
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td style="text-align: left">status</td>
+<td style="text-align: left">New status of a the Location. Possible values are: INACTIVE, ACTIVE</td>
 </tr>
 </tbody></table>
 
-          <h1 id="errors">Errors</h1>
+          <h1 id="departments">Departments</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<p>Departments represent any unit of organization within your company, as an example, we here at Firstbird have the departments <strong>Sales</strong>, <strong>IT and Marketing</strong> &amp; <strong>PR</strong></p>
 
-<p>The Kittn API uses the following error codes:</p>
+<h2 id="get-all-departments">Get All Departments</h2>
+
+<p>This endpoint retrieves all departments that are configured for you company.</p>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+
+<h3 id="http-request">HTTP Request</h3>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50018463-d804-46ae-90a7-8187a12e6540"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02a11025-4397-40b8-aa24-e09af0d784b0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marketing &amp; PR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a768e73-3344-4a03-80cf-48f0c717f8f8"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Development"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/departments</code></p>
+
+<h2 id="get-a-single-department">Get a Single Department</h2>
+
+<p>To get a single Department by it’s Id you have to use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02a11025-4397-40b8-aa24-e09af0d784b0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marketing &amp; PR"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/departments/{departmentId}</code></p>
+
+<h2 id="create-a-department">Create a Department</h2>
+
+<p>To create a new Department for your Company use following request</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Business Development"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54d49fa7-97cb-4502-bb55-4217cb281b3f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">POST /v1/companies/{companyId}/departments</code></p>
+
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td style="text-align: left">name</td>
+<td style="text-align: left">The name of your new Department. We recommend to keep the names unique for all your Departments</td>
 </tr>
+</tbody></table>
+
+<h2 id="updating-a-departments-status">Updating a Departments Status</h2>
+
+<p>To allow correct displaying of your Jobs and other entities using Departments on the one side and the need to remove outdated Departments we allow to set Departments inactive which is done with the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"INACTIVE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/departments/{departmentId}/status</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td style="text-align: left">status</td>
+<td style="text-align: left">New status of a the Department. Possible values are: INACTIVE, ACTIVE</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="code">code</a>
           </div>
       </div>
     </div>
