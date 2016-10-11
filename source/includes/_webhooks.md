@@ -14,8 +14,6 @@ You can decide yourself which of the available events should be sent to which we
 ![webhooks settings](images/webhooks_screenshot.png)
 
 ## Webhooks Structure
-Our webhooks are sent as JSON data with POST requests to your configured URL. To allow batching of webhooks we send them as arrays which can
-contain multiple event envelopes, containing the type of the event and the payload.
 
 ```json
 [
@@ -27,6 +25,9 @@ contain multiple event envelopes, containing the type of the event and the paylo
   }
 ]
 ```
+
+Our webhooks are sent as JSON data with POST requests to your configured URL. To allow batching of webhooks we send them as arrays which can
+contain multiple event envelopes, containing the type of the event and the payload.
 
 ## Acknowledge webhooks
 
@@ -40,3 +41,123 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 As our webhooks don't provide authentication mechanisms, you shouldn't take the values contained in the requests as granted. It is
 considered a good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id
 which allows you to request the referenced job application via our REST API)
+
+## Available Events
+
+> job_application.received by link or referral
+
+```json
+{
+  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "applicant_id" : "00000000-0000-0000-0000-000000000000",
+  "referrer_id" : "00000000-0000-0000-0000-000000000000",
+  "job_id" : "00000000-0000-0000-0000-000000000000",
+  "date_time" : "1970-01-01 12:00:00.000Z",
+  "type" : "link or referral"
+}
+```
+
+> job_application.received by share
+
+```json
+{
+  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "applicant_id" : "00000000-0000-0000-0000-000000000000",
+  "referrer_id" : "00000000-0000-0000-0000-000000000000",
+  "share_id" : "00000000-0000-0000-0000-000000000000",
+  "job_id" : "00000000-0000-0000-0000-000000000000",
+  "date_time" : "1970-01-01 12:00:00.000Z",
+  "type" : "share"
+}
+```
+
+> job_application.received from user
+
+```json
+{
+  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "applicant_id" : "00000000-0000-0000-0000-000000000000",
+  "user_id" : "00000000-0000-0000-0000-000000000000",
+  "share_id" : "00000000-0000-0000-0000-000000000000",
+  "job_id" : "00000000-0000-0000-0000-000000000000",
+  "date_time" : "1970-01-01 12:00:00.000Z",
+  "type" : "user"
+}
+```
+
+> job_application.deleted from user
+
+```json
+{
+  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "user_id" : "00000000-0000-0000-0000-000000000000",
+  "date_time" : "1970-01-01 12:00:00.000Z"
+}
+```
+
+> job_application.rated from user
+
+```json
+{
+  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "user_id" : "00000000-0000-0000-0000-000000000000",
+  "date_time" : "1970-01-01 12:00:00.000Z",
+  "initial" : "true",
+  "rating" : "A, B or C"
+}
+```
+
+> job_application.closed from user
+
+```json
+{
+  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "user_id" : "00000000-0000-0000-0000-000000000000",
+  "date_time" : "1970-01-01 12:00:00.000Z",
+  "close_reason" : "CANDIDATE_KNOWN"
+}
+```
+
+> job_application.hired from user
+
+```json
+{
+  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "user_id" : "00000000-0000-0000-0000-000000000000",
+  "date_time" : "1970-01-01 12:00:00.000Z",
+  "pay_reward" : "true",
+  "first_day_of_work" : "2020-01-01"
+}
+```
+
+> job_application.referral_added from user
+
+```json
+{
+  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "user_id" : "00000000-0000-0000-0000-000000000000",
+  "date_time" : "1970-01-01 12:00:00.000Z",
+  "referral_id" : "00000000-0000-0000-0000-000000000000",
+  "connection" : "Former coworker!",
+  "reason" : "Great employee!",
+  "referral_type" : "NEUTRAL, POSITIVE or NEGATIVE"
+}
+```
+
+| type                           | Description                                                                                             |
+|:-------------------------------|:--------------------------------------------------------------------------------------------------------|
+| job_application.received       | A job application has been created inside firstbird. The type fields indicates how it has been created. |
+| job_application.edited         | One of your recruiters edited a job application                                                         |
+| job_application.deleted        | One of your recruiters deleted a job application                                                        |
+| job_application.rated          | One of your recruiters rated a job application                                                          |
+| job_application.closed         | One of your recruiters closed a job application                                                         |
+| job_application.hired          | One of your recruiters hired the applicant                                                              |
+| job_application.referral_added | The talent scout via whom the job application has been received provided feedback.                      |
