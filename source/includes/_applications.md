@@ -95,7 +95,7 @@ To get a list of all your Job Applications user following request:
 | expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Expandable fields are: applicant, referrer, job, referrals |
 | offset          | See [Pagination](#pagination) documentation                                                                                       |
 | limit           | See [Pagination](#pagination) documentation                                                                                       |
-| sort            | See Sorting documentation                                                                                                         |
+| sort            | See [Sorting](#sorting) documentation                                                                                             |
 
 ## Get a Single Job Application
 

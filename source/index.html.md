@@ -11,6 +11,7 @@ includes:
   - departments
   - jobs
   - applications
+  - webhooks
 
 search: false
 ---
