@@ -24,7 +24,7 @@ You might use webhooks as the basis to:
 
 ## Configuring Webhooks
 Webhooks can be configured as a Company Administrator within the Integration tab of the `Account Preferences`. For a single webhook destination you have to configure your callback URL, which can be either HTTP or HTTPS.
-You can decide fo yourself which of the available events should be sent to which webhook destination.
+You can decide yourself which of the available events should be sent to which webhook destination.
 
 ![webhooks settings](images/webhooks_screenshot.png)
 
