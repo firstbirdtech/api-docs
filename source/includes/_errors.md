@@ -19,6 +19,7 @@ The firstbird API uses the following error codes:
 | 4030       | The used access token in Authorization HTTP header has been blacklisted.              |
 | 4031       | The request contained illegal arguments                                               |
 | 4032       | The invitation limit for one request exceeded                                         |
+| 4033       | A plan limitation has been exceeded                                                   |
 | 4041       | The requested company does not exist                                                  |
 | 4042       | The requested applicant does not exist                                                |
 | 4043       | The requested job application does not exist                                          |
