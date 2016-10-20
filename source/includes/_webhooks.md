@@ -1,11 +1,27 @@
 # Webhooks
+Use webhooks to be notified about events that happen in a Firstbird account.
 
-We at firstbird think that the internet should be event driven, and so should be your employee referral program.
-Webhooks provide an easy way to react to things that happened within your firstbird account.
 
-Whether a new job application has been received or a talent scout provided feedback for a candidate, you may want to
-connect other systems to your firstbird data without the annoying polling of REST resources. Webhooks provide a convenient way to register
-any public available URL as a callback within firstbird.
+## Webhook terminology
+An event is an account occurrence, such as a new job application being received, a referral added, or an applicant being hired. Each occurrence has a corresponding event object.
+Webhook endpoints are URLs defined by users to which Firstbird sends events. A single event may be sent to many webhook endpoints.
+Webhooks refers to the overall concept of sending notifications to webhook endpoints.
+
+--
+
+##Why using webhooks
+Interacting with a third-party API like Firstbird's can introduce two problems:
+* Services not directly responsible for making an API request may still need to know the response of that request
+* Some events, like job application received and referral added events, are not the result of a direct API request
+
+Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account. 
+When the event occurs—for example, when a job application was received, Firstbird creates an Event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the Event object to any URLs in your account's webhooks settings via an HTTP POST request. 
+
+You might use webhooks as the basis to:
+* Forward the job application to your ATS
+* Send out 
+* Make adjustments to an invoice when it's created (but before it's been paid)
+* Log an accounting entry when a transfer is paid
 
 ## Configuring Webhooks
 Webhooks can be configured as a company admin within the account settings. For a single webhook destination you have to configure your callback URL, which can be either HTTP or HTTPS.
@@ -31,7 +47,7 @@ contain multiple event envelopes, containing the type of the event and the paylo
 
 ## Acknowledge webhooks
 
-Following HTTP response status values are considered as success: `2XX`, `3XX`. If your configured URL returns any of this status values, firstbird considers this
+Following HTTP response status values are considered as success: `2XX`, `3XX`. If your configured URL returns any of this status values, Firstbird considers this
 webhooks as successfully delivered.
 
 If the request to your configured URL returns with a status of `4XX` or `5XX` we will consider that as a failure (e.g. your receiving server has been unavailable) and
@@ -154,7 +170,7 @@ which allows you to request the referenced job application via our REST API)
 
 | type                           | Description                                                                                             |
 |:-------------------------------|:--------------------------------------------------------------------------------------------------------|
-| job_application.received       | A job application has been created inside firstbird. The type fields indicates how it has been created. |
+| job_application.received       | A job application has been created inside Firstbird. The type fields indicates how it has been created. |
 | job_application.edited         | One of your recruiters edited a job application                                                         |
 | job_application.deleted        | One of your recruiters deleted a job application                                                        |
 | job_application.rated          | One of your recruiters rated a job application                                                          |
