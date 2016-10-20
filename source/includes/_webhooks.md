@@ -2,7 +2,7 @@
 Use webhooks to be notified about events that happen in a Firstbird account.
 
 
-## Webhook terminology
+##Webhook terminology
 An event is an account occurrence, such as a new job application being received, a referral added, or an applicant being hired. Each occurrence has a corresponding event object.
 Webhook endpoints are URLs defined by users to which Firstbird sends events. A single event may be sent to many webhook endpoints.
 Webhooks refers to the overall concept of sending notifications to webhook endpoints.
@@ -22,7 +22,7 @@ You might use webhooks as the basis to:
 * Forward the job application to your ATS
 * Integrate your hole hiring process with Firstbird
 
-## Configuring Webhooks
+##Configuring Webhooks
 Webhooks can be configured as a Company Administrator within the Integration tab of the `Account Preferences`. For a single webhook destination you have to configure your callback URL, which can be either HTTP or HTTPS.
 You can decide yourself which of the available events should be sent to which webhook destination.
 
