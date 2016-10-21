@@ -1540,16 +1540,33 @@ Authorization: Bearer youraccesstoken
 
           <h1 id="webhooks">Webhooks</h1>
 
-<p>We at firstbird think that the internet should be event driven, and so should be your employee referral program.
-Webhooks provide an easy way to react to things that happened within your firstbird account.</p>
+<p>Use webhooks to be notified about events that happen in a Firstbird account.</p>
 
-<p>Whether a new job application has been received or a talent scout provided feedback for a candidate, you may want to
-connect other systems to your firstbird data without the annoying polling of REST resources. Webhooks provide a convenient way to register
-any public available URL as a callback within firstbird.</p>
+<h2 id="webhook-terminology">Webhook terminology</h2>
+
+<p>An event is an account occurrence, such as a new job application being received, a referral added, or an applicant being hired. Each occurrence has a corresponding event object.
+Webhook endpoints are URLs defined by users to which Firstbird sends events. A single event may be sent to many webhook endpoints.
+Webhooks refers to the overall concept of sending notifications to webhook endpoints.</p>
+
+<p>&ndash;</p>
+
+<h2 id="why-using-webhooks">Why using webhooks</h2>
+
+<p>Interacting with a third-party API like Firstbird&rsquo;s can introduce two problems:
+* Services not directly responsible for making an API request may still need to know the response of that request
+* Some events, like job application received and referral added events, are not the result of a direct API request</p>
+
+<p>Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account. 
+When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account&rsquo;s webhooks settings via an HTTP(s) POST request. </p>
+
+<p>You might use webhooks as the basis to:
+* Send new e-emails to applicants on specific events
+* Forward the job application to your ATS
+* Integrate your hole hiring process with Firstbird</p>
 
 <h2 id="configuring-webhooks">Configuring Webhooks</h2>
 
-<p>Webhooks can be configured as a company admin within the account settings. For a single webhook destination you have to configure your callback URL, which can be either HTTP or HTTPS.
+<p>Webhooks can be configured as a Company Administrator within the Integration tab of the <code class="prettyprint">Account Preferences</code>. For a single webhook destination you have to configure your callback URL, which can be either HTTP or HTTPS.
 You can decide yourself which of the available events should be sent to which webhook destination.</p>
 
 <p><img alt="webhooks settings" src="images/webhooks_screenshot.png" /></p>
@@ -1565,13 +1582,13 @@ You can decide yourself which of the available events should be sent to which we
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>Our webhooks are sent as JSON data with POST requests to your configured URL. To allow batching of webhooks we send them as arrays which can
+<p>Our webhooks are sent as <code class="prettyprint">JSON</code> data with <code class="prettyprint">POST</code> requests to your configured URL. To allow batching of webhooks we send them as arrays which can
 contain multiple event envelopes, containing the type of the event and the payload.</p>
 
 <h2 id="acknowledge-webhooks">Acknowledge webhooks</h2>
 
-<p>Following HTTP response status values are considered as success: <code class="prettyprint">2XX</code>, <code class="prettyprint">3XX</code>. If your configured URL returns any of this status values, firstbird considers this
-webhooks as successfully delivered.</p>
+<p>Following HTTP response status values are considered as success: <code class="prettyprint">2XX</code>, <code class="prettyprint">3XX</code>. If your configured URL returns any of this status values, Firstbird considers this
+webhook as successfully delivered.</p>
 
 <p>If the request to your configured URL returns with a status of <code class="prettyprint">4XX</code> or <code class="prettyprint">5XX</code> we will consider that as a failure (e.g. your receiving server has been unavailable) and
 are going to retry the delivery for 24 hours which exponential increasing intervals between the retries.</p>
@@ -1700,7 +1717,7 @@ which allows you to request the referenced job application via our REST API)</p>
 </thead><tbody>
 <tr>
 <td style="text-align: left">job_application.received</td>
-<td style="text-align: left">A job application has been created inside firstbird. The type fields indicates how it has been created.</td>
+<td style="text-align: left">A job application has been created inside Firstbird. The type fields indicates how it has been created.</td>
 </tr>
 <tr>
 <td style="text-align: left">job_application.edited</td>
