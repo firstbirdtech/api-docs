@@ -33,8 +33,8 @@ You can decide yourself which of the available events should be sent to which we
 ```json
 [
   {
-    "event_name" : "entity.event_name",
-    "event" : {
+    "event_name": "entity.event_name",
+    "event": {
 
     }
   }
