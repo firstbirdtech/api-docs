@@ -1556,8 +1556,8 @@ Webhooks refers to the overall concept of sending notifications to webhook endpo
 * Services not directly responsible for making an API request may still need to know the response of that request
 * Some events, like job application received and referral added events, are not the result of a direct API request</p>
 
-<p>Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account. 
-When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account&rsquo;s webhooks settings via an HTTP(s) POST request. </p>
+<p>Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account.
+When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account&rsquo;s webhooks settings via an HTTP(s) POST request.</p>
 
 <p>You might use webhooks as the basis to:
 * Send new e-emails to applicants on specific events
@@ -1574,8 +1574,8 @@ You can decide yourself which of the available events should be sent to which we
 <h2 id="webhooks-structure">Webhooks Structure</h2>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"entity.event_name"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"event"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"event_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"entity.event_name"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
 
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1595,9 +1595,7 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 
 <h2 id="security-considerations">Security Considerations</h2>
 
-<p>As our webhooks don&rsquo;t provide authentication mechanisms, you shouldn&rsquo;t take the values contained in the requests as granted. It is
-considered a good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id
-which allows you to request the referenced job application via our REST API)</p>
+<p>As our webhooks don&rsquo;t provide authentication mechanisms, you shouldn&rsquo;t take the values contained in the requests as granted. It is considered a good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id which allows you to request the referenced job application via our REST API)</p>
 
 <h2 id="available-events">Available Events</h2>
 
@@ -1605,13 +1603,56 @@ which allows you to request the referenced job application via our REST API)</p>
 <p>job_application.received by link or referral</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"applicant_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"referrer_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"job_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"link or referral"</span><span class="w">
+  </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"main_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE or INACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"incognito"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"contact_person_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reward_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref-no"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Java Backend Dev"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT, ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED or DELETED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"responsible_persons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link or referral"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1619,12 +1660,55 @@ which allows you to request the referenced job application via our REST API)</p>
 <p>job_application.received by share</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"applicant_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"referrer_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"share_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"job_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"applicant"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"main_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE or INACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"incognito"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"share_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"contact_person_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reward_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref-no"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Java Backend Dev"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT, ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED or DELETED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"responsible_persons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"date_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"share"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1634,14 +1718,57 @@ which allows you to request the referenced job application via our REST API)</p>
 <p>job_application.received from user</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"applicant_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"share_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"job_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="w">
+  </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"main_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE or INACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"incognito"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"share_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"contact_person_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reward_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref-no"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Java Backend Dev"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT, ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED or DELETED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"responsible_persons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1649,9 +1776,15 @@ which allows you to request the referenced job application via our REST API)</p>
 <p>job_application.deleted from user</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A,B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"date_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1660,12 +1793,18 @@ which allows you to request the referenced job application via our REST API)</p>
 <p>job_application.rated from user</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"initial"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"rating"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"initial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1673,11 +1812,17 @@ which allows you to request the referenced job application via our REST API)</p>
 <p>job_application.closed from user</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"close_reason"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CANDIDATE_KNOWN"</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"close_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANDIDATE_KNOWN"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1685,11 +1830,17 @@ which allows you to request the referenced job application via our REST API)</p>
 <p>job_application.hired from user</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"date_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"pay_reward"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"pay_reward"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"first_day_of_work"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1698,7 +1849,13 @@ which allows you to request the referenced job application via our REST API)</p>
 <p>job_application.referral_added from user</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"date_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
