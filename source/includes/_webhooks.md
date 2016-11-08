@@ -14,8 +14,8 @@ Interacting with a third-party API like Firstbird's can introduce two problems:
 * Services not directly responsible for making an API request may still need to know the response of that request
 * Some events, like job application received and referral added events, are not the result of a direct API request
 
-Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account. 
-When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account's webhooks settings via an HTTP(s) POST request. 
+Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account.
+When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account's webhooks settings via an HTTP(s) POST request.
 
 You might use webhooks as the basis to:
 * Send new e-emails to applicants on specific events
@@ -33,8 +33,8 @@ You can decide yourself which of the available events should be sent to which we
 ```json
 [
   {
-    "type" : "entity.event_name",
-    "event" : {
+    "event_name": "entity.event_name",
+    "event": {
 
     }
   }
@@ -52,9 +52,7 @@ If the request to your configured URL returns with a status of `4XX` or `5XX` we
 are going to retry the delivery for 24 hours which exponential increasing intervals between the retries.
 
 ## Security Considerations
-As our webhooks don't provide authentication mechanisms, you shouldn't take the values contained in the requests as granted. It is
-considered a good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id
-which allows you to request the referenced job application via our REST API)
+As our webhooks don't provide authentication mechanisms, you shouldn't take the values contained in the requests as granted. It is considered a good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id which allows you to request the referenced job application via our REST API)
 
 ## Available Events
 
@@ -62,13 +60,56 @@ which allows you to request the referenced job application via our REST API)
 
 ```json
 {
-  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A, B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED"
+  },
   "company_id": "00000000-0000-0000-0000-000000000000",
-  "applicant_id" : "00000000-0000-0000-0000-000000000000",
-  "referrer_id" : "00000000-0000-0000-0000-000000000000",
-  "job_id" : "00000000-0000-0000-0000-000000000000",
-  "date_time" : "1970-01-01 12:00:00.000Z",
-  "type" : "link or referral"
+  "applicant": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "first_name": "Mister",
+      "last_name": "Finch",
+      "email": "mister.finch@firstbird.com",
+      "phone_number": "123456789"
+  },
+  "referrer": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "company_id": "00000000-0000-0000-0000-000000000000",
+      "first_name": "Mister",
+      "last_name": "Finch",
+      "email": "mister.finch@firstbird.com",
+      "locale": "en_US",
+      "main_role": "ROLE_TALENT_SCOUT",
+      "location_id": "00000000-0000-0000-0000-000000000000",
+      "department_id": "00000000-0000-0000-0000-000000000000",
+      "status": "ACTIVE or INACTIVE",
+      "incognito": false,
+      "time_zone": "Europe/Vienna"
+  },
+  "job": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "company_id": "00000000-0000-0000-0000-000000000000",
+      "location_id": "00000000-0000-0000-0000-000000000000",
+      "contact_person_id": "00000000-0000-0000-0000-000000000000",
+      "reward_id": "00000000-0000-0000-0000-000000000000",
+      "department_id": "00000000-0000-0000-0000-000000000000",
+      "reference_number": "ref-no",
+      "title": "Developer",
+      "description": "Java Backend Dev",
+      "end_date": "1970-01-01 12:00:00.000Z",
+      "status": "DRAFT, ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED or DELETED",
+      "hot": true,
+      "responsible_persons": [
+          "00000000-0000-0000-0000-000000000000",
+          "00000000-0000-0000-0000-000000000000"
+      ],
+      "creation_date": "1970-01-01 12:00:00.000Z"
+  },
+  "date_time": "1970-01-01 12:00:00.000Z",
+  "type": "link or referral"
 }
 ```
 
@@ -76,12 +117,55 @@ which allows you to request the referenced job application via our REST API)
 
 ```json
 {
-  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A, B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED"
+  },
   "company_id": "00000000-0000-0000-0000-000000000000",
-  "applicant_id" : "00000000-0000-0000-0000-000000000000",
-  "referrer_id" : "00000000-0000-0000-0000-000000000000",
-  "share_id" : "00000000-0000-0000-0000-000000000000",
-  "job_id" : "00000000-0000-0000-0000-000000000000",
+  "applicant" : {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "first_name": "Mister",
+      "last_name": "Finch",
+      "email": "mister.finch@firstbird.com",
+      "phone_number": "123456789"
+  },
+  "referrer": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "company_id": "00000000-0000-0000-0000-000000000000",
+      "first_name": "Mister",
+      "last_name": "Finch",
+      "email": "mister.finch@firstbird.com",
+      "locale": "en_US",
+      "main_role": "ROLE_TALENT_SCOUT",
+      "location_id": "00000000-0000-0000-0000-000000000000",
+      "department_id": "00000000-0000-0000-0000-000000000000",
+      "status": "ACTIVE or INACTIVE",
+      "incognito": false,
+      "time_zone": "Europe/Vienna"
+  },
+  "share_id": "00000000-0000-0000-0000-000000000000",
+  "job": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "company_id": "00000000-0000-0000-0000-000000000000",
+      "location_id": "00000000-0000-0000-0000-000000000000",
+      "contact_person_id": "00000000-0000-0000-0000-000000000000",
+      "reward_id": "00000000-0000-0000-0000-000000000000",
+      "department_id": "00000000-0000-0000-0000-000000000000",
+      "reference_number": "ref-no",
+      "title": "Developer",
+      "description": "Java Backend Dev",
+      "end_date": "1970-01-01 12:00:00.000Z",
+      "status": "DRAFT, ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED or DELETED",
+      "hot": true,
+      "responsible_persons": [
+          "00000000-0000-0000-0000-000000000000",
+          "00000000-0000-0000-0000-000000000000"
+      ],
+      "creation_date": "1970-01-01 12:00:00.000Z"
+  },
   "date_time" : "1970-01-01 12:00:00.000Z",
   "type" : "share"
 }
@@ -91,14 +175,57 @@ which allows you to request the referenced job application via our REST API)
 
 ```json
 {
-  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A, B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED"
+  },
   "company_id": "00000000-0000-0000-0000-000000000000",
-  "applicant_id" : "00000000-0000-0000-0000-000000000000",
-  "user_id" : "00000000-0000-0000-0000-000000000000",
-  "share_id" : "00000000-0000-0000-0000-000000000000",
-  "job_id" : "00000000-0000-0000-0000-000000000000",
-  "date_time" : "1970-01-01 12:00:00.000Z",
-  "type" : "user"
+  "applicant": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "first_name": "Mister",
+      "last_name": "Finch",
+      "email": "mister.finch@firstbird.com",
+      "phone_number": "123456789"
+  },
+  "user": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "company_id": "00000000-0000-0000-0000-000000000000",
+      "first_name": "Mister",
+      "last_name": "Finch",
+      "email": "mister.finch@firstbird.com",
+      "locale": "en_US",
+      "main_role": "ROLE_TALENT_SCOUT",
+      "location_id": "00000000-0000-0000-0000-000000000000",
+      "department_id": "00000000-0000-0000-0000-000000000000",
+      "status": "ACTIVE or INACTIVE",
+      "incognito": false,
+      "time_zone": "Europe/Vienna"
+  },
+  "share_id": "00000000-0000-0000-0000-000000000000",
+  "job": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "company_id": "00000000-0000-0000-0000-000000000000",
+      "location_id": "00000000-0000-0000-0000-000000000000",
+      "contact_person_id": "00000000-0000-0000-0000-000000000000",
+      "reward_id": "00000000-0000-0000-0000-000000000000",
+      "department_id": "00000000-0000-0000-0000-000000000000",
+      "reference_number": "ref-no",
+      "title": "Developer",
+      "description": "Java Backend Dev",
+      "end_date": "1970-01-01 12:00:00.000Z",
+      "status": "DRAFT, ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED or DELETED",
+      "hot": true,
+      "responsible_persons": [
+          "00000000-0000-0000-0000-000000000000",
+          "00000000-0000-0000-0000-000000000000"
+      ],
+      "creation_date": "1970-01-01 12:00:00.000Z"
+  },
+  "date_time": "1970-01-01 12:00:00.000Z",
+  "type": "application"
 }
 ```
 
@@ -106,9 +233,15 @@ which allows you to request the referenced job application via our REST API)
 
 ```json
 {
-  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A,B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED"
+  },
   "company_id": "00000000-0000-0000-0000-000000000000",
-  "user_id" : "00000000-0000-0000-0000-000000000000",
+  "user_id": "00000000-0000-0000-0000-000000000000",
   "date_time" : "1970-01-01 12:00:00.000Z"
 }
 ```
@@ -117,12 +250,18 @@ which allows you to request the referenced job application via our REST API)
 
 ```json
 {
-  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A, B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED"
+  },
   "company_id": "00000000-0000-0000-0000-000000000000",
-  "user_id" : "00000000-0000-0000-0000-000000000000",
-  "date_time" : "1970-01-01 12:00:00.000Z",
-  "initial" : "true",
-  "rating" : "A, B or C"
+  "user_id": "00000000-0000-0000-0000-000000000000",
+  "date_time": "1970-01-01 12:00:00.000Z",
+  "initial": true,
+  "rating": "A, B or C"
 }
 ```
 
@@ -130,11 +269,17 @@ which allows you to request the referenced job application via our REST API)
 
 ```json
 {
-  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A, B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED"
+  },
   "company_id": "00000000-0000-0000-0000-000000000000",
-  "user_id" : "00000000-0000-0000-0000-000000000000",
-  "date_time" : "1970-01-01 12:00:00.000Z",
-  "close_reason" : "CANDIDATE_KNOWN"
+  "user_id": "00000000-0000-0000-0000-000000000000",
+  "date_time": "1970-01-01 12:00:00.000Z",
+  "close_reason": "CANDIDATE_KNOWN"
 }
 ```
 
@@ -142,11 +287,17 @@ which allows you to request the referenced job application via our REST API)
 
 ```json
 {
-  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A, B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED"
+  },
   "company_id": "00000000-0000-0000-0000-000000000000",
   "user_id" : "00000000-0000-0000-0000-000000000000",
   "date_time" : "1970-01-01 12:00:00.000Z",
-  "pay_reward" : "true",
+  "pay_reward" : true,
   "first_day_of_work" : "2020-01-01"
 }
 ```
@@ -155,7 +306,13 @@ which allows you to request the referenced job application via our REST API)
 
 ```json
 {
-  "job_application_id": "00000000-0000-0000-0000-000000000000",
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A, B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED"
+  },
   "company_id": "00000000-0000-0000-0000-000000000000",
   "user_id" : "00000000-0000-0000-0000-000000000000",
   "date_time" : "1970-01-01 12:00:00.000Z",
