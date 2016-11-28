@@ -238,7 +238,7 @@ In order to Rate a Job Application you have to use the following request
 }
 ```
 
-In order to Hire a Job Application you must change it's status to HIRED using the following request
+In order to Hire a Job Application you must change its status to HIRED using the following request
 
 ### HTTP Request
 
@@ -266,7 +266,7 @@ In order to Hire a Job Application you must change it's status to HIRED using th
 }
 ```
 
-In order to Close a Job Application you must change it's status to CLOSED using the following request
+In order to Close a Job Application you must change its status to CLOSED using the following request
 
 
 ### HTTP Request
@@ -292,7 +292,7 @@ In order to Close a Job Application you must change it's status to CLOSED using 
 }
 ```
 
-In order to Re-open a closed Job Application you must change it's status to IN_PROGRESS using the following request
+In order to Re-open a closed Job Application you must change its status to IN_PROGRESS using the following request
 
 
 ### HTTP Request
