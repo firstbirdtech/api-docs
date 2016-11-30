@@ -10,7 +10,7 @@ Job Applications can have following statuses:
 | HIRED       | The candidate of this Job Application got hired                                       |
 | CLOSED      | The Job Application has been withdrawn by your Recruiters                             |
 
-Your recruiters can give a Job Application different ratings:
+Your Recruiters can give a Job Application different ratings:
 
 | Rating | Description                                                             |
 |:-------|:------------------------------------------------------------------------|
@@ -211,7 +211,7 @@ This is the feedback of the Talent Scout who shared/referred this candidate. Fee
 }
 ```
 
-In order to Rate a Job Application you have to use the following request
+In order to rate a Job Application you have to use the following request
 
 ### HTTP Request
 
@@ -221,7 +221,7 @@ In order to Rate a Job Application you have to use the following request
 
 | Property | Description                                                                                                         |
 |:---------|:--------------------------------------------------------------------------------------------------------------------|
-| value    | Rating value as described in the [Job Application's Rating table](#job-applications)                                |
+| value    | Rating value as described in the [Job Application's rating table](#job-applications)                                |
 | message  | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant   |
 
 
@@ -238,7 +238,7 @@ In order to Rate a Job Application you have to use the following request
 }
 ```
 
-In order to Hire a Job Application you must change its status to HIRED using the following request
+In order to hire a Job Application you must change its status to HIRED using the following request
 
 ### HTTP Request
 
@@ -266,7 +266,7 @@ In order to Hire a Job Application you must change its status to HIRED using the
 }
 ```
 
-In order to Close a Job Application you must change its status to CLOSED using the following request
+In order to close a Job Application you must change its status to CLOSED using the following request
 
 
 ### HTTP Request
@@ -292,7 +292,7 @@ In order to Close a Job Application you must change its status to CLOSED using t
 }
 ```
 
-In order to Re-open a closed Job Application you must change its status to IN_PROGRESS using the following request
+In order to re-open a closed Job Application you must change its status to IN_PROGRESS using the following request
 
 
 ### HTTP Request
