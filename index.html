@@ -1311,6 +1311,32 @@ Authorization: Bearer youraccesstoken
 </tr>
 </tbody></table>
 
+<p>In case of a closed Job Application, one of the following reasons must be provided:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Reason</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">CANDIDATE_KNOWN</td>
+<td style="text-align: left">This Applicant was already being considered by the company prior to this referral</td>
+</tr>
+<tr>
+<td style="text-align: left">CANDIDATE_REJECTED</td>
+<td style="text-align: left">This Applicant was reject for this position</td>
+</tr>
+<tr>
+<td style="text-align: left">CANDIDATE_WITHDRAWN</td>
+<td style="text-align: left">This Applicant withdrew is application</td>
+</tr>
+<tr>
+<td style="text-align: left">CANDIDATE_EVIDENCE</td>
+<td style="text-align: left">This Applicant was not selected, but might be a good in the future</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-all-job-applications">Get All Job Applications</h2>
 
 <blockquote>
@@ -1537,6 +1563,156 @@ Authorization: Bearer youraccesstoken
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET /v1/companies/{companyId}/applications/{jobApplicationId}/referrals</code></p>
+
+<h2 id="rate-a-job-application">Rate a Job Application</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>In order to Rate a Job Application you have to use the following request</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/applications/{jobApplicationId}/rating</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">value</td>
+<td style="text-align: left">Rating value as described in the <a href="#job-applications">Job Application&rsquo;s Rating table</a></td>
+</tr>
+<tr>
+<td style="text-align: left">message</td>
+<td style="text-align: left">Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant</td>
+</tr>
+</tbody></table>
+
+<h2 id="hire-a-job-application">Hire a Job Application</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"firstDayOfWork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This was a very good referral. The candidate is a great fit."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"payReward"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HIRED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>In order to Hire a Job Application you must change its status to HIRED using the following request</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/applications/{jobApplicationId}/status</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">firstDayOfWork</td>
+<td style="text-align: left">First day of work for the Applicant. Date format: &ldquo;yyyy-MM-dd&rdquo;</td>
+</tr>
+<tr>
+<td style="text-align: left">message</td>
+<td style="text-align: left">Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant</td>
+</tr>
+<tr>
+<td style="text-align: left">payReward</td>
+<td style="text-align: left">Whether or not the reward should be given to the Referrer</td>
+</tr>
+<tr>
+<td style="text-align: left">value</td>
+<td style="text-align: left">New Job Application status. In this case, &lsquo;HIRED&rsquo;. <a href="#job-applications">Check Job Application&rsquo;s Status table</a></td>
+</tr>
+</tbody></table>
+
+<h2 id="close-a-job-application">Close a Job Application</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"closeReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANDIDATE_WITHDRAWN"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>In order to Close a Job Application you must change its status to CLOSED using the following request</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/applications/{jobApplicationId}/status</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">closeReason</td>
+<td style="text-align: left">Reason why this Job Application is being rejected. Check <a href="#job-applications">Job Application&rsquo;s close reasons</a></td>
+</tr>
+<tr>
+<td style="text-align: left">message</td>
+<td style="text-align: left">Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant</td>
+</tr>
+<tr>
+<td style="text-align: left">value</td>
+<td style="text-align: left">New Job Application status. In this case, &#39;CLOSED&rsquo;. <a href="#job-applications">Check Job Application&rsquo;s Status table</a></td>
+</tr>
+</tbody></table>
+
+<h2 id="re-open-a-job-application">Re-open a Job Application</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>In order to Re-open a closed Job Application you must change its status to IN_PROGRESS using the following request</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/applications/{jobApplicationId}/status</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">value</td>
+<td style="text-align: left">New Job Application status. In this case, &#39;IN_PROGRESS&rsquo;. <a href="#job-applications">Check Job Application&rsquo;s Status table</a></td>
+</tr>
+</tbody></table>
 
           <h1 id="webhooks">Webhooks</h1>
 
