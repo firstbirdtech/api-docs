@@ -18,6 +18,15 @@ Your recruiters can give a Job Application different ratings:
 | B      | The B rating corresponds to the 2-star rating from the web applications |
 | C      | The C rating corresponds to the 1-star rating from the web applications |
 
+In case of a closed Job Application, one of the following reasons must be provided:
+
+| Reason               | Description                                                                       |
+|:--------------------|:-----------------------------------------------------------------------------------|
+| CANDIDATE_KNOWN     | This Applicant was already being considered by the company prior to this referral  |
+| CANDIDATE_REJECTED  | This Applicant was reject for this position                                        |
+| CANDIDATE_WITHDRAWN | This Applicant withdrew is application                                             |
+| CANDIDATE_EVIDENCE  | This Applicant was not selected, but might be a good in the future                 |
+
 ## Get All Job Applications
 
 > This request returns JSON structured like this:
@@ -189,3 +198,109 @@ This is the feedback of the Talent Scout who shared/referred this candidate. Fee
 
 ### HTTP Request
 `GET /v1/companies/{companyId}/applications/{jobApplicationId}/referrals`
+
+
+## Rate a Job Application
+
+> This is an example request body
+
+```json
+{
+  "value": "A",
+  "message": "Test"
+}
+```
+
+In order to Rate a Job Application you have to use the following request
+
+### HTTP Request
+
+`PUT /v1/companies/{companyId}/applications/{jobApplicationId}/rating`
+
+### Parameters
+
+| Property | Description                                                                                                         |
+|:---------|:--------------------------------------------------------------------------------------------------------------------|
+| value    | Rating value as described in the [Job Application's Rating table](#job-applications)                                |
+| message  | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant   |
+
+
+## Hire a Job Application
+
+> This is an example request body
+
+```json
+{
+  "firstDayOfWork": "2017-01-01",
+  "message": "This was a very good referral. The candidate is a great fit.",
+  "payReward": true,
+  "value": "HIRED"
+}
+```
+
+In order to Hire a Job Application you must change its status to HIRED using the following request
+
+### HTTP Request
+
+`PUT /v1/companies/{companyId}/applications/{jobApplicationId}/status`
+
+### Parameters
+
+| Property       | Description                                                                                                         |
+|:---------------|:--------------------------------------------------------------------------------------------------------------------|
+| firstDayOfWork | First day of work for the Applicant. Date format: "yyyy-MM-dd"                                                      |
+| message        | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant   |
+| payReward      | Whether or not the reward should be given to the Referrer                                                           |
+| value          | New Job Application status. In this case, 'HIRED'. [Check Job Application's Status table](#job-applications)        |
+
+
+## Close a Job Application
+
+> This is an example request body
+
+```json
+{
+  "closeReason": "CANDIDATE_WITHDRAWN",
+  "message": "test",
+  "value": "CLOSED"
+}
+```
+
+In order to Close a Job Application you must change its status to CLOSED using the following request
+
+
+### HTTP Request
+
+`PUT /v1/companies/{companyId}/applications/{jobApplicationId}/status`
+
+### Parameters
+
+| Property    | Description                                                                                                         |
+|:------------|:--------------------------------------------------------------------------------------------------------------------|
+| closeReason | Reason why this Job Application is being rejected. Check [Job Application's close reasons](#job-applications)       |
+| message     | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant   |
+| value       | New Job Application status. In this case, 'CLOSED'. [Check Job Application's Status table](#job-applications)       |
+
+
+## Re-open a Job Application
+
+> This is an example request body
+
+```json
+{
+  "value": "IN_PROGRESS"
+}
+```
+
+In order to Re-open a closed Job Application you must change its status to IN_PROGRESS using the following request
+
+
+### HTTP Request
+
+`PUT /v1/companies/{companyId}/applications/{jobApplicationId}/status`
+
+### Parameters
+
+| Property    | Description                                                                                                         |
+|:------------|:--------------------------------------------------------------------------------------------------------------------|
+| value       | New Job Application status. In this case, 'IN_PROGRESS'. [Check Job Application's Status table](#job-applications)       |
