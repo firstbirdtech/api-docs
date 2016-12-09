@@ -314,7 +314,7 @@ In order to delete a closed or hired Job Application you must use the following 
 
 `DELETE /v1/companies/{companyId}/applications/{jobApplicationId}`
 
-If the request suceeds, the api will return a 200 response with no body.
+If the request succeeds, the api will return a 200 response with no body.
 
 ### Errors
 
