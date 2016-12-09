@@ -316,10 +316,6 @@ In order to delete a closed or hired Job Application you must use the following 
 
 If the request succeeds, the api will return a 200 response with no body.
 
-### Errors
-
-If a Job Application with status IN_PROGRESS is tried to be deleted than the api will return the following response
-
 > This is an example error
 
 ```json
@@ -330,3 +326,6 @@ If a Job Application with status IN_PROGRESS is tried to be deleted than the api
   "developerMessage": "Cannot delete job application from status IN_PROGRESS"
 }
 ```
+### Errors
+
+If a Job Application with status IN_PROGRESS is tried to be deleted than the api will return the following response
