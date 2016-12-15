@@ -304,3 +304,14 @@ In order to re-open a closed Job Application you must change its status to IN_PR
 | Property    | Description                                                                                                         |
 |:------------|:--------------------------------------------------------------------------------------------------------------------|
 | value       | New Job Application status. In this case, 'IN_PROGRESS'. [Check Job Application's Status table](#job-applications)       |
+
+## Delete a closed Job Applcation
+
+In order to delete a closed or hired Job Application you must use the following request
+
+
+### HTTP Request
+
+`DELETE /v1/companies/{companyId}/applications/{jobApplicationId}`
+
+If the request succeeds, the api will return a 200 response with no body.
