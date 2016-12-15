@@ -1,10 +1,8 @@
-sudo: false
+language: ruby # don't install any environment
 
-language: ruby
-
-rvm:
-  - 2.0.0
-  - 2.1.0
-
-cache: bundler
-script: bundle exec middleman build
+before_install: openssl aes-256-cbc -K $encrypted_ddab409dc7f0_key -iv $encrypted_ddab409dc7f0_iv -in deploy_key.enc -out deploy_key -d
+script: bash ./deploy.sh
+env:
+  global:
+  - ENCRYPTION_LABEL: "ddab409dc7f0"
+  - COMMIT_AUTHOR_EMAIL: "daniel.pfeiffer@firstbird.com"
