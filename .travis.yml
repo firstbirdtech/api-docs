@@ -1,12 +1,6 @@
 language: ruby # don't install any environment
 rvm: 2.3.3
-before_install:
-  - openssl aes-256-cbc -K $encrypted_ddab409dc7f0_key -iv $encrypted_ddab409dc7f0_iv -in deploy_key.enc -out deploy_key -d
-  - eval `ssh-agent -s`
-  - chmod 600 deploy_key
-  - ssh-add deploy_key
-  - git config --global user.email "daniel.pfeiffer@firstbird.com"
-  - git config --global user.name "Travis-CI"
+
 script: bash ./deploy.sh
 env:
   global:

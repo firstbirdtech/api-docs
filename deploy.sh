@@ -167,11 +167,19 @@ incremental_deploy() {
 
 commit+push() {
   set_user_id
+
+  openssl aes-256-cbc -K $encrypted_ddab409dc7f0_key -iv $encrypted_ddab409dc7f0_iv -in deploy_key.enc -out deploy_key -d
+  chmod 600 deploy_key
+  ssh-add deploy_key
+
+  REPO=`git config remote.origin.url`
+  SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
+
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
   disable_expanded_output
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
-  git push --quiet $repo $deploy_branch
+  git push $SSH_REPO $deploy_branch
   enable_expanded_output
 }
 
@@ -192,12 +200,8 @@ disable_expanded_output() {
 }
 
 set_user_id() {
-  if [[ -z `git config user.name` ]]; then
-    git config user.name "$default_username"
-  fi
-  if [[ -z `git config user.email` ]]; then
-    git config user.email "$default_email"
-  fi
+  git config --global user.email "daniel.pfeiffer@firstbird.com"
+  git config --global user.name "Travis-CI"
 }
 
 restore_head() {
