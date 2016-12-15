@@ -170,6 +170,7 @@ commit+push() {
 
   openssl aes-256-cbc -K $encrypted_ddab409dc7f0_key -iv $encrypted_ddab409dc7f0_iv -in deploy_key.enc -out deploy_key -d
   chmod 600 deploy_key
+  eval `ssh-agent -s`
   ssh-add deploy_key
 
   REPO=`git config remote.origin.url`
