@@ -5,4 +5,6 @@ script: bash ./deploy.sh
 env:
   global:
   - ENCRYPTION_LABEL: "ddab409dc7f0"
-  - COMMIT_AUTHOR_EMAIL: "daniel.pfeiffer@firstbird.com"
+  - COMMIT_AUTHOR_EMAIL:
+  - GIT_DEPLOY_USERNAME: "daniel.pfeiffer@firstbird.com"
+  - GIT_DEPLOY_NAME: "Travis CI"
