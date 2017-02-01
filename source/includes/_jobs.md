@@ -168,18 +168,18 @@ To create a new Job for your Company use following request
 
 ### Parameters
 
-| Property           | Description                                                                                                 |
-|:-------------------|:------------------------------------------------------------------------------------------------------------|
-| department         | The Id of the Department this Job is associated with                                                        |
-| contactPerson      | The Id of the Recruiter who is responsible for this Job                                                     |
-| description        | HTMl describing the Job. Please consider the //TODO HTML documentation to know about allowed HTML tags etc. |
-| endDate            | The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED                    |
-| hot                | The Hot flag                                                                                                |
-| location           | The Location of your Company the Job is associated with                                                     |
-| referenceNumber    | This field allows to enter reference numbers of external systems                                            |
-| reward             | The Reward that will be payed as soon as an Applicant gets hired for that Job                               |
-| title              | The title of the Job. This field is limited to 255 characters                                               |
-| responsiblePersons | An array of objects containing the User Ids of Recruiters being responsible for this Job as well            |
+| Property           | Description                                                                                                                 |
+|:-------------------|:----------------------------------------------------------------------------------------------------------------------------|
+| department         | The Id of the Department this Job is associated with                                                                        |
+| contactPerson      | The Id of the Recruiter who is responsible for this Job                                                                     |
+| description        | HTMl describing the Job. Please consider the //TODO HTML documentation to know about allowed HTML tags etc.                 |
+| endDate            | The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED. Can be null to avoid autoclosing. |
+| hot                | The Hot flag                                                                                                                |
+| location           | The Location of your Company the Job is associated with                                                                     |
+| referenceNumber    | This field allows to enter reference numbers of external systems                                                            |
+| reward             | The Reward that will be payed as soon as an Applicant gets hired for that Job                                               |
+| title              | The title of the Job. This field is limited to 255 characters                                                               |
+| responsiblePersons | An array of objects containing the User Ids of Recruiters being responsible for this Job as well                            |
 
 ## Update a Job
 
