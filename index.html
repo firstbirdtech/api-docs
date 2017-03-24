@@ -1738,17 +1738,23 @@ Webhooks refers to the overall concept of sending notifications to webhook endpo
 
 <h2 id="why-using-webhooks">Why using webhooks</h2>
 
-<p>Interacting with a third-party API like Firstbird&rsquo;s can introduce two problems:
-* Services not directly responsible for making an API request may still need to know the response of that request
-* Some events, like job application received and referral added events, are not the result of a direct API request</p>
+<p>Interacting with a third-party API like Firstbird&rsquo;s can introduce two problems:</p>
+
+<ul>
+<li>Services not directly responsible for making an API request may still need to know the response of that request</li>
+<li>Some events, like job application received and referral added events, are not the result of a direct API request</li>
+</ul>
 
 <p>Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account.
 When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account&rsquo;s webhooks settings via an HTTP(s) POST request.</p>
 
-<p>You might use webhooks as the basis to:
-* Send new e-emails to applicants on specific events
-* Forward the job application to your ATS
-* Integrate your hole hiring process with Firstbird</p>
+<p>You might use webhooks as the basis to:</p>
+
+<ul>
+<li>Send new e-mails to applicants on specific events</li>
+<li>Forward the job application to your ATS</li>
+<li>Integrate your whole hiring process with Firstbird</li>
+</ul>
 
 <h2 id="configuring-webhooks">Configuring Webhooks</h2>
 
@@ -1794,7 +1800,12 @@ are going to retry the delivery for 24 hours which exponential increasing interv
       </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"applicant_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/applicant_image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"http://example.com/file1.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"http://example.com/file2.pdf"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1851,7 +1862,12 @@ are going to retry the delivery for 24 hours which exponential increasing interv
       </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"applicant_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/applicant_image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"http://example.com/file1.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"http://example.com/file2.pdf"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"applicant"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1909,7 +1925,12 @@ are going to retry the delivery for 24 hours which exponential increasing interv
       </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"applicant_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/applicant_image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"http://example.com/file1.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"http://example.com/file2.pdf"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2087,6 +2108,13 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <td style="text-align: left">The talent scout via whom the job application has been received provided feedback.</td>
 </tr>
 </tbody></table>
+
+<p><strong>Note for job_application.received events:</strong></p>
+
+<ul>
+<li>If the referrer/user of the job application got deleted, the <code class="prettyprint">referrer</code> / <code class="prettyprint">user</code> key is not present.</li>
+<li>If the applicant did not provide a picture, the <code class="prettyprint">applicant_image</code> key is not present.</li>
+</ul>
 
       </div>
       <div class="dark-box">
