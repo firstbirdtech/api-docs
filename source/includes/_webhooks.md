@@ -67,7 +67,12 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
       "job_id": "00000000-0000-0000-0000-000000000000",
       "rating": "A, B or C",
       "created_by_user_id": "00000000-0000-0000-0000-000000000000",
-      "status": "IN_PROGRESS, HIRED or CLOSED"
+      "status": "IN_PROGRESS, HIRED or CLOSED",
+      "applicant_image": "http://example.com/applicant_image.png",
+      "attachments": [
+          "http://example.com/file1.pdf",
+          "http://example.com/file2.pdf"
+      ]
   },
   "company_id": "00000000-0000-0000-0000-000000000000",
   "applicant": {
@@ -124,7 +129,12 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
       "job_id": "00000000-0000-0000-0000-000000000000",
       "rating": "A, B or C",
       "created_by_user_id": "00000000-0000-0000-0000-000000000000",
-      "status": "IN_PROGRESS, HIRED or CLOSED"
+      "status": "IN_PROGRESS, HIRED or CLOSED",
+      "applicant_image": "http://example.com/applicant_image.png",
+      "attachments": [
+          "http://example.com/file1.pdf",
+          "http://example.com/file2.pdf"
+      ]
   },
   "company_id": "00000000-0000-0000-0000-000000000000",
   "applicant" : {
@@ -182,7 +192,12 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
       "job_id": "00000000-0000-0000-0000-000000000000",
       "rating": "A, B or C",
       "created_by_user_id": "00000000-0000-0000-0000-000000000000",
-      "status": "IN_PROGRESS, HIRED or CLOSED"
+      "status": "IN_PROGRESS, HIRED or CLOSED",
+      "applicant_image": "http://example.com/applicant_image.png",
+      "attachments": [
+          "http://example.com/file1.pdf",
+          "http://example.com/file2.pdf"
+      ]
   },
   "company_id": "00000000-0000-0000-0000-000000000000",
   "applicant": {
@@ -334,3 +349,8 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
 | job_application.closed         | One of your recruiters closed a job application                                                         |
 | job_application.hired          | One of your recruiters hired the applicant                                                              |
 | job_application.referral_added | The talent scout via whom the job application has been received provided feedback.                      |
+
+**Note for job_application.received events:**
+
+* If the referrer/user of the job application got deleted, the `referrer` / `user` key is not present.
+* If the applicant did not provide a picture, the `applicant_image` key is not present.
