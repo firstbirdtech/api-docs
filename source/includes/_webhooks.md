@@ -11,6 +11,7 @@ Webhooks refers to the overall concept of sending notifications to webhook endpo
 
 ##Why using webhooks
 Interacting with a third-party API like Firstbird's can introduce two problems:
+
 * Services not directly responsible for making an API request may still need to know the response of that request
 * Some events, like job application received and referral added events, are not the result of a direct API request
 
@@ -18,9 +19,10 @@ Webhooks solve these problems by letting you register a URL that we will notify 
 When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account's webhooks settings via an HTTP(s) POST request.
 
 You might use webhooks as the basis to:
-* Send new e-emails to applicants on specific events
+
+* Send new e-mails to applicants on specific events
 * Forward the job application to your ATS
-* Integrate your hole hiring process with Firstbird
+* Integrate your whole hiring process with Firstbird
 
 ##Configuring Webhooks
 Webhooks can be configured as a Company Administrator within the Integration tab of the `Account Preferences`. For a single webhook destination you have to configure your callback URL, which can be either HTTP or HTTPS.
