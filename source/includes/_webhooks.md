@@ -351,3 +351,5 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
 
 * If the referrer/user of the job application got deleted, the `referrer` / `user` key is not present.
 * If the applicant did not provide a picture, the `applicant_image` key is not present.
+* To get a file from the `attachments` array, follow
+[this](#get-attachment-file-of-a-job-application) documentation.

@@ -166,6 +166,42 @@ To get a single Job Application you have to use following request:
 | fields          | See [Fields](#customizing-response-fields) documentation.                                                                         |
 | expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Expandable fields are: applicant, referrer, job, referrals |
 
+## Get Attachment file of a Job Application
+
+> The file information request returns JSON structured like this:
+
+```json
+{
+  "id": "a3beb15a-84ac-4646-a20b-7aa5faf982a7",
+  "name": "my_application.pdf",
+  "contentType": "application/pdf",
+  "size": "100000",
+  "url": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7/url"
+}
+```
+
+> The file URL request returns JSON structured like this:
+
+```json
+{
+  "url": "https://s3-eu-central-1.amazonaws.com/hummingbird-development/files/775845ca-5837-4f65-9a4f-658d22f12622?response-content-disposition=inline%3B%20filename%3Dtest.pdf&response-content-type=application%2Fpdf&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20170327T124130Z&X-Amz-SignedHeaders=host&X-Amz-Expires=15&X-Amz-Credential=AKIAJRDHPR2ZNVGR6XRQ%2F20170327%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=6e3bdd82aa17d13af791c73314ab1accba5dc00644bbdd5670aacc66bbc88309"
+}
+```
+
+First, you have to get basic information of job application file by issuing a [File Information](#file-information) request.
+
+The response contains a `url` property where you can request the actual file URL. You can do this by issuing a [File URL](#file-url) request.
+This will return the URL to the actual file. Be aware, that the URL is valid for 15 seconds only.
+
+### HTTP Requests
+
+#### File Information
+`GET /v1/companies/{companyId}/applications/{jobApplicationId}/files/{fileId}`
+
+#### File URL
+`GET /v1/companies/{companyId}/applications/{jobApplicationId}/files/{fileId}/url`
+
+
 ## Get Feedback of a Job Application
 
 > This request returns JSON structured like this:
