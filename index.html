@@ -1516,6 +1516,43 @@ Authorization: Bearer youraccesstoken
 </tr>
 </tbody></table>
 
+<h2 id="get-attachment-file-of-a-job-application">Get Attachment file of a Job Application</h2>
+
+<blockquote>
+<p>The file information request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_application.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7/url"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The file URL request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3-eu-central-1.amazonaws.com/hummingbird-development/files/775845ca-5837-4f65-9a4f-658d22f12622?response-content-disposition=inline%3B%20filename%3Dtest.pdf&amp;response-content-type=application%2Fpdf&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20170327T124130Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=15&amp;X-Amz-Credential=AKIAJRDHPR2ZNVGR6XRQ%2F20170327%2Feu-central-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=6e3bdd82aa17d13af791c73314ab1accba5dc00644bbdd5670aacc66bbc88309"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>First, you have to get basic information of job application file by issuing a <a href="#file-information">File Information</a> request.</p>
+
+<p>The response contains a <code class="prettyprint">url</code> property where you can request the actual file URL. You can do this by issuing a <a href="#file-url">File URL</a> request.
+This will return the URL to the actual file. Be aware, that the URL is valid for 15 seconds only.</p>
+
+<h3 id="http-requests">HTTP Requests</h3>
+
+<h4 id="file-information">File Information</h4>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/applications/{jobApplicationId}/files/{fileId}</code></p>
+
+<h4 id="file-url">File URL</h4>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/applications/{jobApplicationId}/files/{fileId}/url</code></p>
+
 <h2 id="get-feedback-of-a-job-application">Get Feedback of a Job Application</h2>
 
 <blockquote>
@@ -2111,6 +2148,8 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <ul>
 <li>If the referrer/user of the job application got deleted, the <code class="prettyprint">referrer</code> / <code class="prettyprint">user</code> key is not present.</li>
 <li>If the applicant did not provide a picture, the <code class="prettyprint">applicant_image</code> key is not present.</li>
+<li>To get a file from the <code class="prettyprint">attachments</code> array, follow
+<a href="#get-attachment-file-of-a-job-application">this</a> documentation.</li>
 </ul>
 
       </div>
