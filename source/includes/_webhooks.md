@@ -70,8 +70,7 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
       "status": "IN_PROGRESS, HIRED or CLOSED",
       "applicant_image": "http://example.com/applicant_image.png",
       "attachments": [
-          "http://example.com/file1.pdf",
-          "http://example.com/file2.pdf"
+          "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"
       ]
   },
   "company_id": "00000000-0000-0000-0000-000000000000",
@@ -132,8 +131,7 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
       "status": "IN_PROGRESS, HIRED or CLOSED",
       "applicant_image": "http://example.com/applicant_image.png",
       "attachments": [
-          "http://example.com/file1.pdf",
-          "http://example.com/file2.pdf"
+          "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"
       ]
   },
   "company_id": "00000000-0000-0000-0000-000000000000",
@@ -195,8 +193,7 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
       "status": "IN_PROGRESS, HIRED or CLOSED",
       "applicant_image": "http://example.com/applicant_image.png",
       "attachments": [
-          "http://example.com/file1.pdf",
-          "http://example.com/file2.pdf"
+          "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"
       ]
   },
   "company_id": "00000000-0000-0000-0000-000000000000",
