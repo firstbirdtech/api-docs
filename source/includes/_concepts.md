@@ -229,28 +229,50 @@ To fit your needs we allow to customize which fields are included in our respons
 
 ## Links and Resource Expansion
 
+> The following example shows collapsed fields:
+
 ```json
 {
-  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
-  "id": "0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
   "company": {
     "id": "00000000-0000-0000-0000-000000000000",
     "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"
   },
   "location": {
-    "id": "50c7be5d-3e2d-4e57-9394-87d5ffc7f50f",
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"
+    "id": "00000000-0000-0000-0000-000000000001",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/locations/00000000-0000-0000-0000-000000000001"
   },
-  "...":"..."
+  "department": {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-000000000002"
+  },
+  "reward": {
+    "id": "00000000-0000-0000-0000-000000000003",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000003"
+  },
+  "applicant": {
+    "id": "00000000-0000-0000-0000-000000000004",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/00000000-0000-0000-0000-000000000004"
+  },
+  "referrer": {
+    "id": "00000000-0000-0000-0000-000000000005",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000005"
+  },
+  "job": {
+    "id": "00000000-0000-0000-0000-000000000007",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000007"
+  },
+  "referrals": {
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000008/referrals"
+  }
 }
 ```
 
-At Firstbird we want to provide a powerful REST API which allows easy navigation through our services. Therefor we do not simply add the IDs of referenced resources to our responses but also provide links where you can find mor detailed information about the referenced resource. If you take a look at an example response where a single Job has been fetched you can see the properties company and location which reference the Company the Job belongs to and the Location which is associated to the Job. Both objects contain their ID in `id` property and a link to the REST API Resource in property `href`.
+At Firstbird we want to provide a powerful REST API which allows easy navigation through our services. Therefore we do not simply add the IDs of referenced resources to our responses but also provide links where you can find more detailed information about the referenced resource. If you take a look at the example response fields, you can see that fields do not provide detailed information but only the reference to it. All objects contain their ID in `id` property and a link to the REST API Resource in property `href`.
+
+> The following example shows expanded fields:
 
 ```json
 {
-  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
-  "id": "0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
   "company": {
     "id": "00000000-0000-0000-0000-000000000000",
     "name": "Firstbird",
@@ -259,14 +281,61 @@ At Firstbird we want to provide a powerful REST API which allows easy navigation
   },
   "location": {
     "name": "Paris",
-    "id": "50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"
+    "id": "00000000-0000-0000-0000-000000000001"
   },
-  "...":"..."
+  "department": {
+    "name": "Finance",
+    "id": "00000000-0000-0000-0000-000000000002"
+  },
+  "reward": {
+    "name": "250€ Amazon Gift Card",
+    "id": "00000000-0000-0000-0000-000000000003"
+  },
+  "applicant": {
+    "id": "00000000-0000-0000-0000-000000000004",
+    "firstName": "Max",
+    "lastName": "Mustermann",
+    "email": "max.mustermann@gamil.com"
+  },
+  "referrer": {
+    "companyId": "00000000-0000-0000-0000-000000000000",
+    "firstName": "Birdy",
+    "lastName": "Pigeon",
+    "email": "birdy.pigeon@firstbird.com",
+    "locale": "en_US",
+    "roles": [
+      "ROLE_TALENT_SCOUT"
+    ],
+    "location": {
+      "id": "00000000-0000-0000-0000-0000000000001",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/locations/00000000-0000-0000-0000-000000000001"
+    },
+    "department": {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-0000000000002"
+    },
+    "mainRole": "ROLE_TALENT_SCOUT",
+    "status": "ACTIVE",
+    "incognito": false,
+    "timeZone": "Europe/Vienna",
+    "id": "00000000-0000-0000-0000-000000000005",
+    "profile_picture": {
+      "id": "00000000-0000-0000-0000-000000000006",
+       "href": "https://aws.com/eu-central-1/profimg/150x150/00000000-0000-0000-0000-000000000006.jpeg"
+    }
+  },
+  "job": {
+    "id": "00000000-0000-0000-0000-000000000007",
+    "title": "Nr. 1 System Engineer/Administrator (m/w)"
+  },
+  "referrals": {
+    "negativeCount": 0,
+    "neutralCount": 0,
+    "referralCount": 1
+  }
 }
 ```
 
-`GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a`
+To make it even easier for you to use our API, it is possible to expand (include) often used referenced resources within the responses to avoid additional requests to those referenced resources. If you take a look on the following example response, you can see that we expanded all resources, and now the values you are allowed to see are included in the response. To specify which resources should get expanded you have to specify a comma separated list of fields for the expand query parameter. For example:
 
-To make it even easier for you to use our API it is possible to expand (include) often used referenced resources within the responses to avoid additional requests to those referenced resources. If you take a look on following Job requests as an example you can see that we expanded the company and location resources which adds the their values you are allowed to see to the response. To specify which resources should get expanded you have to specify a comma separated list of fields for the expand query parameter.
-
-`GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a?expand=company,location`
+`GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005?expand=company,location,department,reward`

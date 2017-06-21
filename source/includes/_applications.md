@@ -45,8 +45,8 @@ In case of a closed Job Application, one of the following reasons must be provid
   },
   "items": [
     {
-      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e",
-      "id": "d648096f-c3f4-4121-af9a-5377753e467e",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000001",
       "status": "IN_PROGRESS",
       "applicationDate": "2016-03-23T08:37:15Z",
       "company": {
@@ -55,27 +55,27 @@ In case of a closed Job Application, one of the following reasons must be provid
       },
       "applicant": {
         "id": "1d029da5-0a39-45d2-a26a-eb14a5d05d36",
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/1d029da5-0a39-45d2-a26a-eb14a5d05d36"
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/00000000-0000-0000-0000-000000000002"
       },
       "referrer": {
         "id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
         "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"
       },
       "share": {
-        "id": "4d61dae4-8444-4e7d-a73b-20aa6aa02093",
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/shares/4d61dae4-8444-4e7d-a73b-20aa6aa02093"
+        "id": "00000000-0000-0000-0000-000000000004",
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000003/shares/00000000-0000-0000-0000-000000000004"
       },
       "job": {
-        "id": "0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"
+        "id": "00000000-0000-0000-0000-000000000003",
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000003"
       },
       "referrals": {
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/referrals"
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000001/referrals"
       },
       "files": [
         {
-          "id": "a3beb15a-84ac-4646-a20b-7aa5faf982a7",
-          "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"
+          "id": "00000000-0000-0000-0000-000000000006",
+          "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000005/files/00000000-0000-0000-0000-000000000006"
         }
       ],
       "applicantImage": {
@@ -112,8 +112,8 @@ To get a list of all your Job Applications user following request:
 
 ```json
 {
-  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e",
-  "id": "d648096f-c3f4-4121-af9a-5377753e467e",
+  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000001",
+  "id": "00000000-0000-0000-0000-000000000001",
   "status": "IN_PROGRESS",
   "applicationDate": "2016-03-23T08:37:15Z",
   "company": {
@@ -122,33 +122,32 @@ To get a list of all your Job Applications user following request:
   },
   "applicant": {
     "id": "1d029da5-0a39-45d2-a26a-eb14a5d05d36",
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/1d029da5-0a39-45d2-a26a-eb14a5d05d36"
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/00000000-0000-0000-0000-000000000002"
   },
   "referrer": {
     "id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
     "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"
   },
   "share": {
-    "id": "4d61dae4-8444-4e7d-a73b-20aa6aa02093",
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/shares/4d61dae4-8444-4e7d-a73b-20aa6aa02093"
+    "id": "00000000-0000-0000-0000-000000000004",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000003/shares/00000000-0000-0000-0000-000000000004"
   },
   "job": {
-    "id": "0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"
+    "id": "00000000-0000-0000-0000-000000000003",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000003"
   },
   "referrals": {
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/referrals"
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000001/referrals"
   },
   "files": [
     {
-      "id": "a3beb15a-84ac-4646-a20b-7aa5faf982a7",
-      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"
+      "id": "00000000-0000-0000-0000-000000000006",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000005/files/00000000-0000-0000-0000-000000000006"
     }
   ],
   "applicantImage": {
     "href": "https://s3.eu-central-1.amazonaws.com/hummingbird-development/applicantimg/150x150/b642441c-2dc4-4cd1-8873-c5d7e2e725f2.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20160323T083722Z&X-Amz-SignedHeaders=host&X-Amz-Expires=1800&X-Amz-Credential=AKIAJX7FDXXZDKC4NZVA%2F20160323%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=06981e7b0b46d4d43cd407bd2848391a01195714f6ce0df2a8cb67358efaa598"
   },
-  "read": false,
   "rewardPaid": false
 }
 ```
@@ -165,6 +164,24 @@ To get a single Job Application you have to use following request:
 |:----------------|:----------------------------------------------------------------------------------------------------------------------------------|
 | fields          | See [Fields](#customizing-response-fields) documentation.                                                                         |
 | expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Expandable fields are: applicant, referrer, job, referrals |
+
+### Response Fields
+
+| Field name      | Required | Description                                                                                              |
+|:----------------|:---------|----------------------------------------------------------------------------------------------------------|
+| href            | Yes      | The link to this job application.                                                                        |
+| id              | Yes      | The id to this job application.                                                                          |
+| status          | Yes      | The status.                                                                                              |
+| applicationDate | Yes      | The date of the application.                                                                             |
+| company         | Yes      | The company this job application belongs to.                                                             |
+| applicant       | Yes      | The applicant.                                                                                           |
+| referrer        | Yes      | The referrer.                                                                                            |
+| share           | No       | The related share of this job application. (Not present, if the application didn't come through a share) |
+| job             | Yes      | The job this job application belongs to.                                                                 |
+| referrals       | Yes      | The referrals of this job application.                                                                   |
+| files           | No       | The attached files. (Not present, if no files provided by the applicant).                                |
+| applicantImage  | No       | The applicant's image. (Not present, if no applicant image provided by the applicant).                   |
+| rewardPaid      | Yes      | Whether a reward has been paid or not.                                                                   |
 
 ## Get Attachment file of a Job Application
 
