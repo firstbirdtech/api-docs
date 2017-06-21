@@ -500,25 +500,51 @@ Authorization: Bearer youraccesstoken
 <p><code class="prettyprint">GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a?fields=id,location</code></p>
 
 <h2 id="links-and-resource-expansion">Links and Resource Expansion</h2>
+
+<blockquote>
+<p>The following example shows collapsed fields:</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/locations/00000000-0000-0000-0000-000000000001"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"..."</span><span class="p">:</span><span class="s2">"..."</span><span class="w">
+  </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-000000000002"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000003"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/00000000-0000-0000-0000-000000000004"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000005"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000007"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000007"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000008/referrals"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>At Firstbird we want to provide a powerful REST API which allows easy navigation through our services. Therefor we do not simply add the IDs of referenced resources to our responses but also provide links where you can find mor detailed information about the referenced resource. If you take a look at an example response where a single Job has been fetched you can see the properties company and location which reference the Company the Job belongs to and the Location which is associated to the Job. Both objects contain their ID in <code class="prettyprint">id</code> property and a link to the REST API Resource in property <code class="prettyprint">href</code>.</p>
+<p>At Firstbird we want to provide a powerful REST API which allows easy navigation through our services. Therefore we do not simply add the IDs of referenced resources to our responses but also provide links where you can find more detailed information about the referenced resource. If you take a look at the example response fields, you can see that fields do not provide detailed information but only the reference to it. All objects contain their ID in <code class="prettyprint">id</code> property and a link to the REST API Resource in property <code class="prettyprint">href</code>.</p>
+
+<blockquote>
+<p>The following example shows expanded fields:</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Firstbird"</span><span class="p">,</span><span class="w">
@@ -527,17 +553,64 @@ Authorization: Bearer youraccesstoken
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"..."</span><span class="p">:</span><span class="s2">"..."</span><span class="w">
+  </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finance"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250€ Amazon Gift Card"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mustermann"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@gamil.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Birdy"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pigeon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"birdy.pigeon@firstbird.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-0000000000001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/locations/00000000-0000-0000-0000-000000000001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-0000000000002"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"mainRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"incognito"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"profile_picture"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000006"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://aws.com/eu-central-1/profimg/150x150/00000000-0000-0000-0000-000000000006.jpeg"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000007"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nr. 1 System Engineer/Administrator (m/w)"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"negativeCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"neutralCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referralCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p><code class="prettyprint">GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a</code></p>
+<p>To make it even easier for you to use our API, it is possible to expand (include) often used referenced resources within the responses to avoid additional requests to those referenced resources. If you take a look on the following example response, you can see that we expanded all resources, and now the values you are allowed to see are included in the response. To specify which resources should get expanded you have to specify a comma separated list of fields for the expand query parameter. For example:</p>
 
-<p>To make it even easier for you to use our API it is possible to expand (include) often used referenced resources within the responses to avoid additional requests to those referenced resources. If you take a look on following Job requests as an example you can see that we expanded the company and location resources which adds the their values you are allowed to see to the response. To specify which resources should get expanded you have to specify a comma separated list of fields for the expand query parameter.</p>
-
-<p><code class="prettyprint">GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a?expand=company,location</code></p>
+<p><code class="prettyprint">GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005?expand=company,location,department,reward</code></p>
 
           <h1 id="errors">Errors</h1>
 
@@ -961,46 +1034,52 @@ Authorization: Bearer youraccesstoken
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/00000000-0000-0000-0000-000000000001"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-22T09:57:21Z"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nr. 1 System Engineer/Administrator (m/w)"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"referenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50018463-d804-46ae-90a7-8187a12e6540"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/50018463-d804-46ae-90a7-8187a12e6540"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-000000000002"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"contactPerson"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000003"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000000"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000004"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000006"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;This is a description&lt;/h1&gt;"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE_PUBLISHED"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://aws.com/eu-central-1/job-headers/2160x705/00000000-0000-0000-0000-000000000007.jpeg"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nt">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/statistics"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005/statistics"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"shareLink"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://1bird.1brd.lvh.me/job/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a?referrer=dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/job/00000000-0000-0000-0000-000000000005?referrer=dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"jobBranding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000007"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/job_brandings/00000000-0000-0000-0000-000000000008"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1038,8 +1117,16 @@ Authorization: Bearer youraccesstoken
 <td style="text-align: left">Comma separated list of User Ids to filter the Job’s Contact Person after</td>
 </tr>
 <tr>
-<td style="text-align: left">isHot</td>
+<td style="text-align: left">hot</td>
 <td style="text-align: left">Show Hot Jobs only</td>
+</tr>
+<tr>
+<td style="text-align: left">referenceNumber</td>
+<td style="text-align: left">Filter by reference number</td>
+</tr>
+<tr>
+<td style="text-align: left">query</td>
+<td style="text-align: left">Filter by job title</td>
 </tr>
 <tr>
 <td style="text-align: left">fields</td>
@@ -1069,9 +1156,53 @@ Authorization: Bearer youraccesstoken
 <p>This request returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nr. 1 System Engineer/Administrator (m/w)"</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/00000000-0000-0000-0000-000000000001"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-22T09:57:21Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nr. 1 System Engineer/Administrator (m/w)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-000000000002"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"contactPerson"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000003"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000004"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000006"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;This is a description&lt;/h1&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE_PUBLISHED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://aws.com/eu-central-1/job-headers/2160x705/00000000-0000-0000-0000-000000000007.jpeg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005/statistics"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareLink"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/job/00000000-0000-0000-0000-000000000005?referrer=dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jobBranding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000007"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/job_brandings/00000000-0000-0000-0000-000000000008"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1092,6 +1223,107 @@ Authorization: Bearer youraccesstoken
 <tr>
 <td style="text-align: left">expand</td>
 <td style="text-align: left">See <a href="#links-and-resource-expansion">Resource Expansion</a> documentation. Available are: <code class="prettyprint">company</code>, <code class="prettyprint">location</code>, <code class="prettyprint">department</code> and <code class="prettyprint">reward</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="response-fields">Response Fields</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Field name</th>
+<th style="text-align: left">Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">href</td>
+<td style="text-align: left">Yes</td>
+<td>The link to this job.</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Yes</td>
+<td>The id of this job.</td>
+</tr>
+<tr>
+<td style="text-align: left">company</td>
+<td style="text-align: left">Yes</td>
+<td>The company this job belongs to.</td>
+</tr>
+<tr>
+<td style="text-align: left">location</td>
+<td style="text-align: left">Yes</td>
+<td>The location that has been assigned.</td>
+</tr>
+<tr>
+<td style="text-align: left">creationDate</td>
+<td style="text-align: left">Yes</td>
+<td>The creation date.</td>
+</tr>
+<tr>
+<td style="text-align: left">title</td>
+<td style="text-align: left">Yes</td>
+<td>The job title.</td>
+</tr>
+<tr>
+<td style="text-align: left">referenceNumber</td>
+<td style="text-align: left">No</td>
+<td>The reference number. (Not present, if no reference number entered)</td>
+</tr>
+<tr>
+<td style="text-align: left">department</td>
+<td style="text-align: left">Yes</td>
+<td>The department that has been assigned.</td>
+</tr>
+<tr>
+<td style="text-align: left">contactPerson</td>
+<td style="text-align: left">Yes</td>
+<td>The contact person.</td>
+</tr>
+<tr>
+<td style="text-align: left">reward</td>
+<td style="text-align: left">Yes</td>
+<td>The reward that has been assigned.</td>
+</tr>
+<tr>
+<td style="text-align: left">responsiblePersons</td>
+<td style="text-align: left">No</td>
+<td>The responsible persons that have been assigned. (Not present, if no responsible persons assigned)</td>
+</tr>
+<tr>
+<td style="text-align: left">description</td>
+<td style="text-align: left">Yes</td>
+<td>The job description.</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">Yes</td>
+<td>The status of the job.</td>
+</tr>
+<tr>
+<td style="text-align: left">hot</td>
+<td style="text-align: left">Yes</td>
+<td>Whether the job is a hot job or not.</td>
+</tr>
+<tr>
+<td style="text-align: left">image</td>
+<td style="text-align: left">Yes</td>
+<td>The job header image.</td>
+</tr>
+<tr>
+<td style="text-align: left">statistics</td>
+<td style="text-align: left">Yes</td>
+<td>The statistics of this job.</td>
+</tr>
+<tr>
+<td style="text-align: left">shareLink</td>
+<td style="text-align: left">Yes</td>
+<td>The sharing link of this job.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobBranding</td>
+<td style="text-align: left">No</td>
+<td>The branding that has been assigned. (Not present, if no branding assigned)</td>
 </tr>
 </tbody></table>
 
@@ -1355,8 +1587,8 @@ Authorization: Bearer youraccesstoken
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d648096f-c3f4-4121-af9a-5377753e467e"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23T08:37:15Z"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1365,27 +1597,27 @@ Authorization: Bearer youraccesstoken
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d029da5-0a39-45d2-a26a-eb14a5d05d36"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/1d029da5-0a39-45d2-a26a-eb14a5d05d36"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/00000000-0000-0000-0000-000000000002"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"share"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d61dae4-8444-4e7d-a73b-20aa6aa02093"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/shares/4d61dae4-8444-4e7d-a73b-20aa6aa02093"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000003/shares/00000000-0000-0000-0000-000000000004"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000003"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"referrals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/referrals"</span><span class="w">
+        </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000001/referrals"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000006"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000005/files/00000000-0000-0000-0000-000000000006"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"applicantImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1451,8 +1683,8 @@ Authorization: Bearer youraccesstoken
 <p>This request returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d648096f-c3f4-4121-af9a-5377753e467e"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"applicationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23T08:37:15Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1461,33 +1693,32 @@ Authorization: Bearer youraccesstoken
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d029da5-0a39-45d2-a26a-eb14a5d05d36"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/1d029da5-0a39-45d2-a26a-eb14a5d05d36"</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applicants/00000000-0000-0000-0000-000000000002"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"share"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d61dae4-8444-4e7d-a73b-20aa6aa02093"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/shares/4d61dae4-8444-4e7d-a73b-20aa6aa02093"</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000003/shares/00000000-0000-0000-0000-000000000004"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a"</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000003"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"referrals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/referrals"</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000001/referrals"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000006"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000005/files/00000000-0000-0000-0000-000000000006"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"applicantImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.eu-central-1.amazonaws.com/hummingbird-development/applicantimg/150x150/b642441c-2dc4-4cd1-8873-c5d7e2e725f2.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20160323T083722Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=1800&amp;X-Amz-Credential=AKIAJX7FDXXZDKC4NZVA%2F20160323%2Feu-central-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=06981e7b0b46d4d43cd407bd2848391a01195714f6ce0df2a8cb67358efaa598"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"read"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"rewardPaid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1513,6 +1744,82 @@ Authorization: Bearer youraccesstoken
 <tr>
 <td style="text-align: left">expand</td>
 <td style="text-align: left">See <a href="#links-and-resource-expansion">Resource Expansion</a> documentation. Expandable fields are: applicant, referrer, job, referrals</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-fields">Response Fields</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Field name</th>
+<th style="text-align: left">Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">href</td>
+<td style="text-align: left">Yes</td>
+<td>The link to this job application.</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Yes</td>
+<td>The id to this job application.</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">Yes</td>
+<td>The status.</td>
+</tr>
+<tr>
+<td style="text-align: left">applicationDate</td>
+<td style="text-align: left">Yes</td>
+<td>The date of the application.</td>
+</tr>
+<tr>
+<td style="text-align: left">company</td>
+<td style="text-align: left">Yes</td>
+<td>The company this job application belongs to.</td>
+</tr>
+<tr>
+<td style="text-align: left">applicant</td>
+<td style="text-align: left">Yes</td>
+<td>The applicant.</td>
+</tr>
+<tr>
+<td style="text-align: left">referrer</td>
+<td style="text-align: left">Yes</td>
+<td>The referrer.</td>
+</tr>
+<tr>
+<td style="text-align: left">share</td>
+<td style="text-align: left">No</td>
+<td>The related share of this job application. (Not present, if the application didn&rsquo;t come through a share)</td>
+</tr>
+<tr>
+<td style="text-align: left">job</td>
+<td style="text-align: left">Yes</td>
+<td>The job this job application belongs to.</td>
+</tr>
+<tr>
+<td style="text-align: left">referrals</td>
+<td style="text-align: left">Yes</td>
+<td>The referrals of this job application.</td>
+</tr>
+<tr>
+<td style="text-align: left">files</td>
+<td style="text-align: left">No</td>
+<td>The attached files. (Not present, if no files provided by the applicant).</td>
+</tr>
+<tr>
+<td style="text-align: left">applicantImage</td>
+<td style="text-align: left">No</td>
+<td>The applicant&rsquo;s image. (Not present, if no applicant image provided by the applicant).</td>
+</tr>
+<tr>
+<td style="text-align: left">rewardPaid</td>
+<td style="text-align: left">Yes</td>
+<td>Whether a reward has been paid or not.</td>
 </tr>
 </tbody></table>
 
