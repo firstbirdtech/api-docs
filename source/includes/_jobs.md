@@ -175,7 +175,7 @@ To get a single Job by Id you have to use following request:
 | fields          | See [Fields](#customizing-response-fields) documentation.                                                                              |
 | expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Available are: `company`, `location`, `department` and `reward` |
 
-### Response fields
+### Response Fields
 
 | Field name         | Required | Description                                                                                        |
 |:-------------------|:---------|----------------------------------------------------------------------------------------------------|
