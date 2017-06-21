@@ -35,46 +35,52 @@ To get a list of all your Jobs you have to issue following request:
   },
   "items": [
     {
-      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
-      "id": "0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005",
+      "id": "00000000-0000-0000-0000-000000000005",
       "company": {
         "id": "00000000-0000-0000-0000-000000000000",
         "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"
       },
       "location": {
-        "id": "50c7be5d-3e2d-4e57-9394-87d5ffc7f50f",
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"
+        "id": "00000000-0000-0000-0000-000000000001",
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/00000000-0000-0000-0000-000000000001"
       },
       "creationDate": "2016-03-22T09:57:21Z",
       "title": "Nr. 1 System Engineer/Administrator (m/w)",
       "referenceNumber": "123456",
       "department": {
-        "id": "50018463-d804-46ae-90a7-8187a12e6540",
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/50018463-d804-46ae-90a7-8187a12e6540"
+        "id": "00000000-0000-0000-0000-000000000002",
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-000000000002"
       },
       "contactPerson": {
-        "id": "a9709b55-69b9-4400-a5a9-6101790ea6d6",
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/a9709b55-69b9-4400-a5a9-6101790ea6d6"
+        "id": "00000000-0000-0000-0000-000000000003",
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000003"
       },
       "reward": {
-        "id": "00000000-0000-0000-0000-000000000000",
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000000"
+        "id": "00000000-0000-0000-0000-000000000004",
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000004"
       },
       "responsiblePersons": [
         {
-          "id": "a9709b55-69b9-4400-a5a9-6101790ea6d6",
-          "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/a9709b55-69b9-4400-a5a9-6101790ea6d6"
+          "id": "00000000-0000-0000-0000-000000000005",
+          "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000006"
         }
       ],
       "description": "<h1>This is a description</h1>",
       "status": "ACTIVE_PUBLISHED",
       "hot": false,
-      "image": {},
+      "image": {
+        "href": "https://aws.com/eu-central-1/job-headers/2160x705/00000000-0000-0000-0000-000000000007.jpeg"
+      },
       "statistics": {
-        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a/statistics"
+        "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005/statistics"
       },
       "shareLink": {
-        "href": "http://1bird.1brd.lvh.me/job/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a?referrer=dddddddd-dddd-dddd-dddd-dddddddddddd"
+        "href": "https://api.1brd.com/job/00000000-0000-0000-0000-000000000005?referrer=dddddddd-dddd-dddd-dddd-dddddddddddd"
+      },
+      "jobBranding": {
+          "id": "00000000-0000-0000-0000-000000000007",
+          "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/job_brandings/00000000-0000-0000-0000-000000000008"
       }
     }
   ]
@@ -92,7 +98,9 @@ To get a list of all your Jobs you have to issue following request:
 | department      | Comma separated list of Department Ids to filter after                     |
 | location        | Comma separated list of Location Ids to filter after                       |
 | contact         | Comma separated list of User Ids to filter the Job’s Contact Person after  |
-| isHot           | Show Hot Jobs only                                                         |
+| hot             | Show Hot Jobs only                                                         |
+| referenceNumber | Filter by reference number                                                 |
+| query           | Filter by job title                                                        |
 | fields          | See [Fields](#customizing-response-fields) documentation                   |
 | limit           | See [Pagination](#pagination) documentation                                |
 | offset          | See [Pagination](#pagination) documentation                                |
@@ -108,9 +116,53 @@ To get a single Job by Id you have to use following request:
 
 ```json
 {
-  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
-  "id": "0a3f98fa-ef4f-457f-abb9-0a052d6ced5a",
-  "title": "Nr. 1 System Engineer/Administrator (m/w)"
+  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005",
+  "id": "00000000-0000-0000-0000-000000000005",
+  "company": {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"
+  },
+  "location": {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/location/00000000-0000-0000-0000-000000000001"
+  },
+  "creationDate": "2016-03-22T09:57:21Z",
+  "title": "Nr. 1 System Engineer/Administrator (m/w)",
+  "referenceNumber": "123456",
+  "department": {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-000000000002"
+  },
+  "contactPerson": {
+    "id": "00000000-0000-0000-0000-000000000003",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000003"
+  },
+  "reward": {
+    "id": "00000000-0000-0000-0000-000000000004",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewards/00000000-0000-0000-0000-000000000004"
+  },
+  "responsiblePersons": [
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000006"
+    }
+  ],
+  "description": "<h1>This is a description</h1>",
+  "status": "ACTIVE_PUBLISHED",
+  "hot": false,
+  "image": {
+    "href": "https://aws.com/eu-central-1/job-headers/2160x705/00000000-0000-0000-0000-000000000007.jpeg"
+  },
+  "statistics": {
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005/statistics"
+  },
+  "shareLink": {
+    "href": "https://api.1brd.com/job/00000000-0000-0000-0000-000000000005?referrer=dddddddd-dddd-dddd-dddd-dddddddddddd"
+  },
+  "jobBranding": {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/job_brandings/00000000-0000-0000-0000-000000000008"
+  }
 }
 ```
 
@@ -122,6 +174,29 @@ To get a single Job by Id you have to use following request:
 |:----------------|:---------------------------------------------------------------------------------------------------------------------------------------|
 | fields          | See [Fields](#customizing-response-fields) documentation.                                                                              |
 | expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Available are: `company`, `location`, `department` and `reward` |
+
+### Response fields
+
+| Field name         | Required | Description                                                                                        |
+|:-------------------|:---------|----------------------------------------------------------------------------------------------------|
+| href               | Yes      | The link to this job.                                                                              |
+| id                 | Yes      | The id of this job.                                                                                |
+| company            | Yes      | The company this job belongs to.                                                                   |
+| location           | Yes      | The location that has been assigned.                                                               |
+| creationDate       | Yes      | The creation date.                                                                                 |
+| title              | Yes      | The job title.                                                                                     |
+| referenceNumber    | No       | The reference number. (Not present, if no reference number entered)                                |
+| department         | Yes      | The department that has been assigned.                                                             |
+| contactPerson      | Yes      | The contact person.                                                                                |
+| reward             | Yes      | The reward that has been assigned.                                                                 |
+| responsiblePersons | No       | The responsible persons that have been assigned. (Not present, if no responsible persons assigned) |
+| description        | Yes      | The job description.                                                                               |
+| status             | Yes      | The status of the job.                                                                             |
+| hot                | Yes      | Whether the job is a hot job or not.                                                               |
+| image              | Yes      | The job header image.                                                                              |
+| statistics         | Yes      | The statistics of this job.                                                                        |
+| shareLink          | Yes      | The sharing link of this job.                                                                      |
+| jobBranding        | No       | The branding that has been assigned. (Not present, if no branding assigned)                        |
 
 ## Create a Job
 
