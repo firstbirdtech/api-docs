@@ -173,7 +173,7 @@ To get a single Job by Id you have to use following request:
 | Query Parameter | Description                                                                                                                            |
 |:----------------|:---------------------------------------------------------------------------------------------------------------------------------------|
 | fields          | See [Fields](#customizing-response-fields) documentation.                                                                              |
-| expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Available are: `company`, `location`, `department` and `reward` |
+| expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Available are: `company`, `location`, `department`, `reward` and `contactPerson` |
 
 ### Response Fields
 

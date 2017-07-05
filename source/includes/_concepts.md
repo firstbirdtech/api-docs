@@ -263,6 +263,10 @@ To fit your needs we allow to customize which fields are included in our respons
   },
   "referrals": {
     "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/00000000-0000-0000-0000-000000000008/referrals"
+  },
+  "contactPerson": {
+    "id": "00000000-0000-0000-0000-000000000009",
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000009"
   }
 }
 ```
@@ -332,6 +336,33 @@ At Firstbird we want to provide a powerful REST API which allows easy navigation
     "negativeCount": 0,
     "neutralCount": 0,
     "referralCount": 1
+  },
+  "contactPerson": {
+    "companyId": "00000000-0000-0000-0000-000000000000",
+    "firstName": "Birdy",
+    "lastName": "Pigeon",
+    "email": "birdy.pigeon@firstbird.com",
+    "locale": "en_US",
+    "roles": [
+      "ROLE_TALENT_SCOUT"
+    ],
+    "location": {
+      "id": "00000000-0000-0000-0000-0000000000001",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/locations/00000000-0000-0000-0000-000000000001"
+    },
+    "department": {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-0000000000002"
+    },
+    "mainRole": "ROLE_TALENT_SCOUT",
+    "status": "ACTIVE",
+    "incognito": false,
+    "timeZone": "Europe/Vienna",
+    "id": "00000000-0000-0000-0000-000000000009",
+    "profile_picture": {
+      "id": "00000000-0000-0000-0000-000000000006",
+       "href": "https://aws.com/eu-central-1/profimg/150x150/00000000-0000-0000-0000-000000000006.jpeg"
+    }
   }
 }
 ```
