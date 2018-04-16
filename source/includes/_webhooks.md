@@ -56,6 +56,8 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 ## Security Considerations
 As our webhooks don't provide authentication mechanisms, you shouldn't take the values contained in the requests as granted. It is considered a good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id which allows you to request the referenced job application via our REST API)
 
+You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52.57.83.207.
+
 ## Available Events
 
 > job_application.received by link or referral
