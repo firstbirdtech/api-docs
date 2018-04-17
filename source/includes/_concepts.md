@@ -373,7 +373,7 @@ To make it even easier for you to use our API, it is possible to expand (include
 
 ## Deprecation
 
-Every endpoint which is marked as deprecated will be soon unsupported. That mean that it will be disabled and removed. It is recommended to don't use such a endpoint and to find a replacement to avoid a problems which could happen. We try to keep the api as stable as possible but on rare occasions we have to make changes and we want to notify you ahead of time so you can prepare for those changes. Deprecated endpoint[s] return response which contains Warning http header with code 299 and message 'Endpoint Deprecated'. 
+Every endpoint which is marked as deprecated will be soon unsupported. That mean that it will be disabled and removed. It is recommended to don't use such a endpoint and to find a replacement to avoid a problems which could happen. We try to keep the api as stable as possible but on rare occasions we have to make changes and we want to notify you ahead of time so you can prepare for those changes. Deprecated endpoints return response which contains Warning http header with code 299 and message 'Endpoint Deprecated'. 
 
 Example: 
 `HTTP/1.1 200 Ok` 
