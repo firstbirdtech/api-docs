@@ -371,6 +371,6 @@ To make it even easier for you to use our API, it is possible to expand (include
 
 `GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005?expand=company,location,department,reward`
 
-## Deprication
+## Deprecation
 
 Every endpoint which is marked as deprecated will be soon unsupported. That mean that it will be disabled and removed. It is recommended to don't use such a endpoint and to find a replacement to avoid a problems which could happen. Deprecated endpoint return response which contains Warning http header with code 299 and message 'Endpoint Deprecated'. 
