@@ -370,3 +370,11 @@ At Firstbird we want to provide a powerful REST API which allows easy navigation
 To make it even easier for you to use our API, it is possible to expand (include) often used referenced resources within the responses to avoid additional requests to those referenced resources. If you take a look on the following example response, you can see that we expanded all resources, and now the values you are allowed to see are included in the response. To specify which resources should get expanded you have to specify a comma separated list of fields for the expand query parameter. For example:
 
 `GET /v1/companies/00000000-0000-0000-0000-000000000000/jobs/00000000-0000-0000-0000-000000000005?expand=company,location,department,reward`
+
+## Deprecation
+
+Every endpoint which is marked as deprecated will be soon unsupported. That mean that it will be disabled and removed. It is recommended to don't use such a endpoint and to find a replacement to avoid a problems which could happen. We try to keep the api as stable as possible but on rare occasions we have to make changes and we want to notify you ahead of time so you can prepare for those changes. Deprecated endpoints return response which contains Warning http header with code 299 and message 'Endpoint Deprecated'. 
+
+Example: 
+`HTTP/1.1 200 Ok` 
+`Warning 299 api-gateway Endpoint deprecated `
