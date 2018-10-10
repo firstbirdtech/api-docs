@@ -4,7 +4,7 @@ The following information is essential to understanding how the Firstbird API fu
 
 ## Base URL
 
-All URLs referenced in the API documentation begin with the following base URL:
+All URLs referenced in the API documentation begin with the following base URL, unless specified differently:
 
 `
 https://api.1brd.com/v1/

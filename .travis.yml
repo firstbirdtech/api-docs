@@ -1,7 +1,15 @@
 language: ruby # don't install any environment
 rvm: 2.3.3
 
-script: bash ./deploy.sh
+cache: bundler
+script: bundle exec middleman build
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
+
 env:
   global:
   - ENCRYPTION_LABEL: "ddab409dc7f0"

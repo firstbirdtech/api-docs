@@ -9,8 +9,10 @@ includes:
   - errors
   - locations
   - departments
+  - jobbrandings
   - jobs
   - applications
+  - files
   - webhooks
 
 search: false
