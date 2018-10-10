@@ -12,6 +12,7 @@ includes:
   - jobbrandings
   - jobs
   - applications
+  - files
   - webhooks
 
 search: false

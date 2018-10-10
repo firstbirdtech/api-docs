@@ -1,10 +1,10 @@
 # Job Brandings
 
-Job brandings allow you do customize your jobs to make them stand ou on social networks.
+Job Brandings allow you to customize your jobs to make them stand out on social networks.
 
 ## Get All Job Brandings
 
-This endpoint retrieves all job brandings that are configured for you company.
+This endpoint retrieves all Job Brandings that are configured for you company.
 
 ### HTTP Request
 
@@ -40,7 +40,7 @@ This endpoint retrieves all job brandings that are configured for you company.
 ]
 ```
 
-`GET /v1/companies/{companyId}/job_brandings/{jobBrandingId}`
+`GET /v1/companies/{companyId}/job_brandings`
 
 ### Response Fields
 
@@ -62,7 +62,7 @@ This endpoint retrieves all job brandings that are configured for you company.
 **Note:** There will always be a default branding, if no job branding has been created.
 
 ## Get a Single Job Branding
-To get a single job branding by it’s Id you have to use following request:
+To get a single Job Branding by it’s Id you have to use following request:
 
 ### HTTP Request
 
@@ -116,7 +116,7 @@ To get a single job branding by it’s Id you have to use following request:
 
 ## Create a Job Branding
 
-To create a new job branding for your company use following request:
+To create a new Job Branding for your company use following request:
 
 ### HTTP Request
 
@@ -150,13 +150,13 @@ To create a new job branding for your company use following request:
 | Property          | Required | Description                                                        |
 |:------------------|:---------|:-------------------------------------------------------------------|
 | name              | Yes      | The name of the new job branding.
-| jobHeader         | Yes      | The job header image that will be used for the new job branding.
-| shareLogo         | Yes      | The share logo that will be used for the new job branding.
+| jobHeader         | Yes      | The job header image that will be used for the new job branding. [See here](#files)
+| shareLogo         | Yes      | The share logo that will be used for the new job branding. [See here](#files)
 | shareDescription  | Yes      | The share description that will be used for the new job branding.
 
 ## Updating a Job Branding
 
-To update an existing job branding for your company use following request:
+To update an existing Job Branding for your company use following request:
 
 ### HTTP Request
 
@@ -182,6 +182,6 @@ To update an existing job branding for your company use following request:
 | Property          | Required | Description                                                        |
 |:------------------|:---------|:-------------------------------------------------------------------|
 | name              | Yes      | The name of the new job branding.
-| jobHeader         | Yes      | The job header image that will be used for the new job branding.
-| shareLogo         | Yes      | The share logo that will be used for the new job branding.
+| jobHeader         | Yes      | The job header image that will be used for the new job branding. [See here](#files)
+| shareLogo         | Yes      | The share logo that will be used for the new job branding. [See here](#files)
 | shareDescription  | Yes      | The share description that will be used for the new job branding.
