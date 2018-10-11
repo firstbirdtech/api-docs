@@ -2,13 +2,22 @@ language: ruby # don't install any environment
 rvm: 2.3.3
 
 cache: bundler
-script: bundle exec middleman build
 
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    branch: master
+install: bundle install
+
+jobs:
+  include:
+    - stage: build
+      name: "Build project"
+      script: bundle exec middleman build
+    - stage: deploy
+      name: "Deploy to Github Pages"
+      script: bash ./deploy.sh
+
+stages:
+  - build
+  - name: deploy
+    if: branch = master
 
 env:
   global:
