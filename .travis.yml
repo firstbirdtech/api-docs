@@ -2,9 +2,11 @@ language: ruby # don't install any environment
 rvm: 2.3.3
 
 cache: bundler
+install: bundle install
 script: bundle exec middleman build
 
 deploy:
+  skip_cleanup: true
   provider: script
   script: bash ./deploy.sh
   on:
