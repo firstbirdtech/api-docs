@@ -120,7 +120,7 @@
 
 <h2 id="base-url">Base URL</h2>
 
-<p>All URLs referenced in the API documentation begin with the following base URL:</p>
+<p>All URLs referenced in the API documentation begin with the following base URL, unless specified differently:</p>
 
 <p><code class="prettyprint">
 https://api.1brd.com/v1/
@@ -1017,6 +1017,338 @@ Warning 299 api-gateway Endpoint deprecated
 </tr>
 </tbody></table>
 
+          <h1 id="job-brandings">Job Brandings</h1>
+
+<p>Job Brandings allow you to customize your jobs to make them stand out on social networks.</p>
+
+<h2 id="get-all-job-brandings">Get All Job Brandings</h2>
+
+<p>This endpoint retrieves all Job Brandings that are configured for you company.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/job_brandings/00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branding One"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-0000000000002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"linkedInShareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/linkedin-share-logo-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/job-header-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:03:39Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/job_brandings</code></p>
+
+<h3 id="response-fields">Response Fields</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">href</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The link to this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The id of this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">company</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The company this job branding is associated with.</td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The name of this job branding. Absent, if this is the default branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">isDefault</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Whether this job branding is the default one or not.</td>
+</tr>
+<tr>
+<td style="text-align: left">shareLogo</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share logo that will be used for this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">linkedInShareLogo</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share logo that will be used for this job branding on LinkedIn.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobHeader</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The job header image that will be used for this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">shareDescription</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share description that will be used for this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">createdAt</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The date time when this job branding got created. Absent, if this is the default branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">updatedAt</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The date time when this job branding got updated. Absent, if this job branding has never been updated.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Note:</strong> There will always be a default branding, if no job branding has been created.</p>
+
+<h2 id="get-a-single-job-branding">Get a Single Job Branding</h2>
+
+<p>To get a single Job Branding by it’s Id you have to use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/job_brandings/00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branding One"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-0000000000002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image.jpeg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"linkedInShareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/linkedin-share-logo-image.jpeg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/job-header-image.jpeg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:03:39Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/job_brandings/{jobBrandingId}</code></p>
+
+<h3 id="response-fields">Response Fields</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">href</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The link to this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The id of this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">company</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The company this job branding is associated with.</td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The name of this job branding. Absent, if this is the default branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">isDefault</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Whether this job branding is the default one or not.</td>
+</tr>
+<tr>
+<td style="text-align: left">shareLogo</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share logo that will be used for this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">linkedInShareLogo</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share logo that will be used for this job branding on LinkedIn.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobHeader</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The job header image that will be used for this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">shareDescription</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share description that will be used for this job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">createdAt</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The date time when this job branding got created. Absent, if this is the default branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">updatedAt</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The date time when this job branding got updated. Absent, if this job branding has never been updated.</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-job-branding">Create a Job Branding</h2>
+
+<p>To create a new Job Branding for your company use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branding One"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">POST /v1/companies/{companyId}/job_brandings</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The name of the new job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobHeader</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The job header image that will be used for the new job branding. <a href="#files">See here</a></td>
+</tr>
+<tr>
+<td style="text-align: left">shareLogo</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share logo that will be used for the new job branding. <a href="#files">See here</a></td>
+</tr>
+<tr>
+<td style="text-align: left">shareDescription</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share description that will be used for the new job branding.</td>
+</tr>
+</tbody></table>
+
+<h2 id="updating-a-job-branding">Updating a Job Branding</h2>
+
+<p>To update an existing Job Branding for your company use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share logo description."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/job_brandings/{jobBrandingId}</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The name of the new job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobHeader</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The job header image that will be used for the new job branding. <a href="#files">See here</a></td>
+</tr>
+<tr>
+<td style="text-align: left">shareLogo</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share logo that will be used for the new job branding. <a href="#files">See here</a></td>
+</tr>
+<tr>
+<td style="text-align: left">shareDescription</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The share description that will be used for the new job branding.</td>
+</tr>
+</tbody></table>
+
           <h1 id="jobs">Jobs</h1>
 
 <p>Jobs are one of the main pillars of Firstbird</p>
@@ -1390,6 +1722,9 @@ Warning 299 api-gateway Endpoint deprecated
       </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
               </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"jobBranding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
               </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
@@ -1429,7 +1764,7 @@ Warning 299 api-gateway Endpoint deprecated
 </tr>
 <tr>
 <td style="text-align: left">description</td>
-<td style="text-align: left">HTMl describing the Job. Please consider the //TODO HTML documentation to know about allowed HTML tags etc.</td>
+<td style="text-align: left">HTMl describing the Job. Allowed HTML tags: a, b, br, div, em, h1, h2, h3, i, iframe, img, li, ol, p, span, strike, strong, u, ul</td>
 </tr>
 <tr>
 <td style="text-align: left">endDate</td>
@@ -1450,6 +1785,10 @@ Warning 299 api-gateway Endpoint deprecated
 <tr>
 <td style="text-align: left">reward</td>
 <td style="text-align: left">The Reward that will be payed as soon as an Applicant gets hired for that Job</td>
+</tr>
+<tr>
+<td style="text-align: left">jobBranding</td>
+<td style="text-align: left">The Job Branding of your Company the Job is associated with</td>
 </tr>
 <tr>
 <td style="text-align: left">title</td>
@@ -2108,6 +2447,135 @@ This will return the URL to the actual file. Be aware, that the URL is valid for
 <p><code class="prettyprint">DELETE /v1/companies/{companyId}/applications/{jobApplicationId}</code></p>
 
 <p>If the request succeeds, the api will return a 200 response with no body.</p>
+
+          <h1 id="files">Files</h1>
+
+<p>Files are managed via the endpoints described below and are used in various places in Firstbird (e.g. Job Brandings). Wherever you need to specify a file, you always reference them by their Id.</p>
+
+<h2 id="upload-a-file-binary">Upload a File: Binary</h2>
+
+<p>To upload a file using in binary use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_filename.jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">POST https://services.1brd.com/files/v1/binary</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">X-Filename</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The name of the file.</td>
+</tr>
+<tr>
+<td style="text-align: left">Content-Type</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The content type of the file. Must be one of: application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/zip, image/jpeg, image/png or image/bmp.</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-body">Request Body</h3>
+
+<p>The binary file that you want to upload.</p>
+
+<h2 id="upload-a-file-multipart">Upload a File: Multipart</h2>
+
+<p>To upload a file using multipart use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_filename.jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">POST https://services.1brd.com/files/v1/multipart</code></p>
+
+<h3 id="request-body">Request Body</h3>
+
+<p>In your multipart form, set a key called <strong>file</strong> where you put in the binary file.</p>
+
+<h2 id="upload-a-file-base64">Upload a File: Base64</h2>
+
+<p>To upload a file using Base64 use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_filename.jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contentBase64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64-image"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_filename.jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">POST https://services.1brd.com/files/v1/base64</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The name of the file.</td>
+</tr>
+<tr>
+<td style="text-align: left">contentType</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The content type of the file. Must be one of: application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/zip, image/jpeg, image/png or image/bmp.</td>
+</tr>
+<tr>
+<td style="text-align: left">contentBase64</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The binary file base64 encoded.</td>
+</tr>
+</tbody></table>
 
           <h1 id="webhooks">Webhooks</h1>
 
