@@ -3,6 +3,10 @@ rvm: 2.3.3
 
 cache: bundler
 
+stages:
+  - build
+  - deploy
+
 jobs:
   include:
     - stage: bulid
