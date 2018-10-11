@@ -9,7 +9,7 @@ stages:
 
 jobs:
   include:
-    - stage: bulid
+    - stage: build
       name: "Build project"
       script: bundle exec middleman build
     - stage: deploy
