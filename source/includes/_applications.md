@@ -20,12 +20,13 @@ Your Recruiters can give a Job Application different ratings:
 
 In case of a closed Job Application, one of the following reasons must be provided:
 
-| Reason               | Description                                                                       |
-|:--------------------|:-----------------------------------------------------------------------------------|
-| CANDIDATE_KNOWN     | This Applicant was already being considered by the company prior to this referral  |
-| CANDIDATE_REJECTED  | This Applicant was reject for this position                                        |
-| CANDIDATE_WITHDRAWN | This Applicant withdrew is application                                             |
-| CANDIDATE_EVIDENCE  | This Applicant was not selected, but might be a good in the future                 |
+| Reason              | Description                                                                       |
+|:--------------------|:----------------------------------------------------------------------------------|
+| CANDIDATE_KNOWN     | This Applicant was already being considered by the company prior to this referral |
+| CANDIDATE_REJECTED  | This Applicant was reject for this position                                       |
+| CANDIDATE_WITHDRAWN | This Applicant withdrew is application                                            |
+| CANDIDATE_EVIDENCE  | This Applicant was not selected, but might be a good in the future                |
+| APPLICATION_INVALID | The application is not valid                                                      |
 
 ## Get All Job Applications
 
@@ -168,7 +169,7 @@ To get a single Job Application you have to use following request:
 ### Response Fields
 
 | Field name      | Required | Description                                                                                              |
-|:----------------|:---------|----------------------------------------------------------------------------------------------------------|
+|:----------------|:---------|:---------------------------------------------------------------------------------------------------------|
 | href            | Yes      | The link to this job application.                                                                        |
 | id              | Yes      | The id to this job application.                                                                          |
 | status          | Yes      | The status.                                                                                              |
@@ -272,10 +273,10 @@ In order to rate a Job Application you have to use the following request
 
 ### Parameters
 
-| Property | Description                                                                                                         |
-|:---------|:--------------------------------------------------------------------------------------------------------------------|
-| value    | Rating value as described in the [Job Application's rating table](#job-applications)                                |
-| message  | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant   |
+| Property | Description                                                                                                       |
+|:---------|:------------------------------------------------------------------------------------------------------------------|
+| value    | Rating value as described in the [Job Application's rating table](#job-applications)                              |
+| message  | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant |
 
 
 ## Hire a Job Application
@@ -299,12 +300,12 @@ In order to hire a Job Application you must change its status to HIRED using the
 
 ### Parameters
 
-| Property       | Description                                                                                                         |
-|:---------------|:--------------------------------------------------------------------------------------------------------------------|
-| firstDayOfWork | First day of work for the Applicant. Date format: "yyyy-MM-dd"                                                      |
-| message        | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant   |
-| payReward      | Whether or not the reward should be given to the Referrer                                                           |
-| value          | New Job Application status. In this case, 'HIRED'. [Check Job Application's Status table](#job-applications)        |
+| Property       | Description                                                                                                       |
+|:---------------|:------------------------------------------------------------------------------------------------------------------|
+| firstDayOfWork | First day of work for the Applicant. Date format: "yyyy-MM-dd"                                                    |
+| message        | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant |
+| payReward      | Whether or not the reward should be given to the Referrer                                                         |
+| value          | New Job Application status. In this case, 'HIRED'. [Check Job Application's Status table](#job-applications)      |
 
 
 ## Close a Job Application
@@ -328,11 +329,11 @@ In order to close a Job Application you must change its status to CLOSED using t
 
 ### Parameters
 
-| Property    | Description                                                                                                         |
-|:------------|:--------------------------------------------------------------------------------------------------------------------|
-| closeReason | Reason why this Job Application is being rejected. Check [Job Application's close reasons](#job-applications)       |
-| message     | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant   |
-| value       | New Job Application status. In this case, 'CLOSED'. [Check Job Application's Status table](#job-applications)       |
+| Property    | Description                                                                                                       |
+|:------------|:------------------------------------------------------------------------------------------------------------------|
+| closeReason | Reason why this Job Application is being rejected. Check [Job Application's close reasons](#job-applications)     |
+| message     | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant |
+| value       | New Job Application status. In this case, 'CLOSED'. [Check Job Application's Status table](#job-applications)     |
 
 
 ## Re-open a Job Application
@@ -354,9 +355,9 @@ In order to re-open a closed Job Application you must change its status to IN_PR
 
 ### Parameters
 
-| Property    | Description                                                                                                         |
-|:------------|:--------------------------------------------------------------------------------------------------------------------|
-| value       | New Job Application status. In this case, 'IN_PROGRESS'. [Check Job Application's Status table](#job-applications)       |
+| Property | Description                                                                                                        |
+|:---------|:-------------------------------------------------------------------------------------------------------------------|
+| value    | New Job Application status. In this case, 'IN_PROGRESS'. [Check Job Application's Status table](#job-applications) |
 
 ## Delete a closed Job Applcation
 
