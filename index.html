@@ -1023,7 +1023,7 @@ Warning 299 api-gateway Endpoint deprecated
 
 <h2 id="get-all-job-brandings">Get All Job Brandings</h2>
 
-<p>This endpoint retrieves all Job Brandings that are configured for you company.</p>
+<p>This endpoint retrieves all Job Brandings that are configured for your company.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2578,6 +2578,146 @@ This will return the URL to the actual file. Be aware, that the URL is valid for
 <td style="text-align: left">contentBase64</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">The binary file base64 encoded.</td>
+</tr>
+</tbody></table>
+
+          <h1 id="reward-plans">Reward Plans</h1>
+
+<p>Reward Plans allow you to customize rewards defined by your company. Currently, there can be rewards for job application hires only.</p>
+
+<h2 id="get-all-reward-plans">Get All Reward Plans</h2>
+
+<p>This endpoint retrieves all Reward Plans that are configured for your company.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&amp;limit=2147483647"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483647</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&amp;limit=2147483647"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&amp;limit=2147483647"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans/00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hire"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Just a Plan"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"external"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"250€ Amazon Gift Card"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"value"</span><span class="p">:</span><span class="mi">250</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"paymentDate"</span><span class="p">:</span><span class="s2">"CANDIDATE_IS_HIRED"</span><span class="w">
+           </span><span class="p">},</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"400€ Amazon Gift Card"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"value"</span><span class="p">:</span><span class="mi">400</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"paymentDate"</span><span class="p">:</span><span class="s2">"4_MONTHS_AFTER_EMPLOYMENT"</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/rewarding/plans</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Query Parameter</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Comma separated list of statuses which should be included in the response. Allowed: ACTIVE or INACTIVE</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">See <a href="#pagination">Pagination</a> documentation.</td>
+</tr>
+<tr>
+<td style="text-align: left">offset</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">See <a href="#pagination">Pagination</a> documentation.</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-fields">Response Fields</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Property</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">href</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The link to this reward plan.</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The id of this reward plan.</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The type of reward plan. Supported types: <em>hire</em></td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The name of this reward plan.</td>
+</tr>
+<tr>
+<td style="text-align: left">currency</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The currency for this reward plan.</td>
+</tr>
+<tr>
+<td style="text-align: left">external</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Whether this is an external reward or not.</td>
+</tr>
+<tr>
+<td style="text-align: left">details.items</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The rewards for this reward plan.</td>
+</tr>
+<tr>
+<td style="text-align: left">details.items[i].description</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The description of this reward.</td>
+</tr>
+<tr>
+<td style="text-align: left">details.items[i].value</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The value of this reward.</td>
+</tr>
+<tr>
+<td style="text-align: left">details.items[i].paymentDate</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The payment date of this reward.</td>
 </tr>
 </tbody></table>
 
