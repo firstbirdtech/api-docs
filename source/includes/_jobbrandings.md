@@ -4,7 +4,7 @@ Job Brandings allow you to customize your jobs to make them stand out on social 
 
 ## Get All Job Brandings
 
-This endpoint retrieves all Job Brandings that are configured for you company.
+This endpoint retrieves all Job Brandings that are configured for your company.
 
 ### HTTP Request
 

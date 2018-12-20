@@ -13,6 +13,7 @@ includes:
   - jobs
   - applications
   - files
+  - rewardplans
   - webhooks
 
 search: false
