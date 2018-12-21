@@ -12,6 +12,7 @@ includes:
   - jobbrandings
   - jobs
   - applications
+  - users
   - files
   - rewardplans
   - webhooks
