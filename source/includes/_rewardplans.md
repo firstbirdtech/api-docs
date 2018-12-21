@@ -12,15 +12,15 @@ This endpoint retrieves all Reward Plans that are configured for your company.
 
 ```json
 {
-  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&limit=2147483647",
+  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&limit=25",
   "total": 1,
   "offset": 0,
-  "limit": 2147483647,
+  "limit": 25,
   "first": {
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&limit=2147483647"
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&limit=25"
   },
   "last": {
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&limit=2147483647"
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/rewarding/plans?offset=0&limit=25"
   },
   "items": [
     {

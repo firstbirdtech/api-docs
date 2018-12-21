@@ -23,15 +23,15 @@ To get a list of all your Jobs you have to issue following request:
 
 ```json
 {
-  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&offset=0&limit=2147483647",
+  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&offset=0&limit=25",
   "total": 1,
   "offset": 0,
-  "limit": 2147483647,
+  "limit": 25,
   "first": {
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&offset=0&limit=2147483647"
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&offset=0&limit=25"
   },
   "last": {
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&offset=0&limit=2147483647"
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/jobs?status=active_closed,active_published,archived,deleted,draft&offset=0&limit=25"
   },
   "items": [
     {
