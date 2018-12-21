@@ -34,15 +34,15 @@ In case of a closed Job Application, one of the following reasons must be provid
 
 ```json
 {
-  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=0&limit=2147483647",
+  "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=0&limit=25",
   "total": 2,
   "offset": 0,
-  "limit": 2147483647,
+  "limit": 25,
   "first": {
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=0&limit=2147483647"
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=0&limit=25"
   },
   "last": {
-    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=1&limit=2147483647"
+    "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications?offset=1&limit=25"
   },
   "items": [
     {
