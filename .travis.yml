@@ -1,5 +1,9 @@
 language: ruby # don't install any environment
-rvm: 2.3.3
+rvm: 2.6.3
+
+# use bundler v2.x (https://docs.travis-ci.com/user/languages/ruby/#bundler-20)
+before_install:
+  - gem install bundler
 
 cache: bundler
 
