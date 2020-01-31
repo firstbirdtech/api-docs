@@ -168,7 +168,7 @@ incremental_deploy() {
 commit+push() {
   set_user_id
 
-  openssl aes-256-cbc -K $encrypted_ddab409dc7f0_key -iv $encrypted_ddab409dc7f0_iv -in deploy_key.enc -out deploy_key -d
+  openssl aes-256-cbc -K $encrypted_29ff13c3c3b1_key -iv $encrypted_29ff13c3c3b1_iv -in deploy_key.enc -out deploy_key -d
   chmod 600 deploy_key
   eval `ssh-agent -s`
   ssh-add deploy_key
