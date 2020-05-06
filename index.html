@@ -1877,6 +1877,29 @@ Warning 299 api-gateway Endpoint deprecated
 
 <p><code class="prettyprint">DELETE /v1/companies/{companyId}/jobs/{jobId}</code></p>
 
+          <h1 id="invitations">Invitations</h1>
+
+<p>Invitations allow you to invite people to join your company</p>
+
+<h2 id="create-an-invitation">Create an Invitation</h2>
+
+<p>This endpoint lets you create a new invitation </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hey, would you like to join our company?"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">POST /v1/companies/{companyId}/invitations</code></p>
+
           <h1 id="job-applications">Job Applications</h1>
 
 <p>Job Applications are the other main pillar of your Account at Firstbird.</p>
