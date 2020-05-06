@@ -11,6 +11,7 @@ includes:
   - departments
   - jobbrandings
   - jobs
+  - invitations
   - applications
   - users
   - files
