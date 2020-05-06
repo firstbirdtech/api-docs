@@ -15,7 +15,7 @@ This endpoint lets you create a new invitation
     "email": "test.user@firstbird.com",
     "locale": "en_US",
     "message": "hey, would you like to join our company?",
-    "role": "ROLE_RECRUITER"
+    "role": "ROLE_TALENT_SCOUT"
 }
 ```
 
