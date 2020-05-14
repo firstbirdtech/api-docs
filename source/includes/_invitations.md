@@ -19,4 +19,12 @@ This endpoint lets you create a new invitation
 }
 ```
 
+> This request returns JSON structured like this:
+
+```json
+{
+  "id": "00000000-0000-0000-0000-000000000000"
+}
+```
+
 `POST /v1/companies/{companyId}/invitations`
