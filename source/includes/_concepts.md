@@ -10,7 +10,15 @@ All URLs referenced in the API documentation begin with the following base URL, 
 https://api.1brd.com/v1/
 `
 
-This is the base URL for Firstbird’s public API. Please note that we only support `HTTPS`
+This is the base URL for Firstbird’s public API. 
+
+For user provisioning, the base URL is
+
+`
+https://services.1brd.com/v1/
+`
+
+Please note that we only support `HTTPS`
 
 ## Resource Format
 The Firstbird REST API currently only supports JSON resource representations.

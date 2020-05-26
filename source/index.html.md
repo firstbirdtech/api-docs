@@ -17,6 +17,7 @@ includes:
   - files
   - rewardplans
   - webhooks
+  - userprovisioning
 
 search: false
 ---
