@@ -71,15 +71,15 @@ To create a new user profile use following request:
 
 ### Parameters
 
-| Field name      | Required | Description                                                                   |
-|:----------------|:---------|:------------------------------------------------------------------------------|
-| first_name            | Yes      | First name                                                              |
-| last_name              | Yes      | Last name                                                              |
-| personnel_number          | Yes      | The id of the employee in your system                               |
-| email_address | Yes      | Email address                                                                   |
-| location         | No      | The location of the user                                                      |
-| department       | No      | The department of the user                                                    |
-| active    | No | A `boolean` value to activate or deactivate a user in firstbird. Default value is `true`. |
+| Field name        | Required | Description                                                                                |
+|:------------------|:---------|:-------------------------------------------------------------------------------------------|
+| first_name        | Yes      | First name                                                                                 |
+| last_name         | Yes      | Last name                                                                                  |
+| personnel_number  | Yes      | The id of the employee in your system                                                      |
+| email_address     | Yes      | Email address                                                                              |
+| location          | No       | The location of the user                                                                   |
+| department        | No       | The department of the user                                                                 |
+| active            | No       | A `boolean` value to activate or deactivate a user in firstbird. Default value is `true`.  |
 
 ## Update a User Profile
 
