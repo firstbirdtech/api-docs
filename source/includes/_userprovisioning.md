@@ -63,7 +63,7 @@ All request parameters are in `string` format.
 }
 ```
 
-To create a new user profile use following request:
+To create a new user profile, use following request:
 
 ### HTTP Request
 
@@ -95,7 +95,7 @@ To create a new user profile use following request:
 }
 ```
 
-To update a user profile use following request:
+To update a user profile, use following request:
 
 ### HTTP Request
 
@@ -103,7 +103,7 @@ To update a user profile use following request:
 
 ## Delete a User Profile
 
-To delete a user profile use following request:
+To delete a user profile, use following request:
 
 ### HTTP Request
 
@@ -129,7 +129,7 @@ To delete a user profile use following request:
 }
 ```
 
-To get a user profile use following request:
+To get a user profile, use following request:
 
 ### HTTP Request
 
