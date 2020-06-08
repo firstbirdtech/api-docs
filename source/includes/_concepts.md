@@ -7,7 +7,7 @@ The following information is essential to understanding how the Firstbird API fu
 All URLs referenced in the API documentation begin with the following base URL, unless specified differently:
 
 `
-https://api.1brd.com/v1/
+https://api.1brd.com
 `
 
 This is the base URL for Firstbird’s public API. Please note that we only support `HTTPS`
