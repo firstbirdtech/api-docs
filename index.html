@@ -125,7 +125,7 @@
 <p>All URLs referenced in the API documentation begin with the following base URL, unless specified differently:</p>
 
 <p><code class="prettyprint">
-https://api.1brd.com/v1/
+https://api.1brd.com
 </code></p>
 
 <p>This is the base URL for Firstbird’s public API. Please note that we only support <code class="prettyprint">HTTPS</code></p>
@@ -3375,6 +3375,233 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <li>To get a file from the <code class="prettyprint">attachments</code> array, follow
 <a href="#get-attachment-file-of-a-job-application">this</a> documentation.</li>
 </ul>
+
+          <h1 id="user-provisioning">User Provisioning</h1>
+
+<p>Please note that the base URL for user provisioning is</p>
+
+<p><code class="prettyprint">https://services.1brd.com</code></p>
+
+<h2 id="ingest-user-profiles">Ingest User Profiles</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"Vienna"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="s2">"IT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1235"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user2@firstbird.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>You can use this endpoint to send multiple <code class="prettyprint">UserInformation</code> objects as a list of <code class="prettyprint">users</code>.
+This will stage all users for provisioning.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /v1/companies/{companyId}/users/ingest</code></p>
+
+<h3 id="userinformation-objects">UserInformation Objects</h3>
+
+<p>All request parameters are in <code class="prettyprint">string</code> format.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Field name</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">first_name</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">First name</td>
+</tr>
+<tr>
+<td style="text-align: left">last_name</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Last name</td>
+</tr>
+<tr>
+<td style="text-align: left">personnel_number</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The id of the employee in your system</td>
+</tr>
+<tr>
+<td style="text-align: left">email_address</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Email address</td>
+</tr>
+<tr>
+<td style="text-align: left">location</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The location of the user</td>
+</tr>
+<tr>
+<td style="text-align: left">department</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The department of the user</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-user-profile">Create a User Profile</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To create a new user profile, use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /v1/companies/{companyId}/users/profile</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Field name</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">first_name</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">First name</td>
+</tr>
+<tr>
+<td style="text-align: left">last_name</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Last name</td>
+</tr>
+<tr>
+<td style="text-align: left">personnel_number</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">The id of the employee in your system</td>
+</tr>
+<tr>
+<td style="text-align: left">email_address</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Email address</td>
+</tr>
+<tr>
+<td style="text-align: left">location</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The location of the user</td>
+</tr>
+<tr>
+<td style="text-align: left">department</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The department of the user</td>
+</tr>
+<tr>
+<td style="text-align: left">active</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">A <code class="prettyprint">boolean</code> value to activate or deactivate a user in firstbird. Default value is <code class="prettyprint">true</code>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-user-profile">Update a User Profile</h2>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To update a user profile, use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/users/profile</code></p>
+
+<h2 id="delete-a-user-profile">Delete a User Profile</h2>
+
+<p>To delete a user profile, use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /v1/companies/{companyId}/users/profile</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Query Parameter</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">identifier</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">You may use either of the <code class="prettyprint">personnel_number</code> or the email address of the user.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-user-profile">Get a User Profile</h2>
+
+<blockquote>
+<p>The request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To get a user profile, use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/users/profile</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Query Parameter</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">identifier</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">You may use either of the <code class="prettyprint">personnel_number</code> or the email address of the user.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
