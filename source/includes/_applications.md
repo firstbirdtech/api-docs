@@ -359,7 +359,7 @@ In order to re-open a closed Job Application you must change its status to IN_PR
 |:---------|:-------------------------------------------------------------------------------------------------------------------|
 | value    | New Job Application status. In this case, 'IN_PROGRESS'. [Check Job Application's Status table](#job-applications) |
 
-## Delete a closed Job Applcation
+## Delete a closed Job Application
 
 In order to delete a closed or hired Job Application you must use the following request
 
@@ -369,3 +369,33 @@ In order to delete a closed or hired Job Application you must use the following 
 `DELETE /v1/companies/{companyId}/applications/{jobApplicationId}`
 
 If the request succeeds, the api will return a 200 response with no body.
+
+## Edit a JobApplication
+
+This endpoint is used to edit a job application's information. It can also be used to edit or delete associated files and profile pictures from storage.
+To do this provide an empty array in the `files` field. When updating the job application any previously existing file that is left out in the update request, will be deleted.
+Also if you send a request without applicantImage, the associated Image will be deleted.
+
+### HTTP Request
+
+`PUT /v1/companies/{companyId}/applications/{jobApplicationId}`
+
+> this is an example request body
+
+```json
+{
+  "firstName": "Test",
+  "lastName": "Applicant",
+  "email": "test.applicant@firstbird.com",
+  "phoneNumber": "123456789",
+  "url": "https://somesocialmediaplattform.com/users/TestApplicant",
+  "files": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001"
+    }
+  ],
+  "applicantImage": {
+    "id": "00000000-0000-0000-0000-000000000002"
+  }
+}
+```
