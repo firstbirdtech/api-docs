@@ -2475,7 +2475,7 @@ This will return the URL to the actual file. Be aware, that the URL is valid for
 </tr>
 </tbody></table>
 
-<h2 id="delete-a-closed-job-applcation">Delete a closed Job Applcation</h2>
+<h2 id="delete-a-closed-job-application">Delete a closed Job Application</h2>
 
 <p>In order to delete a closed or hired Job Application you must use the following request</p>
 
@@ -2484,6 +2484,36 @@ This will return the URL to the actual file. Be aware, that the URL is valid for
 <p><code class="prettyprint">DELETE /v1/companies/{companyId}/applications/{jobApplicationId}</code></p>
 
 <p>If the request succeeds, the api will return a 200 response with no body.</p>
+
+<h2 id="edit-a-jobapplication">Edit a JobApplication</h2>
+
+<p>This endpoint is used to edit a job application&rsquo;s information. It can also be used to edit or delete associated files and profile pictures from storage.
+To do this provide an empty array in the <code class="prettyprint">files</code> field. When updating the job application any previously existing file that is left out in the update request, will be deleted.
+Also if you send a request without applicantImage, the associated Image will be deleted.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/applications/{jobApplicationId}</code></p>
+
+<blockquote>
+<p>this is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applicant"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.applicant@firstbird.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://somesocialmediaplattform.com/users/TestApplicant"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"applicantImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
           <h1 id="users">Users</h1>
 
