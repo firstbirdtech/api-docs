@@ -372,8 +372,8 @@ If the request succeeds, the api will return a 200 response with no body.
 
 ## Edit a JobApplication
 
-This endpoint is used to edit a job application's information. It can also be used to edit and delete associated files and profile pictures from storage.
-To do this provide an empty array in the `files` field. When updating the job application any existing file that is left out in the update request, will be deleted.
+This endpoint is used to edit a job application's information. It can also be used to edit or delete associated files and profile pictures from storage.
+To do this provide an empty array in the `files` field. When updating the job application any previously existing file that is left out in the update request, will be deleted.
 Also if you send a request without applicantImage, the associated Image will be deleted.
 
 ### HTTP Request
@@ -391,11 +391,11 @@ Also if you send a request without applicantImage, the associated Image will be 
   "url": "https://somesocialmediaplattform.com/users/TestApplicant",
   "files": [
     {
-      "id": "c91419ea-320d-40df-8d60-37499f20c589"
+      "id": "00000000-0000-0000-0000-000000000001"
     }
   ],
   "applicantImage": {
-    "id": "7a7b7e40-ab83-4541-9170-d573660c6915"
+    "id": "00000000-0000-0000-0000-000000000002"
   }
 }
 ```
