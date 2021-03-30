@@ -342,51 +342,51 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 > reward.approved
 
 ```json
- {
- 	"reward": {
- 		"name": "250€ Amazon Gift Card",
- 		"value": "250",
- 		"currency": "EUR",
- 		"due_date": "2021-02-10",
- 		"company_id": "00000000-0000-0000-0000-000000000000",
- 		"id": "00000000-0000-0000-0000-000000000000"
- 	},
- 	"company_id": "00000000-0000-0000-0000-000000000000",
- 	"recipient": {
- 		"id": "00000000-0000-0000-0000-000000000000",
- 		"first_name": "Name",
- 		"last_name": "Last",
- 		"email": "email@email.com",
- 		"location": "Location",
- 		"department": "Department",
- 		"employee_id": "123"
- 	},
- 	"job": {
- 		"id": "00000000-0000-0000-0000-000000000000",
- 		"company_id": "00000000-0000-0000-0000-000000000000",
- 		"title": "Title"
- 	},
- 	"application": {
- 		"id": "00000000-0000-0000-0000-000000000000",
- 		"company_id": "00000000-0000-0000-0000-000000000000",
- 		"first_name": "Name",
- 		"last_name": "Last"
- 	},
- 	"approvedBy": {
- 		"id": "00000000-0000-0000-0000-000000000000",
- 		"company_id": "00000000-0000-0000-0000-000000000000",
- 		"first_name": "Name",
- 		"last_name": "Last"
- 	},
- 	"type": "reward.approved",
- 	"company": {
- 		"domain": "domain",
- 		"company_name": "ATS Forward",
+{
+    "reward": {
+        "name": "250€ Amazon Gift Card",
+        "value": "250",
+        "currency": "EUR",
+        "due_date": "2021-02-10",
+        "company_id": "00000000-0000-0000-0000-000000000000",
+        "id": "00000000-0000-0000-0000-000000000000"
+    },
+    "company_id": "00000000-0000-0000-0000-000000000000",
+    "recipient": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "first_name": "Name",
+        "last_name": "Last",
+        "email": "email@email.com",
+        "location": "Location",
+        "department": "Department",
+        "employee_id": "123"
+    },
+    "job": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "company_id": "00000000-0000-0000-0000-000000000000",
+        "title": "Title"
+    },
+    "application": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "company_id": "00000000-0000-0000-0000-000000000000",
+        "first_name": "Name",
+        "last_name": "Last"
+    },
+    "approvedBy": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "company_id": "00000000-0000-0000-0000-000000000000",
+        "first_name": "Name",
+        "last_name": "Last"
+    },
+    "type": "reward.approved",
+    "company": {
+        "domain": "domain",
+        "company_name": "ATS Forward",
         "street": "street",
         "postal_code": "1234",
         "city": "city"
- 	}
- }
+    }
+}
 ```
 
 | type                           | Description                                                                                             |
