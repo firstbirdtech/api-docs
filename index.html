@@ -135,7 +135,17 @@ https://api.1brd.com
 <p>The Firstbird REST API currently only supports JSON resource representations.</p>
 
 <h2 id="authentication">Authentication</h2>
-<pre class="highlight plaintext"><code>POST https://api.1brd.com/oauth/token
+
+<blockquote>
+<p>:warning: <strong>DEPRECATION</strong>: The base url for authentication will change! The authentication flow remains the same.</p>
+</blockquote>
+
+<p>Base URL for authentications is</p>
+
+<p><code class="prettyprint">
+https://auth.1brd.com
+</code></p>
+<pre class="highlight plaintext"><code>POST https://auth.1brd.com/oauth/token
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 Authorization: Basic {apikey:apisecret base64 encoded}
@@ -3361,6 +3371,56 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<blockquote>
+<p>reward.approved</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250€ Amazon Gift Card"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"due_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@email.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Location"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"approvedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reward.approved"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"domain"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATS Forward"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"street"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"city"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <table><thead>
 <tr>
 <th style="text-align: left">type</th>
@@ -3395,6 +3455,10 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <td style="text-align: left">job_application.referral_added</td>
 <td style="text-align: left">The talent scout via whom the job application has been received provided feedback.</td>
 </tr>
+<tr>
+<td style="text-align: left">reward.approved</td>
+<td style="text-align: left">The hiring reward that was approved by a recruiter which a talent scout should receive.</td>
+</tr>
 </tbody></table>
 
 <p><strong>Note for job_application.received events:</strong></p>
@@ -3406,11 +3470,21 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <a href="#get-attachment-file-of-a-job-application">this</a> documentation.</li>
 </ul>
 
+<p><strong>Note for reward.approved event:</strong></p>
+
+<ul>
+<li>If the applicant of the job application got deleted the <code class="prettyprint">application</code> / <code class="prettyprint">first_name</code> and <code class="prettyprint">application</code> / <code class="prettyprint">last_name</code> keys are not present</li>
+<li>The <code class="prettyprint">recipient</code> / <code class="prettyprint">employee_id</code> key is optional as a user is not obliged to provide one.</li>
+<li>The <code class="prettyprint">reward</code> / <code class="prettyprint">currency</code> follows the ISO 4217 currency standard.</li>
+<li>The <code class="prettyprint">reward</code> / <code class="prettyprint">currency</code> has an exception to the above rule where the currency can be the value <code class="prettyprint">COINS</code>. If this is the case the <code class="prettyprint">reward</code> / <code class="prettyprint">name</code> key is empty.</li>
+<li>The <code class="prettyprint">company</code> / <code class="prettyprint">street</code>, <code class="prettyprint">company</code> / <code class="prettyprint">city</code> and <code class="prettyprint">company</code> / <code class="prettyprint">postal_code</code> keys are optional as a company is not obliged to provide them.</li>
+</ul>
+
           <h1 id="user-provisioning">User Provisioning</h1>
 
 <p>Please note that the base URL for user provisioning is</p>
 
-<p><code class="prettyprint">https://services.1brd.com</code></p>
+<p><code class="prettyprint">https://profile.services.1brd.com</code></p>
 
 <h2 id="ingest-user-profiles">Ingest User Profiles</h2>
 
@@ -3632,6 +3706,16 @@ This will stage all users for provisioning.</p>
 <td style="text-align: left">You may use either of the <code class="prettyprint">personnel_number</code> or the email address of the user.</td>
 </tr>
 </tbody></table>
+
+          <h1 id="status-page">Status Page</h1>
+
+<p>Our status page delivers the real time status of the functionality of our services.</p>
+
+<p>Incidents or Maintenance updates will also be posted there with timely updates about the status and reason of the incident or maintenance.</p>
+
+<p>Our status page can be found here:</p>
+
+<p><a href="https://status.firstbird.com/">Status Page</a></p>
 
       </div>
       <div class="dark-box">
