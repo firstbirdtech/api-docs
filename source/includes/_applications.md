@@ -82,7 +82,12 @@ In case of a closed Job Application, one of the following reasons must be provid
       "applicantImage": {
         "href": "https://s3.eu-central-1.amazonaws.com/hummingbird-development/applicantimg/150x150/b642441c-2dc4-4cd1-8873-c5d7e2e725f2.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20160323T083722Z&X-Amz-SignedHeaders=host&X-Amz-Expires=1800&X-Amz-Credential=AKIAJX7FDXXZDKC4NZVA%2F20160323%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=06981e7b0b46d4d43cd407bd2848391a01195714f6ce0df2a8cb67358efaa598"
       },
-      "rewardPaid": false
+      "rewardPaid": false,
+      "channel": "CHANNEL",
+      "source": {
+          "identifier": "00000000-0000-0000-0000-000000000009",
+          "name": "source_name"
+      }
     }
   ]
 }
@@ -149,7 +154,12 @@ To get a list of all your Job Applications user following request:
   "applicantImage": {
     "href": "https://s3.eu-central-1.amazonaws.com/hummingbird-development/applicantimg/150x150/b642441c-2dc4-4cd1-8873-c5d7e2e725f2.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20160323T083722Z&X-Amz-SignedHeaders=host&X-Amz-Expires=1800&X-Amz-Credential=AKIAJX7FDXXZDKC4NZVA%2F20160323%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Signature=06981e7b0b46d4d43cd407bd2848391a01195714f6ce0df2a8cb67358efaa598"
   },
-  "rewardPaid": false
+  "rewardPaid": false,
+  "channel": "CHANNEL",
+  "source": {
+      "identifier": "00000000-0000-0000-0000-000000000009",
+      "name": "source_name"
+  }
 }
 ```
 
