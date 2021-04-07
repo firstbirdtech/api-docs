@@ -18,6 +18,7 @@ includes:
   - rewardplans
   - webhooks
   - userprovisioning
+  - statuspage
 
 search: false
 ---

@@ -2,7 +2,7 @@
 
 Please note that the base URL for user provisioning is
 
-`https://services.1brd.com`
+`https://profile.services.1brd.com`
 
 ## Ingest User Profiles
 
