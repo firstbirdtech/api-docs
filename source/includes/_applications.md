@@ -101,7 +101,7 @@ To get a list of all your Job Applications user following request:
 
 ### Headers
 
-If a media type header `application/x.firstbird.application+json;version=2` is passed, the close reason in the response can be absent. Otherwise a default of `CANDIDATE_ACCEPTED` will be returned
+If a media type header `application/x.firstbird.application+json;version=2` is passed, the close reason in the response can be absent. Otherwise a default of `CANDIDATE_ACCEPTED` will be returned.
 
 ### Query Parameters
 
@@ -175,7 +175,7 @@ To get a single Job Application you have to use following request:
 
 ### Headers
 
-If a media type header `application/x.firstbird.application+json;version=2` is passed, the close reason in the response can be absent. Otherwise a default of `CANDIDATE_ACCEPTED` will be returned
+If a media type header `application/x.firstbird.application+json;version=2` is passed, the close reason in the response can be absent. Otherwise a default of `CANDIDATE_ACCEPTED` will be returned.
 
 ### Query Parameters
 
