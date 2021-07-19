@@ -18,7 +18,7 @@ Your Recruiters can give a Job Application different ratings:
 | B      | The B rating corresponds to the 2-star rating from the web applications |
 | C      | The C rating corresponds to the 1-star rating from the web applications |
 
-In case of a closed Job Application, one of the following reasons must be provided:
+In case of a closed Job Application, one of the following reasons can be provided:
 
 | Reason              | Description                                                                       |
 |:--------------------|:----------------------------------------------------------------------------------|
@@ -99,6 +99,10 @@ To get a list of all your Job Applications user following request:
 
 `GET /v1/companies/{companyId}/applications`
 
+### Headers
+
+If a media type header `application/x.firstbird.application+json;version=2` is passed, the close reason in the response can be absent. Otherwise a default of `CANDIDATE_ACCEPTED` will be returned.
+
 ### Query Parameters
 
 | Query Parameter | Description                                                                                                                       |
@@ -169,6 +173,10 @@ To get a single Job Application you have to use following request:
 
 `GET /v1/companies/{companyId}/applications/{jobApplicationId}`
 
+### Headers
+
+If a media type header `application/x.firstbird.application+json;version=2` is passed, the close reason in the response can be absent. Otherwise a default of `CANDIDATE_ACCEPTED` will be returned.
+
 ### Query Parameters
 
 | Query Parameter | Description                                                                                                                       |
@@ -178,21 +186,22 @@ To get a single Job Application you have to use following request:
 
 ### Response Fields
 
-| Field name      | Required | Description                                                                                              |
-|:----------------|:---------|:---------------------------------------------------------------------------------------------------------|
-| href            | Yes      | The link to this job application.                                                                        |
-| id              | Yes      | The id to this job application.                                                                          |
-| status          | Yes      | The status.                                                                                              |
-| applicationDate | Yes      | The date of the application.                                                                             |
-| company         | Yes      | The company this job application belongs to.                                                             |
-| applicant       | Yes      | The applicant.                                                                                           |
-| referrer        | Yes      | The referrer.                                                                                            |
-| share           | No       | The related share of this job application. (Not present, if the application didn't come through a share) |
-| job             | Yes      | The job this job application belongs to.                                                                 |
-| referrals       | Yes      | The referrals of this job application.                                                                   |
-| files           | No       | The attached files. (Not present, if no files provided by the applicant).                                |
-| applicantImage  | No       | The applicant's image. (Not present, if no applicant image provided by the applicant).                   |
-| rewardPaid      | Yes      | Whether a reward has been paid or not.                                                                   |
+| Field name      | Required | Description                                                                                                                                                                                |
+|:----------------|:---------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| href            | Yes      | The link to this job application.                                                                                                                                                          |
+| id              | Yes      | The id to this job application.                                                                                                                                                            |
+| status          | Yes      | The status.                                                                                                                                                                                |
+| applicationDate | Yes      | The date of the application.                                                                                                                                                               |
+| company         | Yes      | The company this job application belongs to.                                                                                                                                               |
+| applicant       | Yes      | The applicant.                                                                                                                                                                             |
+| referrer        | Yes      | The referrer.                                                                                                                                                                              |
+| share           | No       | The related share of this job application. (Not present, if the application didn't come through a share)                                                                                   |
+| job             | Yes      | The job this job application belongs to.                                                                                                                                                   |
+| referrals       | Yes      | The referrals of this job application.                                                                                                                                                     |
+| files           | No       | The attached files. (Not present, if no files provided by the applicant).                                                                                                                  |
+| applicantImage  | No       | The applicant's image. (Not present, if no applicant image provided by the applicant).                                                                                                     |
+| rewardPaid      | Yes      | Whether a reward has been paid or not.                                                                                                                                                     |
+| closeReason     | No       | The close reason for a closed referral. Will only be returned if status is CLOSED and might be absent if media type header `application/x.firstbird.application+json;version=2` is passed. |
 
 ## Get Attachment file of a Job Application
 
@@ -339,11 +348,11 @@ In order to close a Job Application you must change its status to CLOSED using t
 
 ### Parameters
 
-| Property    | Description                                                                                                       |
-|:------------|:------------------------------------------------------------------------------------------------------------------|
-| closeReason | Reason why this Job Application is being rejected. Check [Job Application's close reasons](#job-applications)     |
-| message     | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant |
-| value       | New Job Application status. In this case, 'CLOSED'. [Check Job Application's Status table](#job-applications)     |
+| Property    | Description                                                                                                                   |
+|:------------|:------------------------------------------------------------------------------------------------------------------------------|
+| closeReason | Optional field, Reason why this Job Application is being rejected. Check [Job Application's close reasons](#job-applications) |
+| message     | Optional field, containing a message that the Recruiter may wish to send to the Referrer regarding this Applicant             |
+| value       | New Job Application status. In this case, 'CLOSED'. [Check Job Application's Status table](#job-applications)                 |
 
 
 ## Re-open a Job Application
