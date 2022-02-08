@@ -18,6 +18,8 @@ includes:
   - rewardplans
   - webhooks
   - cep
+  - userprovisioning
+  - statuspage
 
 search: false
 ---
