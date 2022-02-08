@@ -17,6 +17,7 @@ includes:
   - files
   - rewardplans
   - webhooks
+  - cep
 
 search: false
 ---

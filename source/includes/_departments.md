@@ -30,7 +30,7 @@ This endpoint retrieves all departments that are configured for you company.
 `GET /v1/companies/{companyId}/departments`
 
 ## Get a Single Department
-To get a single Department by it’s Id you have to use following request:
+To get a single Department by its Id you have to use following request:
 
 ### HTTP Request
 
