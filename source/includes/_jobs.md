@@ -66,6 +66,7 @@ To get a list of all your Jobs you have to issue following request:
           "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000006"
         }
       ],
+      "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird",
       "description": "<h1>This is a description</h1>",
       "status": "ACTIVE_PUBLISHED",
       "hot": false,
@@ -147,6 +148,7 @@ To get a single Job by Id you have to use following request:
       "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000006"
     }
   ],
+  "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird",
   "description": "<h1>This is a description</h1>",
   "status": "ACTIVE_PUBLISHED",
   "hot": false,
@@ -190,6 +192,7 @@ To get a single Job by Id you have to use following request:
 | contactPerson      | Yes      | The contact person.                                                                                |
 | reward             | Yes      | The reward that has been assigned.                                                                 |
 | responsiblePersons | No       | The responsible persons that have been assigned. (Not present, if no responsible persons assigned) |
+| jobPostingUrl      | No       | The target URL for ATS Forwarding, see also [Candidate Experience Package](_cep)                   |
 | description        | Yes      | The job description.                                                                               |
 | status             | Yes      | The status of the job.                                                                             |
 | hot                | Yes      | Whether the job is a hot job or not.                                                               |
@@ -226,7 +229,8 @@ To get a single Job by Id you have to use following request:
       "title": "Developer",
       "responsiblePersons": [{
               "id": "a9709b55-69b9-4400-a5a9-6101790ea6d6"
-      }]
+      }],
+      "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird"
 }
 ```
 
@@ -259,6 +263,7 @@ To create a new Job for your Company use following request
 | jobBranding        | The Job Branding of your Company the Job is associated with                                                                      |
 | title              | The title of the Job. This field is limited to 255 characters                                                                    |
 | responsiblePersons | An array of objects containing the User Ids of Recruiters being responsible for this Job as well                                 |
+| jobPostingUrl      | The target URL for ATS Forwarding, see also [Candidate Experience Package](_cep)                                                 |
 
 ## Update a Job
 
@@ -285,7 +290,8 @@ To create a new Job for your Company use following request
       "title": "Developer",
       "responsiblePersons": [{
               "id": "a9709b55-69b9-4400-a5a9-6101790ea6d6"
-      }]
+      }],
+      "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird"
 }
 ```
 

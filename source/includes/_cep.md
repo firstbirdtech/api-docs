@@ -3,9 +3,9 @@
 ### Intro
 
 With the introduction of our [Candidate Experience Package](https://www.firstbird.com/en/magazine/candidate-experience-package/) 
-we have revised our referral form for candidates. It’s now split into two steps. 
+we have revised our referral form for candidates. It is now split into two steps. 
 On the first step the candidate accepts the referral which only needs basic information. 
-On the second step the candidate can now be forwarded directly to an external URL to complete the job application directly in the ATS.
+On the second step the candidate can now be forwarded to an external URL to complete the job application directly in the ATS.
 
 ### Requirement
 
@@ -50,9 +50,10 @@ The endpoint of creating a job has an additional field **jobPostingUrl** to add 
 
 ## Request basic referral information
 
-Once a candidate has completed the first step the user is forwarded to the external URL. 
-To the URL we add a **referralId**  as a GET Parameter. 
-This referralID can be used to request basic information the candidate has added to Firstbird. 
+Once a candidate has completed the first step the user is forwarded to the `jobPostingUrl`. 
+A query parameter **referralId** is added to this URL which references the referral in Firstbird.
+Note that the referralId is different from the applicationId.
+This referralId can be used to request basic information the candidate has added to Firstbird. 
 
 `GET /v1/companies/{companyId}/applications?sourceId={referralId}&expand=applicant`
 
