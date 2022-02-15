@@ -192,7 +192,7 @@ To get a single Job by Id you have to use following request:
 | contactPerson      | Yes      | The contact person.                                                                                |
 | reward             | Yes      | The reward that has been assigned.                                                                 |
 | responsiblePersons | No       | The responsible persons that have been assigned. (Not present, if no responsible persons assigned) |
-| jobPostingUrl      | No       | The target URL for ATS Forwarding, see also [Candidate Experience Package](_cep)                   |
+| jobPostingUrl      | No       | The target URL for ATS Forwarding, see also [Candidate Experience Package](#cep)                   |
 | description        | Yes      | The job description.                                                                               |
 | status             | Yes      | The status of the job.                                                                             |
 | hot                | Yes      | Whether the job is a hot job or not.                                                               |
@@ -250,20 +250,20 @@ To create a new Job for your Company use following request
 
 ### Parameters
 
-| Property           | Description                                                                                                                      |
-|:-------------------|:---------------------------------------------------------------------------------------------------------------------------------|
-| department         | The Id of the Department this Job is associated with                                                                             |
-| contactPerson      | The Id of the Recruiter who is responsible for this Job                                                                          |
-| description        | HTMl describing the Job. Allowed HTML tags: a, b, br, div, em, h1, h2, h3, i, iframe, img, li, ol, p, span, strike, strong, u, ul|
-| endDate            | The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED. Can be null to avoid autoclosing.      |
-| hot                | The Hot flag                                                                                                                     |
-| location           | The Location of your Company the Job is associated with                                                                          |
-| referenceNumber    | This field allows to enter reference numbers of external systems                                                                 |
-| reward             | The Reward that will be payed as soon as an Applicant gets hired for that Job                                                    |
-| jobBranding        | The Job Branding of your Company the Job is associated with                                                                      |
-| title              | The title of the Job. This field is limited to 255 characters                                                                    |
-| responsiblePersons | An array of objects containing the User Ids of Recruiters being responsible for this Job as well                                 |
-| jobPostingUrl      | The target URL for ATS Forwarding, see also [Candidate Experience Package](_cep)                                                 |
+| Property           | Description                                                                                                                       |
+|:-------------------|:----------------------------------------------------------------------------------------------------------------------------------|
+| department         | The Id of the Department this Job is associated with                                                                              |
+| contactPerson      | The Id of the Recruiter who is responsible for this Job                                                                           |
+| description        | HTMl describing the Job. Allowed HTML tags: a, b, br, div, em, h1, h2, h3, i, iframe, img, li, ol, p, span, strike, strong, u, ul |
+| endDate            | The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED. Can be null to avoid autoclosing.       |
+| hot                | The Hot flag                                                                                                                      |
+| location           | The Location of your Company the Job is associated with                                                                           |
+| referenceNumber    | This field allows to enter reference numbers of external systems                                                                  |
+| reward             | The Reward that will be payed as soon as an Applicant gets hired for that Job                                                     |
+| jobBranding        | The Job Branding of your Company the Job is associated with                                                                       |
+| title              | The title of the Job. This field is limited to 255 characters                                                                     |
+| responsiblePersons | An array of objects containing the User Ids of Recruiters being responsible for this Job as well                                  |
+| jobPostingUrl      | The target URL for ATS Forwarding, see also [Candidate Experience Package](#cep)                                                  |
 
 ## Update a Job
 
