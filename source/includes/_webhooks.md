@@ -339,6 +339,56 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 }
 ```
 
+> reward.approved
+
+```json
+{
+    "reward": {
+        "name": "250€ Amazon Gift Card",
+        "value": "250",
+        "currency": "EUR",
+        "due_date": "2021-02-10",
+        "company_id": "00000000-0000-0000-0000-000000000000",
+        "id": "00000000-0000-0000-0000-000000000000"
+    },
+    "company_id": "00000000-0000-0000-0000-000000000000",
+    "recipient": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "first_name": "Name",
+        "last_name": "Last",
+        "email": "email@email.com",
+        "location": "Location",
+        "department": "Department",
+        "employee_id": "123"
+    },
+    "job": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "company_id": "00000000-0000-0000-0000-000000000000",
+        "title": "Title"
+    },
+    "application": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "company_id": "00000000-0000-0000-0000-000000000000",
+        "first_name": "Name",
+        "last_name": "Last"
+    },
+    "approvedBy": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "company_id": "00000000-0000-0000-0000-000000000000",
+        "first_name": "Name",
+        "last_name": "Last"
+    },
+    "type": "reward.approved",
+    "company": {
+        "domain": "domain",
+        "company_name": "ATS Forward",
+        "street": "street",
+        "postal_code": "1234",
+        "city": "city"
+    }
+}
+```
+
 | type                           | Description                                                                                             |
 |:-------------------------------|:--------------------------------------------------------------------------------------------------------|
 | job_application.received       | A job application has been created inside Firstbird. The type fields indicates how it has been created. |
@@ -348,6 +398,7 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 | job_application.closed         | One of your recruiters closed a job application                                                         |
 | job_application.hired          | One of your recruiters hired the applicant                                                              |
 | job_application.referral_added | The talent scout via whom the job application has been received provided feedback.                      |
+| reward.approved                | The hiring reward that was approved by a recruiter which a talent scout should receive.                 |
 
 **Note for job_application.received events:**
 
@@ -355,3 +406,11 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 * If the applicant did not provide a picture, the `applicant_image` key is not present.
 * To get a file from the `attachments` array, follow
 [this](#get-attachment-file-of-a-job-application) documentation.
+
+**Note for reward.approved event:**
+
+* If the applicant of the job application got deleted the `application` / `first_name` and `application` / `last_name` keys are not present
+* The `recipient` / `employee_id` key is optional as a user is not obliged to provide one.
+* The `reward` / `currency` follows the ISO 4217 currency standard.
+* The `reward` / `currency` has an exception to the above rule where the currency can be the value `COINS`. If this is the case the `reward` / `name` key is empty.
+* The `company` / `street`, `company` / `city` and `company` / `postal_code` keys are optional as a company is not obliged to provide them.

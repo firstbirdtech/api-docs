@@ -7,7 +7,7 @@ The following information is essential to understanding how the Firstbird API fu
 All URLs referenced in the API documentation begin with the following base URL, unless specified differently:
 
 `
-https://api.1brd.com/v1/
+https://api.1brd.com
 `
 
 This is the base URL for Firstbird’s public API. Please note that we only support `HTTPS`
@@ -16,9 +16,16 @@ This is the base URL for Firstbird’s public API. Please note that we only supp
 The Firstbird REST API currently only supports JSON resource representations.
 
 ## Authentication
+> :warning: **DEPRECATION**: The base url for authentication will change! The authentication flow remains the same.
+
+Base URL for authentications is
+
+`
+https://auth.1brd.com
+`
 
 ```code
-POST https://api.1brd.com/oauth/token
+POST https://auth.1brd.com/oauth/token
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 Authorization: Basic {apikey:apisecret base64 encoded}
