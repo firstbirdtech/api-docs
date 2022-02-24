@@ -24,7 +24,7 @@ jobs:
         run: bundle exec middleman build
         
       - name: Publish to gh-pages
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        # if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages-test
