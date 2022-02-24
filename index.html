@@ -946,7 +946,7 @@ Warning 299 api-gateway Endpoint deprecated
 
 <h2 id="get-a-single-department">Get a Single Department</h2>
 
-<p>To get a single Department by it’s Id you have to use following request:</p>
+<p>To get a single Department by its Id you have to use following request:</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1450,6 +1450,8 @@ Warning 299 api-gateway Endpoint deprecated
           </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000006"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"jobPostingUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc?source=Firstbird"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"careerSiteUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;This is a description&lt;/h1&gt;"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE_PUBLISHED"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1572,6 +1574,8 @@ Warning 299 api-gateway Endpoint deprecated
       </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/00000000-0000-0000-0000-000000000006"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"jobPostingUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc?source=Firstbird"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"careerSiteUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;This is a description&lt;/h1&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE_PUBLISHED"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1676,6 +1680,16 @@ Warning 299 api-gateway Endpoint deprecated
 <td>The responsible persons that have been assigned. (Not present, if no responsible persons assigned)</td>
 </tr>
 <tr>
+<td style="text-align: left">jobPostingUrl</td>
+<td style="text-align: left">No</td>
+<td>The target URL for ATS Forwarding, see also <a href="#cep">Candidate Experience Package</a></td>
+</tr>
+<tr>
+<td style="text-align: left">careerSiteUrl</td>
+<td style="text-align: left">No</td>
+<td>The target URL for the custom public job page where the candidate will be redirected once they follow a job link</td>
+</tr>
+<tr>
 <td style="text-align: left">description</td>
 <td style="text-align: left">Yes</td>
 <td>The job description.</td>
@@ -1740,7 +1754,9 @@ Warning 299 api-gateway Endpoint deprecated
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
               </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
-      </span><span class="p">}]</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="nt">"jobPostingUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc?source=Firstbird"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"careerSiteUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1762,53 +1778,75 @@ Warning 299 api-gateway Endpoint deprecated
 
 <table><thead>
 <tr>
-<th style="text-align: left">Property</th>
-<th style="text-align: left">Description</th>
+<th style="text-align: left">Field name</th>
+<th style="text-align: left">Required</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">department</td>
-<td style="text-align: left">The Id of the Department this Job is associated with</td>
-</tr>
-<tr>
-<td style="text-align: left">contactPerson</td>
-<td style="text-align: left">The Id of the Recruiter who is responsible for this Job</td>
-</tr>
-<tr>
-<td style="text-align: left">description</td>
-<td style="text-align: left">HTMl describing the Job. Allowed HTML tags: a, b, br, div, em, h1, h2, h3, i, iframe, img, li, ol, p, span, strike, strong, u, ul</td>
-</tr>
-<tr>
-<td style="text-align: left">endDate</td>
-<td style="text-align: left">The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED. Can be null to avoid autoclosing.</td>
-</tr>
-<tr>
-<td style="text-align: left">hot</td>
-<td style="text-align: left">The Hot flag</td>
-</tr>
-<tr>
 <td style="text-align: left">location</td>
-<td style="text-align: left">The Location of your Company the Job is associated with</td>
+<td style="text-align: left">Yes</td>
+<td>The Location of your Company the Job is associated with.</td>
 </tr>
 <tr>
-<td style="text-align: left">referenceNumber</td>
-<td style="text-align: left">This field allows to enter reference numbers of external systems</td>
-</tr>
-<tr>
-<td style="text-align: left">reward</td>
-<td style="text-align: left">The Reward that will be payed as soon as an Applicant gets hired for that Job</td>
-</tr>
-<tr>
-<td style="text-align: left">jobBranding</td>
-<td style="text-align: left">The Job Branding of your Company the Job is associated with</td>
+<td style="text-align: left">department</td>
+<td style="text-align: left">Yes</td>
+<td>The Id of the Department this Job is associated with.</td>
 </tr>
 <tr>
 <td style="text-align: left">title</td>
-<td style="text-align: left">The title of the Job. This field is limited to 255 characters</td>
+<td style="text-align: left">Yes</td>
+<td>The title of the Job. This field is limited to 255 characters.</td>
+</tr>
+<tr>
+<td style="text-align: left">description</td>
+<td style="text-align: left">Yes</td>
+<td>HTMl describing the Job. Allowed HTML tags: a, b, br, div, em, h1, h2, h3, i, iframe, img, li, ol, p, span, strike, strong, u, ul.</td>
+</tr>
+<tr>
+<td style="text-align: left">contactPerson</td>
+<td style="text-align: left">Yes</td>
+<td>The Id of the Recruiter who is responsible for this Job.</td>
+</tr>
+<tr>
+<td style="text-align: left">reward</td>
+<td style="text-align: left">Yes</td>
+<td>The Reward that will be payed as soon as an Applicant gets hired for that Job.</td>
+</tr>
+<tr>
+<td style="text-align: left">hot</td>
+<td style="text-align: left">Yes</td>
+<td>Whether the job is a hot job or not.</td>
+</tr>
+<tr>
+<td style="text-align: left">endDate</td>
+<td style="text-align: left">No</td>
+<td>The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED. Can be null to avoid autoclosing.</td>
+</tr>
+<tr>
+<td style="text-align: left">referenceNumber</td>
+<td style="text-align: left">No</td>
+<td>This field allows to enter reference numbers of external systems.</td>
 </tr>
 <tr>
 <td style="text-align: left">responsiblePersons</td>
-<td style="text-align: left">An array of objects containing the User Ids of Recruiters being responsible for this Job as well</td>
+<td style="text-align: left">No</td>
+<td>An array of objects containing the User Ids of Recruiters being responsible for this Job as well</td>
+</tr>
+<tr>
+<td style="text-align: left">jobBranding</td>
+<td style="text-align: left">No</td>
+<td>The Job Branding of your Company the Job is associated with</td>
+</tr>
+<tr>
+<td style="text-align: left">jobPostingUrl</td>
+<td style="text-align: left">No</td>
+<td>The target URL for ATS Forwarding, see also <a href="#cep">Candidate Experience Package</a></td>
+</tr>
+<tr>
+<td style="text-align: left">careerSiteUrl</td>
+<td style="text-align: left">No</td>
+<td>The target URL for the custom public job page where the candidate will be redirected once they follow a job link</td>
 </tr>
 </tbody></table>
 
@@ -1837,7 +1875,9 @@ Warning 299 api-gateway Endpoint deprecated
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
               </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
-      </span><span class="p">}]</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="nt">"jobPostingUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc?source=Firstbird"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"careerSiteUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1881,7 +1921,7 @@ Warning 299 api-gateway Endpoint deprecated
 
 <h2 id="delete-a-job">Delete a Job</h2>
 
-<p>After a while you may want to delete a Job because it is outdated to do so use following request:</p>
+<p>After a while you may want to delete a Job because it is outdated. To do so use following request:</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1966,7 +2006,7 @@ Warning 299 api-gateway Endpoint deprecated
 </tr>
 </tbody></table>
 
-<p>In case of a closed Job Application, one of the following reasons must be provided:</p>
+<p>In case of a closed Job Application, one of the following reasons can be provided:</p>
 
 <table><thead>
 <tr>
@@ -2067,6 +2107,10 @@ Warning 299 api-gateway Endpoint deprecated
 
 <p><code class="prettyprint">GET /v1/companies/{companyId}/applications</code></p>
 
+<h3 id="headers">Headers</h3>
+
+<p>If a media type header <code class="prettyprint">application/x.firstbird.application+json;version=2</code> is passed, the close reason in the response can be absent. Otherwise a default of <code class="prettyprint">CANDIDATE_ACCEPTED</code> will be returned.</p>
+
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
@@ -2166,6 +2210,10 @@ Warning 299 api-gateway Endpoint deprecated
 
 <p><code class="prettyprint">GET /v1/companies/{companyId}/applications/{jobApplicationId}</code></p>
 
+<h3 id="headers">Headers</h3>
+
+<p>If a media type header <code class="prettyprint">application/x.firstbird.application+json;version=2</code> is passed, the close reason in the response can be absent. Otherwise a default of <code class="prettyprint">CANDIDATE_ACCEPTED</code> will be returned.</p>
+
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
@@ -2257,6 +2305,11 @@ Warning 299 api-gateway Endpoint deprecated
 <td style="text-align: left">rewardPaid</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">Whether a reward has been paid or not.</td>
+</tr>
+<tr>
+<td style="text-align: left">closeReason</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The close reason for a closed referral. Will only be returned if status is CLOSED and might be absent if media type header <code class="prettyprint">application/x.firstbird.application+json;version=2</code> is passed.</td>
 </tr>
 </tbody></table>
 
@@ -2453,7 +2506,7 @@ This will return the URL to the actual file. Be aware, that the URL is valid for
 </thead><tbody>
 <tr>
 <td style="text-align: left">closeReason</td>
-<td style="text-align: left">Reason why this Job Application is being rejected. Check <a href="#job-applications">Job Application&rsquo;s close reasons</a></td>
+<td style="text-align: left">Optional field, Reason why this Job Application is being rejected. Check <a href="#job-applications">Job Application&rsquo;s close reasons</a></td>
 </tr>
 <tr>
 <td style="text-align: left">message</td>
@@ -3489,6 +3542,119 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <li>The <code class="prettyprint">reward</code> / <code class="prettyprint">currency</code> has an exception to the above rule where the currency can be the value <code class="prettyprint">COINS</code>. If this is the case the <code class="prettyprint">reward</code> / <code class="prettyprint">name</code> key is empty.</li>
 <li>The <code class="prettyprint">company</code> / <code class="prettyprint">street</code>, <code class="prettyprint">company</code> / <code class="prettyprint">city</code> and <code class="prettyprint">company</code> / <code class="prettyprint">postal_code</code> keys are optional as a company is not obliged to provide them.</li>
 </ul>
+
+          <h1 id="candidate-experience-package">Candidate Experience Package</h1>
+
+<h3 id="intro">Intro</h3>
+
+<p>With the introduction of our <a href="https://www.firstbird.com/en/magazine/candidate-experience-package/">Candidate Experience Package</a> 
+we have revised our referral form for candidates. It is now split into two steps. 
+On the first step the candidate accepts the referral which only needs basic information. 
+On the second step the candidate can now be forwarded to an external URL to complete the job application directly in the ATS.</p>
+
+<h3 id="requirement">Requirement</h3>
+
+<p>The Candidate Experience Package has to be unlocked explicitly per Company Account on Firstbird side. The CEP is an add-on package.</p>
+
+<h2 id="job-import-with-external-url">Job-Import with external URL</h2>
+
+<p>The endpoint of creating a job has an additional field <strong>jobPostingUrl</strong> to add the target URL</p>
+
+<p><code class="prettyprint">POST /v1/companies/{companyId}/jobs</code></p>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+      </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50018463-d804-46ae-90a7-8187a12e6540"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"contactPerson"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;h1&gt;This is HTML Description of a Job&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50c7be5d-3e2d-4e57-9394-87d5ffc7f50f"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"referenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reward"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"jobBranding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"responsiblePersons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9709b55-69b9-4400-a5a9-6101790ea6d6"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="nt">"jobPostingUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://jobs.someurl.com/abc?source=Firstbird"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="request-basic-referral-information">Request basic referral information</h2>
+
+<p>Once a candidate has completed the first step the user is forwarded to the <code class="prettyprint">jobPostingUrl</code>. 
+A query parameter <strong>referralId</strong> is added to this URL which references the referral in Firstbird.
+Note that the referralId is different from the applicationId.
+This referralId can be used to request basic information the candidate has added to Firstbird. </p>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/applications?sourceId={referralId}&amp;expand=applicant</code></p>
+
+<h3 id="move-accepted-referral-to-in-progress">Move Accepted Referral to in Progress</h3>
+
+<p>In the background we besides a referral also create a job application. 
+To update a status of a referral you actually need to accept the Terms and then  update the status of the job application. 
+That means to move a Job Application from “Accepted Referral” to “In Progress” you need to</p>
+
+<ul>
+<li>get the jobApplicationId</li>
+<li>accept the legal terms via API</li>
+<li>update the Status of the job application</li>
+</ul>
+
+<h4 id="endpoint-to-get-the-job-application-id">Endpoint to get the Job Application Id</h4>
+
+<p><code class="prettyprint">GET /v1/companies/{companyId}/applications?sourceId={referralId}&amp;expand=applicant</code></p>
+
+<h4 id="endpoint-to-accept-the-legal-terms">Endpoint to accept the legal terms</h4>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/applications/{applicationId}</code></p>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maria"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maria.finch1983@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"acceptTerms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><strong>Important to know</strong></p>
+
+<p>All fields are mandatory. Changing a field will update the Job Application information on Firstbird side!</p>
+
+<h4 id="endpoint-to-move-the-job-application-to-quot-in-progress-quot">Endpoint to move the job application to &ldquo;In Progress&rdquo;</h4>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/applications/{applicationId}/status</code></p>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FINISHED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The value finished means that the job application has been finished and therefore is moved to “In Progress”.</p>
+
+<p><strong>Important to know</strong></p>
+
+<p>Customers may have set the attachments to mandatory, which block the job application to be finished as it will complain about missing files. 
+First disable the mandatory files in the Company Account Preferences!</p>
 
           <h1 id="user-provisioning">User Provisioning</h1>
 
