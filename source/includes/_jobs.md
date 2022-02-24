@@ -5,12 +5,13 @@ Jobs are one of the main pillars of Firstbird
 Jobs can have different statuses:
 
 | Status           | Description                                                                                                                                    |
-|:-----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
 | DRAFT            | Those Jobs are only visible to Company Administrators and Recruiters before they get published to all Talent Scouts                            |
 | ACTIVE_PUBLISHED | Those Jobs are visible to all Talent Scouts and can be shared and candidates can be referred for those Jobs                                    |
 | ACTIVE_CLOSED    | Those Jobs are only visible to Recruiters and Company Administrators, candidates who got a shared link to that job before can’t apply anymore. |
 | ARCHIVED         | Candidates can’t apply to those Jobs anymore                                                                                                   |
 | DELETED          | Those jobs aren’t visible anymore                                                                                                              |
+
 Jobs can also be flagged as **Hot** which means they are hard to achieve. Most of the time this flag is used for visual indication on the UI.
 
 ## Get All Jobs
@@ -67,6 +68,7 @@ To get a list of all your Jobs you have to issue following request:
         }
       ],
       "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird",
+      "careerSiteUrl": "https://jobs.someurl.com/abc",
       "description": "<h1>This is a description</h1>",
       "status": "ACTIVE_PUBLISHED",
       "hot": false,
@@ -93,16 +95,16 @@ To get a list of all your Jobs you have to issue following request:
 ### Query Parameters
 
 | Query Parameter | Description                                                                |
-|:----------------|:---------------------------------------------------------------------------|
+| :-------------- | :------------------------------------------------------------------------- |
 | status          | Comma separated list of statuses which should be included in the response. |
 | endDateBefore   | Jobs where the endDate is before the given date. (e.g. 2017-01-05)         |
-| department      | Comma separated list of Department Ids to filter after                     |
-| location        | Comma separated list of Location Ids to filter after                       |
-| contact         | Comma separated list of User Ids to filter the Job’s Contact Person after  |
+| department      | Comma separated list of Department Ids to filter after                      |
+| location        | Comma separated list of Location Ids to filter after                        |
+| contact         | Comma separated list of User Ids to filter the Job’s Contact Person after   |
 | hot             | Show Hot Jobs only                                                         |
 | referenceNumber | Filter by reference number                                                 |
 | query           | Filter by job title                                                        |
-| fields          | See [Fields](#customizing-response-fields) documentation                   |
+| fields           | See [Fields](#customizing-response-fields) documentation                    |
 | limit           | See [Pagination](#pagination) documentation                                |
 | offset          | See [Pagination](#pagination) documentation                                |
 | sort            | See [Sorting](#sorting) documentation                                      |
@@ -149,6 +151,7 @@ To get a single Job by Id you have to use following request:
     }
   ],
   "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird",
+  "careerSiteUrl": "https://jobs.someurl.com/abc",
   "description": "<h1>This is a description</h1>",
   "status": "ACTIVE_PUBLISHED",
   "hot": false,
@@ -172,34 +175,35 @@ To get a single Job by Id you have to use following request:
 
 ### Query Parameters
 
-| Query Parameter | Description                                                                                                                            |
-|:----------------|:---------------------------------------------------------------------------------------------------------------------------------------|
-| fields          | See [Fields](#customizing-response-fields) documentation.                                                                              |
+| Query Parameter | Description                                                                                                                                             |
+| :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| fields           | See [Fields](#customizing-response-fields) documentation.                                                                                                |
 | expand          | See [Resource Expansion](#links-and-resource-expansion) documentation. Available are: `company`, `location`, `department`, `reward` and `contactPerson` |
 
 ### Response Fields
 
-| Field name         | Required | Description                                                                                        |
-|:-------------------|:---------|----------------------------------------------------------------------------------------------------|
-| href               | Yes      | The link to this job.                                                                              |
-| id                 | Yes      | The id of this job.                                                                                |
-| company            | Yes      | The company this job belongs to.                                                                   |
-| location           | Yes      | The location that has been assigned.                                                               |
-| creationDate       | Yes      | The creation date.                                                                                 |
-| title              | Yes      | The job title.                                                                                     |
-| referenceNumber    | No       | The reference number. (Not present, if no reference number entered)                                |
-| department         | Yes      | The department that has been assigned.                                                             |
-| contactPerson      | Yes      | The contact person.                                                                                |
-| reward             | Yes      | The reward that has been assigned.                                                                 |
-| responsiblePersons | No       | The responsible persons that have been assigned. (Not present, if no responsible persons assigned) |
-| jobPostingUrl      | No       | The target URL for ATS Forwarding, see also [Candidate Experience Package](#cep)                   |
-| description        | Yes      | The job description.                                                                               |
-| status             | Yes      | The status of the job.                                                                             |
-| hot                | Yes      | Whether the job is a hot job or not.                                                               |
-| image              | Yes      | The job header image.                                                                              |
-| statistics         | Yes      | The statistics of this job.                                                                        |
-| shareLink          | Yes      | The sharing link of this job.                                                                      |
-| jobBranding        | No       | The branding that has been assigned. (Not present, if no branding assigned)                        |
+| Field name         | Required | Description                                                                                                                             |
+| :----------------- | :------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| href               | Yes      | The link to this job.                                                                                                                   |
+| id                 | Yes      | The id of this job.                                                                                                                     |
+| company            | Yes      | The company this job belongs to.                                                                                                        |
+| location           | Yes      | The location that has been assigned.                                                                                                    |
+| creationDate       | Yes      | The creation date.                                                                                                                      |
+| title              | Yes      | The job title.                                                                                                                          |
+| referenceNumber    | No       | The reference number. (Not present, if no reference number entered)                                                                     |
+| department         | Yes      | The department that has been assigned.                                                                                                  |
+| contactPerson      | Yes      | The contact person.                                                                                                                     |
+| reward             | Yes      | The reward that has been assigned.                                                                                                      |
+| responsiblePersons | No       | The responsible persons that have been assigned. (Not present, if no responsible persons assigned)                                      |
+| jobPostingUrl      | No       | The target URL for ATS Forwarding, see also [Candidate Experience Package](#cep)                                                        |
+| careerSiteUrl      | No       | The target URL for the custom public job page where the candidate will be redirected once they follow a job link                        |
+| description        | Yes      | The job description.                                                                                                                    |
+| status             | Yes      | The status of the job.                                                                                                                  |
+| hot                | Yes      | Whether the job is a hot job or not.                                                                                                    |
+| image              | Yes      | The job header image.                                                                                                                   |
+| statistics         | Yes      | The statistics of this job.                                                                                                             |
+| shareLink          | Yes      | The sharing link of this job.                                                                                                           |
+| jobBranding        | No       | The branding that has been assigned. (Not present, if no branding assigned)                                                             |
 
 ## Create a Job
 
@@ -230,7 +234,8 @@ To get a single Job by Id you have to use following request:
       "responsiblePersons": [{
               "id": "a9709b55-69b9-4400-a5a9-6101790ea6d6"
       }],
-      "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird"
+      "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird",
+      "careerSiteUrl": "https://jobs.someurl.com/abc"
 }
 ```
 
@@ -250,20 +255,21 @@ To create a new Job for your Company use following request
 
 ### Parameters
 
-| Property           | Description                                                                                                                       |
-|:-------------------|:----------------------------------------------------------------------------------------------------------------------------------|
-| department         | The Id of the Department this Job is associated with                                                                              |
-| contactPerson      | The Id of the Recruiter who is responsible for this Job                                                                           |
-| description        | HTMl describing the Job. Allowed HTML tags: a, b, br, div, em, h1, h2, h3, i, iframe, img, li, ol, p, span, strike, strong, u, ul |
-| endDate            | The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED. Can be null to avoid autoclosing.       |
-| hot                | The Hot flag                                                                                                                      |
-| location           | The Location of your Company the Job is associated with                                                                           |
-| referenceNumber    | This field allows to enter reference numbers of external systems                                                                  |
-| reward             | The Reward that will be payed as soon as an Applicant gets hired for that Job                                                     |
-| jobBranding        | The Job Branding of your Company the Job is associated with                                                                       |
-| title              | The title of the Job. This field is limited to 255 characters                                                                     |
-| responsiblePersons | An array of objects containing the User Ids of Recruiters being responsible for this Job as well                                  |
-| jobPostingUrl      | The target URL for ATS Forwarding, see also [Candidate Experience Package](#cep)                                                  |
+| Field name         | Required | Description                                                                                                                        |
+| :----------------- | :------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| location           | Yes      | The Location of your Company the Job is associated with.                                                                           |
+| department         | Yes      | The Id of the Department this Job is associated with.                                                                              |
+| title              | Yes      | The title of the Job. This field is limited to 255 characters.                                                                      |
+| description        | Yes      | HTMl describing the Job. Allowed HTML tags: a, b, br, div, em, h1, h2, h3, i, iframe, img, li, ol, p, span, strike, strong, u, ul. |
+| contactPerson      | Yes      | The Id of the Recruiter who is responsible for this Job.                                                                           |
+| reward             | Yes      | The Reward that will be payed as soon as an Applicant gets hired for that Job.                                                     |
+| hot                | Yes      | Whether the job is a hot job or not.                                                                                               |
+| endDate            | No       | The date when the job will be automatically closed once it is in status ACTIVE_PUBLISHED. Can be null to avoid autoclosing.        |
+| referenceNumber    | No       | This field allows to enter reference numbers of external systems.                                                                   |
+| responsiblePersons | No       | An array of objects containing the User Ids of Recruiters being responsible for this Job as well                                   |
+| jobBranding        | No       | The Job Branding of your Company the Job is associated with                                                                        |
+| jobPostingUrl      | No       | The target URL for ATS Forwarding, see also [Candidate Experience Package](#cep)                                                   |
+| careerSiteUrl      | No       | The target URL for the custom public job page where the candidate will be redirected once they follow a job link                   |
 
 ## Update a Job
 
@@ -291,7 +297,8 @@ To create a new Job for your Company use following request
       "responsiblePersons": [{
               "id": "a9709b55-69b9-4400-a5a9-6101790ea6d6"
       }],
-      "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird"
+      "jobPostingUrl": "https://jobs.someurl.com/abc?source=Firstbird",
+      "careerSiteUrl": "https://jobs.someurl.com/abc"
 }
 ```
 
@@ -322,12 +329,12 @@ To change the status of a Job you need following request. Please keep in mind th
 ### Parameters
 
 | Property | Description                                                                                                                        |
-|:---------|:-----------------------------------------------------------------------------------------------------------------------------------|
+| :------- | :--------------------------------------------------------------------------------------------------------------------------------- |
 | status   | New status of a the Job. Possible values are: ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED (you can’t set DRAFT and DELETED directly) |
 
 ## Delete a Job
 
-After a while you may want to delete a Job because it is outdated to do so use following request:
+After a while you may want to delete a Job because it is outdated. To do so use following request:
 
 ### HTTP Request
 
