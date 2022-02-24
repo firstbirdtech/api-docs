@@ -27,5 +27,5 @@ jobs:
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          branch: gh-pages-test
+          branch: gh-pages
           folder: build
