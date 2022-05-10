@@ -4,6 +4,10 @@ Please note that the base URL for user provisioning is
 
 `https://profile.services.1brd.com`
 
+> One caveat is that User-Pre-Provisioning just provides basic user profile information that is
+> linked when a user registers, which means that the pre-provisioned profiles are only listed in
+> the user list once they have registered themselves in Firstbird.
+
 ## Ingest User Profiles
 
 > This is an example request body
@@ -40,14 +44,14 @@ This will stage all users for provisioning.
 
 All request parameters are in `string` format.
 
-| Field name        | Required | Description                                |
-|:------------------|:---------|:-------------------------------------------|
-| first_name        | Yes      | First name                                 |
-| last_name         | Yes      | Last name                                  |
-| personnel_number  | Yes      | The id of the employee in your system      |
-| email_address     | Yes      | Email address                              |
-| location          | No       | The location of the user                   |
-| department        | No       | The department of the user                 |
+| Field name       | Required | Description                           |
+| :--------------- | :------- | :------------------------------------ |
+| first_name       | Yes      | First name                            |
+| last_name        | Yes      | Last name                             |
+| personnel_number | Yes      | The id of the employee in your system |
+| email_address    | Yes      | Email address                         |
+| location         | No       | The location of the user              |
+| department       | No       | The department of the user            |
 
 ## Create a User Profile
 
@@ -71,15 +75,15 @@ To create a new user profile, use following request:
 
 ### Parameters
 
-| Field name        | Required | Description                                                                                |
-|:------------------|:---------|:-------------------------------------------------------------------------------------------|
-| first_name        | Yes      | First name                                                                                 |
-| last_name         | Yes      | Last name                                                                                  |
-| personnel_number  | Yes      | The id of the employee in your system                                                      |
-| email_address     | Yes      | Email address                                                                              |
-| location          | No       | The location of the user                                                                   |
-| department        | No       | The department of the user                                                                 |
-| active            | No       | A `boolean` value to activate or deactivate a user in firstbird. Default value is `true`.  |
+| Field name       | Required | Description                                                                               |
+| :--------------- | :------- | :---------------------------------------------------------------------------------------- |
+| first_name       | Yes      | First name                                                                                |
+| last_name        | Yes      | Last name                                                                                 |
+| personnel_number | Yes      | The id of the employee in your system                                                     |
+| email_address    | Yes      | Email address                                                                             |
+| location         | No       | The location of the user                                                                  |
+| department       | No       | The department of the user                                                                |
+| active           | No       | A `boolean` value to activate or deactivate a user in firstbird. Default value is `true`. |
 
 ## Update a User Profile
 
@@ -101,6 +105,39 @@ To update a user profile, use following request:
 
 `PUT /v1/companies/{companyId}/users/profile`
 
+### Query Parameters
+
+| Query Parameter | Required | Description                                                                    |
+| :-------------- | :------- | :----------------------------------------------------------------------------- |
+| identifier      | Yes      | You may use either of the `personnel_number` or the email address of the user. |
+
+## Deactivate a User Profile
+
+For deactivating a user profile, set the `active` field to false in the body and call the endpoint for updating a profile as follows.
+
+> This is an example request body
+
+```json
+{
+  "first_name":"Test",
+  "last_name":"User",
+  "email_address":"test.user@firstbird.com",
+  "personnel_number":"1234",
+  "active":false
+}
+```
+
+
+### HTTP Request
+
+`PUT /v1/companies/{companyId}/users/profile`
+
+### Query Parameters
+
+| Query Parameter | Required | Description                                                                    |
+| :-------------- | :------- | :----------------------------------------------------------------------------- |
+| identifier      | Yes      | You may use either of the `personnel_number` or the email address of the user. |
+
 ## Delete a User Profile
 
 To delete a user profile, use following request:
@@ -112,7 +149,7 @@ To delete a user profile, use following request:
 ### Query Parameters
 
 | Query Parameter | Required | Description                                                                    |
-|:----------------|:---------|:-------------------------------------------------------------------------------|
+| :-------------- | :------- | :----------------------------------------------------------------------------- |
 | identifier      | Yes      | You may use either of the `personnel_number` or the email address of the user. |
 
 ## Get a User Profile
@@ -138,5 +175,5 @@ To get a user profile, use following request:
 ### Query Parameters
 
 | Query Parameter | Required | Description                                                                    |
-|:----------------|:---------|:-------------------------------------------------------------------------------|
+| :-------------- | :------- | :----------------------------------------------------------------------------- |
 | identifier      | Yes      | You may use either of the `personnel_number` or the email address of the user. |
