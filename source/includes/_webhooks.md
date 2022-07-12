@@ -389,8 +389,58 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 }
 ```
 
+> points.gained
+
+```json
+{
+    "user": {
+        "id": "00000000-0000-0001-0000-000000000000",
+        "first_name": "Mister",
+        "last_name": "Finch",
+        "email": "mister.finch@firstbird.com",
+        "location": "Wien",
+        "department": "IT",
+        "employee_id": "1234"
+    },
+    "count": 1,
+    "cause": "JOB_VIEWS",
+    "company": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "domain": "test",
+        "company_name": "test"
+    },
+    "type": "points.gained",
+    "date_time": "0001-01-01T01:01:00.000+0139"
+}
+```
+
+> points.revoked
+
+```json
+{
+    "user": {
+        "id": "00000000-0000-0001-0000-000000000000",
+        "first_name": "Mister",
+        "last_name": "Finch",
+        "email": "mister.finch@firstbird.com",
+        "location": "Wien",
+        "department": "IT",
+        "employee_id": "1234"
+    },
+    "count": 1,
+    "cause": "JOB_APPLICATION_INVALID",
+    "company": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "domain": "test",
+        "company_name": "test"
+    },
+    "type": "points.revoked",
+    "date_time": "0001-01-01T01:01:00.000+0139"
+}
+```
+
 | type                           | Description                                                                                             |
-|:-------------------------------|:--------------------------------------------------------------------------------------------------------|
+| :----------------------------- | :------------------------------------------------------------------------------------------------------ |
 | job_application.received       | A job application has been created inside Firstbird. The type fields indicates how it has been created. |
 | job_application.edited         | One of your recruiters edited a job application                                                         |
 | job_application.deleted        | One of your recruiters deleted a job application                                                        |
@@ -399,6 +449,8 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 | job_application.hired          | One of your recruiters hired the applicant                                                              |
 | job_application.referral_added | The talent scout via whom the job application has been received provided feedback.                      |
 | reward.approved                | The hiring reward that was approved by a recruiter which a talent scout should receive.                 |
+| points.gained                  | A user gained points for actions within Firstbird.                                                      |
+| points.revoked                 | A user got points revoked that were gained earlier within Firstbird.                                    |
 
 **Note for job_application.received events:**
 
