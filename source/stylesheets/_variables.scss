@@ -23,12 +23,12 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #6F00EF;
-$examples-bg: #6F00EF;
-$code-bg: #6F00EF;
-$code-annotation-bg: #00CBFF;
-$nav-subitem-bg: #40E8D4;
-$nav-active-bg: #FA6400;
+$nav-bg: #F3F8FB;
+$examples-bg: #333333;
+$code-bg: #333333;
+$code-annotation-bg: #F3F8FB;
+$nav-subitem-bg: #FFFFFF;
+$nav-active-bg: #6F00EF;
 $lang-select-border: #000;
 $lang-select-bg: $examples-bg;
 $lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
@@ -43,7 +43,7 @@ $search-notice-bg: #c97a7e;
 // TEXT COLORS
 ////////////////////
 $main-text: #333; // main content text color
-$nav-text: #fff;
+$nav-text: #0026FF;
 $nav-active-text: #fff;
 $lang-select-text: #fff; // color of unselected language tab text
 $lang-select-active-text: #fff; // color of selected language tab text
@@ -75,6 +75,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 %header-font {
   @extend %default-font;
   font-weight: bold;
+  // color: #0026FF;
 }
 
 %code-font {
