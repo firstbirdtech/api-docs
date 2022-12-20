@@ -1056,17 +1056,34 @@ Warning 299 api-gateway Endpoint deprecated
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-0000000000002"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image.jpeg"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shareLogoWide"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-0000000000003"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image-wide.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nt">"linkedInShareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/linkedin-share-logo-image.jpeg"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/job-header-image.jpeg"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="p">,</span><span class="w">
     </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:03:39Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="w">
+    </span><span class="nt">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sharingTexts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EmailSharingText"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WhatsAppSharingText"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"wechat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeChatSharingText"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"jobHeaderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"jobBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1113,6 +1130,11 @@ Warning 299 api-gateway Endpoint deprecated
 <td style="text-align: left">The share logo that will be used for this job branding.</td>
 </tr>
 <tr>
+<td style="text-align: left">shareLogoWide</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The wide share logo that will be used for this job branding by certain share channels.</td>
+</tr>
+<tr>
 <td style="text-align: left">linkedInShareLogo</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">The share logo that will be used for this job branding on LinkedIn.</td>
@@ -1124,18 +1146,33 @@ Warning 299 api-gateway Endpoint deprecated
 </tr>
 <tr>
 <td style="text-align: left">shareDescription</td>
-<td style="text-align: left">Yes</td>
+<td style="text-align: left">No</td>
 <td style="text-align: left">The share description that will be used for this job branding.</td>
 </tr>
 <tr>
 <td style="text-align: left">createdAt</td>
-<td style="text-align: left">No</td>
+<td style="text-align: left">Yes</td>
 <td style="text-align: left">The date time when this job branding got created. Absent, if this is the default branding.</td>
 </tr>
 <tr>
 <td style="text-align: left">updatedAt</td>
 <td style="text-align: left">No</td>
 <td style="text-align: left">The date time when this job branding got updated. Absent, if this job branding has never been updated.</td>
+</tr>
+<tr>
+<td style="text-align: left">sharingTexts</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Text suggestions for when Talent Scouts share a job.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobHeaderColor</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The page heading color for the companies job page.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobBackgroundColor</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The page backgroud color for the companies job page.</td>
 </tr>
 </tbody></table>
 
@@ -1163,17 +1200,34 @@ Warning 299 api-gateway Endpoint deprecated
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-0000000000002"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image.jpeg"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareLogoWide"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-0000000000003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image-wide.jpeg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"linkedInShareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/linkedin-share-logo-image.jpeg"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000005"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/job-header-image.jpeg"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="p">,</span><span class="w">
   </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:03:39Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="w">
+  </span><span class="nt">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-09T10:04:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sharingTexts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EmailSharingText"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WhatsAppSharingText"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"wechat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeChatSharingText"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jobHeaderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jobBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1219,6 +1273,11 @@ Warning 299 api-gateway Endpoint deprecated
 <td style="text-align: left">The share logo that will be used for this job branding.</td>
 </tr>
 <tr>
+<td style="text-align: left">shareLogoWide</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The wide share logo that will be used for this job branding by certain share channels.</td>
+</tr>
+<tr>
 <td style="text-align: left">linkedInShareLogo</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">The share logo that will be used for this job branding on LinkedIn.</td>
@@ -1230,18 +1289,33 @@ Warning 299 api-gateway Endpoint deprecated
 </tr>
 <tr>
 <td style="text-align: left">shareDescription</td>
-<td style="text-align: left">Yes</td>
+<td style="text-align: left">No</td>
 <td style="text-align: left">The share description that will be used for this job branding.</td>
 </tr>
 <tr>
 <td style="text-align: left">createdAt</td>
-<td style="text-align: left">No</td>
+<td style="text-align: left">Yes</td>
 <td style="text-align: left">The date time when this job branding got created. Absent, if this is the default branding.</td>
 </tr>
 <tr>
 <td style="text-align: left">updatedAt</td>
 <td style="text-align: left">No</td>
 <td style="text-align: left">The date time when this job branding got updated. Absent, if this job branding has never been updated.</td>
+</tr>
+<tr>
+<td style="text-align: left">sharingTexts</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Text suggestions for when Talent Scouts share a job.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobHeaderColor</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The page heading color for the companies job page.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobBackgroundColor</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The page backgroud color for the companies job page.</td>
 </tr>
 </tbody></table>
 
@@ -1257,12 +1331,28 @@ Warning 299 api-gateway Endpoint deprecated
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branding One"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"shareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="w">
+  </span><span class="nt">"shareLogoWide"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sharingTexts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EmailSharingText"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WhatsAppSharingText"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"wechat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeChatSharingText"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jobHeaderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jobBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1270,7 +1360,44 @@ Warning 299 api-gateway Endpoint deprecated
 <p>This request returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000010"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000011"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000011"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branding One"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/job-header-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shareLogoWide"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image-wide.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"linkedInShareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000111"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/linkedin-share-logo-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01T16:02:39.115Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sharingTexts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EmailSharingText"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"wechat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeChatSharingText"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WhatsAppSharingText"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"jobHeaderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"jobBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1301,9 +1428,29 @@ Warning 299 api-gateway Endpoint deprecated
 <td style="text-align: left">The share logo that will be used for the new job branding. <a href="#files">See here</a></td>
 </tr>
 <tr>
+<td style="text-align: left">shareLogoWide</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The wide share logo that will be used for this job branding by certain share channels. <a href="#files">See here</a></td>
+</tr>
+<tr>
 <td style="text-align: left">shareDescription</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">The share description that will be used for the new job branding.</td>
+</tr>
+<tr>
+<td style="text-align: left">sharingTexts</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Text suggestions for when Talent Scouts share a job.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobHeaderColor</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The page heading color for the companies job page.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobBackgroundColor</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The page backgroud color for the companies job page.</td>
 </tr>
 </tbody></table>
 
@@ -1317,14 +1464,30 @@ Warning 299 api-gateway Endpoint deprecated
 <p>This is an example request body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"company-default-branding"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"shareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share logo description."</span><span class="w">
+  </span><span class="nt">"shareLogoWide"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my company"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sharingTexts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EmailSharingText"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WhatsAppSharingText"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"wechat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeChatSharingText"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jobBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jobHeaderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1355,11 +1518,84 @@ Warning 299 api-gateway Endpoint deprecated
 <td style="text-align: left">The share logo that will be used for the new job branding. <a href="#files">See here</a></td>
 </tr>
 <tr>
+<td style="text-align: left">shareLogoWide</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The wide share logo that will be used for this job branding by certain share channels. <a href="#files">See here</a></td>
+</tr>
+<tr>
 <td style="text-align: left">shareDescription</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">The share description that will be used for the new job branding.</td>
 </tr>
+<tr>
+<td style="text-align: left">sharingTexts</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Text suggestions for when Talent Scouts share a job.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobHeaderColor</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The page heading color for the companies job page.</td>
+</tr>
+<tr>
+<td style="text-align: left">jobBackgroundColor</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The page backgroud color for the companies job page.</td>
+</tr>
 </tbody></table>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000010"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000011"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000011"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Branding One"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"jobHeader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/job-header-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shareLogoWide"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000003"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/share-logo-image-wide.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"linkedInShareLogo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000111"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost/linkedin-share-logo-image.jpeg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"shareDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my share description."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01T16:02:39.115Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sharingTexts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EmailSharingText"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"wechat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeChatSharingText"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WhatsAppSharingText"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"jobBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"jobHeaderColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="deleting-a-job-branding">Deleting a Job Branding</h2>
+
+<p>To delete an existing Job Branding for your company use following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /v1/companies/{companyId}/job_brandings/{jobBrandingId}</code></p>
 
           <h1 id="jobs">Jobs</h1>
 
