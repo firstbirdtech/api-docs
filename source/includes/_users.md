@@ -1,6 +1,6 @@
 # Users
 
-Users are one of the main pillars of Firstbird.
+Users are one of the main pillars of Employee Referrals. 
 
 ## Get All Users
 
@@ -29,7 +29,7 @@ This endpoint retrieves all Users for your company.
       "companyId": "00000000-0000-0000-0000-000000000000",
       "firstName": "Test",
       "lastName": "User",
-      "email": "test.user@firstbird.com",
+      "email": "test.user@radancy.com",
       "department": {
         "id": "00000000-0000-0000-0000-000000000002",
         "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-000000000002"

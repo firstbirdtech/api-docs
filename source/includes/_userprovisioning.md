@@ -6,7 +6,7 @@ Please note that the base URL for user provisioning is
 
 > One caveat is that User-Pre-Provisioning just provides basic user profile information that is
 > linked when a user registers, which means that the pre-provisioned profiles are only listed in
-> the user list once they have registered themselves in Firstbird.
+> the user list once they have registered themselves in Employee Referrals. 
 
 ## Ingest User Profiles
 
@@ -19,7 +19,7 @@ Please note that the base URL for user provisioning is
       "first_name":"Test",
       "last_name":"User",
       "personnel_number":"1234",
-      "email_address":"test.user@firstbird.com",
+      "email_address":"test.user@radancy.com",
       "location":"Vienna",
       "department":"IT"
     },
@@ -27,7 +27,7 @@ Please note that the base URL for user provisioning is
       "first_name":"Test",
       "last_name":"User2",
       "personnel_number":"1235",
-      "email_address":"test.user2@firstbird.com"
+      "email_address":"test.user2@radancy.com"
     }
   ]
 }
@@ -61,13 +61,13 @@ All request parameters are in `string` format.
 {
   "first_name":"Test",
   "last_name":"User",
-  "email_address":"test.user@firstbird.com",
+  "email_address":"test.user@radancy.com",
   "personnel_number":"1234",
   "active":true
 }
 ```
 
-To create a new user profile, use following request:
+To create a new user profile, use the following request:
 
 ### HTTP Request
 
@@ -83,7 +83,7 @@ To create a new user profile, use following request:
 | email_address    | Yes      | Email address                                                                             |
 | location         | No       | The location of the user                                                                  |
 | department       | No       | The department of the user                                                                |
-| active           | No       | A `boolean` value to activate or deactivate a user in firstbird. Default value is `true`. |
+| active           | No       | A `boolean` value to activate or deactivate a user in Employee Referrals. Default value is `true`. |
 
 ## Update a User Profile
 
@@ -93,13 +93,13 @@ To create a new user profile, use following request:
 {
   "first_name":"Test",
   "last_name":"User",
-  "email_address":"test.user@firstbird.com",
+  "email_address":"test.user@radancy.com",
   "personnel_number":"1234",
   "active":true
 }
 ```
 
-To update a user profile, use following request:
+To update a user profile, use the following request:
 
 ### HTTP Request
 
@@ -121,7 +121,7 @@ For deactivating a user profile, set the `active` field to false in the body and
 {
   "first_name":"Test",
   "last_name":"User",
-  "email_address":"test.user@firstbird.com",
+  "email_address":"test.user@radancy.com",
   "personnel_number":"1234",
   "active":false
 }
@@ -140,7 +140,7 @@ For deactivating a user profile, set the `active` field to false in the body and
 
 ## Delete a User Profile
 
-To delete a user profile, use following request:
+To delete a user profile, use the following request:
 
 ### HTTP Request
 
@@ -166,7 +166,7 @@ To delete a user profile, use following request:
 }
 ```
 
-To get a user profile, use following request:
+To get a user profile, use the following request:
 
 ### HTTP Request
 

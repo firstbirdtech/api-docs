@@ -9,7 +9,7 @@ On the second step the candidate can now be forwarded to an external URL to comp
 
 ### Requirement
 
-The Candidate Experience Package has to be unlocked explicitly per Company Account on Firstbird side. The CEP is an add-on package.
+The Candidate Experience Package has to be unlocked explicitly per Company Account by Radancy. The CEP is an add-on package.
 
 ## Job-Import with external URL
 
@@ -51,9 +51,9 @@ The endpoint of creating a job has an additional field **jobPostingUrl** to add 
 ## Request basic referral information
 
 Once a candidate has completed the first step the user is forwarded to the `jobPostingUrl`. 
-A query parameter **referralId** is added to this URL which references the referral in Firstbird.
+A query parameter **referralId** is added to this URL which references the referral in Employee Referrals.
 Note that the referralId is different from the applicationId.
-This referralId can be used to request basic information the candidate has added to Firstbird. 
+This referralId can be used to request basic information the candidate has added to Employee Referrals. 
 
 `GET /v1/companies/{companyId}/applications?sourceId={referralId}&expand=applicant`
 
@@ -88,7 +88,7 @@ That means to move a Job Application from “Accepted Referral” to “In Progr
 
 **Important to know**
 
-All fields are mandatory. Changing a field will update the Job Application information on Firstbird side!
+All fields are mandatory. Changing a field will update the Job Application information in Employee Referrals!
 
 #### Endpoint to move the job application to "In Progress"
 

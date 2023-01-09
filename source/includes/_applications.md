@@ -1,6 +1,6 @@
 # Job Applications
 
-Job Applications are the other main pillar of your Account at Firstbird.
+Job Applications are the other main pillar of your Account with Employee Referrals.
 
 Job Applications can have following statuses:
 
@@ -405,7 +405,7 @@ Also if you send a request without applicantImage, the associated Image will be 
 {
   "firstName": "Test",
   "lastName": "Applicant",
-  "email": "test.applicant@firstbird.com",
+  "email": "test.applicant@radancy.com",
   "phoneNumber": "123456789",
   "url": "https://somesocialmediaplattform.com/users/TestApplicant",
   "files": [

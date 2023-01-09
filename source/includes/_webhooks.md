@@ -1,28 +1,28 @@
 # Webhooks
-Use webhooks to be notified about events that happen in a Firstbird account.
+Use webhooks to be notified about events that happen in Employee Referrals.
 
 
 ##Webhook terminology
 An event is an account occurrence, such as a new job application being received, a referral added, or an applicant being hired. Each occurrence has a corresponding event object.
-Webhook endpoints are URLs defined by users to which Firstbird sends events. A single event may be sent to many webhook endpoints.
+Webhook endpoints are URLs defined by users to which Employee Referrals sends events. A single event may be sent to many webhook endpoints.
 Webhooks refers to the overall concept of sending notifications to webhook endpoints.
 
 --
 
 ##Why using webhooks
-Interacting with a third-party API like Firstbird's can introduce two problems:
+Interacting with a third-party API like Employee Referrals' can introduce two problems:
 
 * Services not directly responsible for making an API request may still need to know the response of that request
 * Some events, like job application received and referral added events, are not the result of a direct API request
 
 Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account.
-When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account's webhooks settings via an HTTP(s) POST request.
+When the event occurs—for example, when a job application was received, Employee Referrals creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Employee Referrals then sends the event object to any URLs in your account's webhooks settings via an HTTP(s) POST request.
 
 You might use webhooks as the basis to:
 
 * Send new e-mails to applicants on specific events
 * Forward the job application to your ATS
-* Integrate your whole hiring process with Firstbird
+* Integrate your whole hiring process with Employee Referrals
 
 ##Configuring Webhooks
 Webhooks can be configured as a Company Administrator within the Integration tab of the `Account Preferences`. For a single webhook destination you have to configure your callback URL, which can be either HTTP or HTTPS.
@@ -47,7 +47,7 @@ Our webhooks are sent as `JSON` data with `POST` requests to your configured URL
 contain multiple event envelopes, containing the type of the event and the payload.
 
 ## Acknowledge webhooks
-Following HTTP response status values are considered as success: `2XX`, `3XX`. If your configured URL returns any of this status values, Firstbird considers this
+Following HTTP response status values are considered as success: `2XX`, `3XX`. If your configured URL returns any of this status values, Employee Referrals considers this
 webhook as successfully delivered.
 
 If the request to your configured URL returns with a status of `4XX` or `5XX` we will consider that as a failure (e.g. your receiving server has been unavailable) and
@@ -78,17 +78,17 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
   "company_id": "00000000-0000-0000-0000-000000000000",
   "applicant": {
       "id": "00000000-0000-0000-0000-000000000000",
-      "first_name": "Mister",
-      "last_name": "Finch",
-      "email": "mister.finch@firstbird.com",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "test.user@radancy.com",
       "phone_number": "123456789"
   },
   "referrer": {
       "id": "00000000-0000-0000-0000-000000000000",
       "company_id": "00000000-0000-0000-0000-000000000000",
-      "first_name": "Mister",
-      "last_name": "Finch",
-      "email": "mister.finch@firstbird.com",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "test.user@radancy.com",
       "locale": "en_US",
       "main_role": "ROLE_TALENT_SCOUT",
       "location_id": "00000000-0000-0000-0000-000000000000",
@@ -139,17 +139,17 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
   "company_id": "00000000-0000-0000-0000-000000000000",
   "applicant" : {
       "id": "00000000-0000-0000-0000-000000000000",
-      "first_name": "Mister",
-      "last_name": "Finch",
-      "email": "mister.finch@firstbird.com",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "test.user@radancy.com",
       "phone_number": "123456789"
   },
   "referrer": {
       "id": "00000000-0000-0000-0000-000000000000",
       "company_id": "00000000-0000-0000-0000-000000000000",
-      "first_name": "Mister",
-      "last_name": "Finch",
-      "email": "mister.finch@firstbird.com",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "test.user@radancy.com",
       "locale": "en_US",
       "main_role": "ROLE_TALENT_SCOUT",
       "location_id": "00000000-0000-0000-0000-000000000000",
@@ -201,17 +201,17 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
   "company_id": "00000000-0000-0000-0000-000000000000",
   "applicant": {
       "id": "00000000-0000-0000-0000-000000000000",
-      "first_name": "Mister",
-      "last_name": "Finch",
-      "email": "mister.finch@firstbird.com",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "test.user@radancy.com",
       "phone_number": "123456789"
   },
   "user": {
       "id": "00000000-0000-0000-0000-000000000000",
       "company_id": "00000000-0000-0000-0000-000000000000",
-      "first_name": "Mister",
-      "last_name": "Finch",
-      "email": "mister.finch@firstbird.com",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "test.user@radancy.com",
       "locale": "en_US",
       "main_role": "ROLE_TALENT_SCOUT",
       "location_id": "00000000-0000-0000-0000-000000000000",
@@ -395,9 +395,9 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 {
     "user": {
         "id": "00000000-0000-0001-0000-000000000000",
-        "first_name": "Mister",
-        "last_name": "Finch",
-        "email": "mister.finch@firstbird.com",
+        "first_name": "Test",
+        "last_name": "User",
+        "email": "test.user@radancy.com",
         "location": "Wien",
         "department": "IT",
         "employee_id": "1234"
@@ -420,9 +420,9 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 {
     "user": {
         "id": "00000000-0000-0001-0000-000000000000",
-        "first_name": "Mister",
-        "last_name": "Finch",
-        "email": "mister.finch@firstbird.com",
+        "first_name": "Test",
+        "last_name": "User",
+        "email": "test.user@radancy.com",
         "location": "Wien",
         "department": "IT",
         "employee_id": "1234"
@@ -441,7 +441,7 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 
 | type                           | Description                                                                                             |
 | :----------------------------- | :------------------------------------------------------------------------------------------------------ |
-| job_application.received       | A job application has been created inside Firstbird. The type fields indicates how it has been created. |
+| job_application.received       | A job application has been created inside Employee Referrals. The type fields indicates how it has been created. |
 | job_application.edited         | One of your recruiters edited a job application                                                         |
 | job_application.deleted        | One of your recruiters deleted a job application                                                        |
 | job_application.rated          | One of your recruiters rated a job application                                                          |
@@ -449,8 +449,8 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 | job_application.hired          | One of your recruiters hired the applicant                                                              |
 | job_application.referral_added | The talent scout via whom the job application has been received provided feedback.                      |
 | reward.approved                | The hiring reward that was approved by a recruiter which a talent scout should receive.                 |
-| points.gained                  | A user gained points for actions within Firstbird.                                                      |
-| points.revoked                 | A user got points revoked that were gained earlier within Firstbird.                                    |
+| points.gained                  | A user gained points for actions within Employee Referrals.                                                      |
+| points.revoked                 | A user got points revoked that were gained earlier within Employee Referrals.                                    |
 
 **Note for job_application.received events:**
 

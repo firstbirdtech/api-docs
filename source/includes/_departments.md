@@ -1,6 +1,6 @@
 # Departments
 
-Departments represent any unit of organization within your company, as an example, we here at Firstbird have the departments **Sales**, **IT and Marketing** & **PR**
+Departments represent any unit of organization within your company, as an example, we here at Radancy have the departments **Sales**, **IT and Marketing** & **PR**
 
 ## Get All Departments
 
