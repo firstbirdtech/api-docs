@@ -1,6 +1,6 @@
 # Files
 
-Files are managed via the endpoints described below and are used in various places in Employee Referrals (e.g. Job Brandings). Wherever you need to specify a file, you always reference them by their Id.
+Files are managed via the endpoints described below and are used in various places throughout the Employee Referrals application (e.g. Job Brandings). Wherever you need to specify a file, you always reference them by their Id.
 
 ## Upload a File: Binary
 

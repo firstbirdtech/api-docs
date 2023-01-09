@@ -45,7 +45,7 @@ grant_type=client_credentials&scope=read%20write
 }
 ```
 
-As Employee Referrals uses OAuth2 authentication mechanism, you can authenticate your services using OAuth2 Client Credentials authentication method. To authenticate a Company Administrator needs to generate an API key and API secret within the account settings. With the key and the secret you can request a so called Bearer token from our API with the request to the right.
+As the Employee Referrals system uses OAuth2 authentication mechanism, you can authenticate your services using OAuth2 Client Credentials authentication method. To authenticate a Company Administrator needs to generate an API key and API secret within the account settings. With the key and the secret you can request a so called Bearer token from our API with the request to the right.
 
 ### Authenticating Requests
 
@@ -278,7 +278,7 @@ To fit your needs we allow to customize which fields are included in our respons
 }
 ```
 
-With Employee Referrals, we want to provide a powerful REST API which allows easy navigation through our services. Therefore we do not simply add the IDs of referenced resources to our responses but also provide links where you can find more detailed information about the referenced resource. If you take a look at the example response fields, you can see that fields do not provide detailed information but only the reference to it. All objects contain their ID in `id` property and a link to the REST API Resource in property `href`.
+For the Employee Referrals application, we want to provide a powerful REST API which allows easy navigation through our services. Therefore we do not simply add the IDs of referenced resources to our responses but also provide links where you can find more detailed information about the referenced resource. If you take a look at the example response fields, you can see that fields do not provide detailed information but only the reference to it. All objects contain their ID in `id` property and a link to the REST API Resource in property `href`.
 
 > The following example shows expanded fields:
 

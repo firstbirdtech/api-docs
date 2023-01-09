@@ -1,6 +1,6 @@
 # Jobs
 
-Jobs are one of the main pillars of Employee Referrals
+Jobs are one of the main pillars of the Employee Referrals application
 
 Jobs can have different statuses:
 

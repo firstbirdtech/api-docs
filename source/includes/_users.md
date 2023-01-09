@@ -1,6 +1,6 @@
 # Users
 
-Users are one of the main pillars of Employee Referrals. 
+Users are one of the main pillars of the Employee Referrals application. 
 
 ## Get All Users
 

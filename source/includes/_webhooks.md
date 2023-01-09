@@ -1,10 +1,10 @@
 # Webhooks
-Use webhooks to be notified about events that happen in Employee Referrals.
+Use webhooks to be notified about events that happen in the Employee Referrals system.
 
 
 ##Webhook terminology
 An event is an account occurrence, such as a new job application being received, a referral added, or an applicant being hired. Each occurrence has a corresponding event object.
-Webhook endpoints are URLs defined by users to which Employee Referrals sends events. A single event may be sent to many webhook endpoints.
+Webhook endpoints are URLs defined by users to which the Employee Referrals system sends events. A single event may be sent to many webhook endpoints.
 Webhooks refers to the overall concept of sending notifications to webhook endpoints.
 
 --
@@ -16,13 +16,13 @@ Interacting with a third-party API like Employee Referrals' can introduce two pr
 * Some events, like job application received and referral added events, are not the result of a direct API request
 
 Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account.
-When the event occurs—for example, when a job application was received, Employee Referrals creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Employee Referrals then sends the event object to any URLs in your account's webhooks settings via an HTTP(s) POST request.
+When the event occurs—for example, when a job application was received, the Employee Referrals system creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. The Employee Referrals system then sends the event object to any URLs in your account's webhooks settings via an HTTP(s) POST request.
 
 You might use webhooks as the basis to:
 
 * Send new e-mails to applicants on specific events
 * Forward the job application to your ATS
-* Integrate your whole hiring process with Employee Referrals
+* Integrate your whole hiring process with Radancy's Employee Referrals
 
 ##Configuring Webhooks
 Webhooks can be configured as a Company Administrator within the Integration tab of the `Account Preferences`. For a single webhook destination you have to configure your callback URL, which can be either HTTP or HTTPS.
@@ -47,8 +47,7 @@ Our webhooks are sent as `JSON` data with `POST` requests to your configured URL
 contain multiple event envelopes, containing the type of the event and the payload.
 
 ## Acknowledge webhooks
-Following HTTP response status values are considered as success: `2XX`, `3XX`. If your configured URL returns any of this status values, Employee Referrals considers this
-webhook as successfully delivered.
+Following HTTP response status values are considered as success: `2XX`, `3XX`. If your configured URL returns any of this status values, the Employee Referrals system considers this webhook as successfully delivered.
 
 If the request to your configured URL returns with a status of `4XX` or `5XX` we will consider that as a failure (e.g. your receiving server has been unavailable) and
 are going to retry the delivery for 24 hours which exponential increasing intervals between the retries.

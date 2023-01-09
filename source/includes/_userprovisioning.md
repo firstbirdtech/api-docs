@@ -6,7 +6,7 @@ Please note that the base URL for user provisioning is
 
 > One caveat is that User-Pre-Provisioning just provides basic user profile information that is
 > linked when a user registers, which means that the pre-provisioned profiles are only listed in
-> the user list once they have registered themselves in Employee Referrals. 
+> the user list once they have registered themselves in the Employee Referrals application. 
 
 ## Ingest User Profiles
 
