@@ -177,3 +177,12 @@ To get a user profile, use following request:
 | Query Parameter | Required | Description                                                                    |
 | :-------------- | :------- | :----------------------------------------------------------------------------- |
 | identifier      | Yes      | You may use either of the `personnel_number` or the email address of the user. |
+
+Delete a user profile without pre-provisioning
+
+### HTTP Request
+
+`DELETE /v1/companies/{companyId}/users/{email}`
+
+**Note for Deleting user without pre-provisioning:**
+* This will delete the user in Firstbird irreversibly 
