@@ -12,7 +12,7 @@ This endpoint lets you create a new invitation
 
 ```json
 {
-    "email": "test.user@firstbird.com",
+    "email": "test.user@radancy.com",
     "locale": "en_US",
     "message": "hey, would you like to join our company?",
     "role": "ROLE_TALENT_SCOUT"

@@ -1,6 +1,6 @@
 # Errors
 
-The firstbird API uses the following error codes:
+The Employee Referrals API uses the following error codes:
 
 | Error Code | Meaning                                                                               |
 |:-----------|:--------------------------------------------------------------------------------------|

@@ -1,6 +1,6 @@
 # Concepts
 
-The following information is essential to understanding how the Firstbird API functions. You should familiarize yourself with it before moving on to the rest of this guide.
+The following information is essential to understanding how the Employee Referrals API functions. You should familiarize yourself with it before moving on to the rest of this guide.
 
 ## Base URL
 
@@ -10,10 +10,10 @@ All URLs referenced in the API documentation begin with the following base URL, 
 https://api.1brd.com
 `
 
-This is the base URL for Firstbird’s public API. Please note that we only support `HTTPS`
+This is the base URL for Employee Referrals’s public API. Please note that we only support `HTTPS`
 
 ## Resource Format
-The Firstbird REST API currently only supports JSON resource representations.
+The Employee Referrals REST API currently only supports JSON resource representations.
 
 ## Authentication
 > :warning: **DEPRECATION**: The base url for authentication will change! The authentication flow remains the same.
@@ -45,7 +45,7 @@ grant_type=client_credentials&scope=read%20write
 }
 ```
 
-As Firstbird uses OAuth2 authentication mechanism, you can authenticate your services using OAuth2 Client Credentials authentication method. To authenticate a Company Administrator needs to generate an API key and API secret within the account settings. With the key and the secret you can request a so called Bearer token from our API with the request to the right.
+As the Employee Referrals system uses OAuth2 authentication mechanism, you can authenticate your services using OAuth2 Client Credentials authentication method. To authenticate a Company Administrator needs to generate an API key and API secret within the account settings. With the key and the secret you can request a so called Bearer token from our API with the request to the right.
 
 ### Authenticating Requests
 
@@ -107,7 +107,7 @@ Responses to your update requests will contain:
 | `503 SERVICE UNAVAILABLE`    | We are temporarily unable to service the request. Please wait for a bit and try again.                                   |
 
 ## Deleting Resources
-To delete a resource, make an HTTP `DELETE` request to the resource URL. Note that not all Firstbird API resources support `DELETE`.
+To delete a resource, make an HTTP `DELETE` request to the resource URL. Note that not all Employee Referrals API resources support `DELETE`.
 
 ### Status Codes
 
@@ -137,7 +137,7 @@ REST API responses indicating an error or warning are represented by a proper re
 | Attributes         | Type   | Description                                                                                     |
 |:-------------------|:-------|:------------------------------------------------------------------------------------------------|
 | `status`           | Number | The corresponding HTTP status code.                                                             |
-| `code`             | Number | A Firstbird specific error code that can be used to obtain more information.                    |
+| `code`             | Number | An Employee Referrals specific error code that can be used to obtain more information.          |
 | `message`          | String | A simple, easy to understand message that you can show directly to your application’s end-user. |
 | `developerMessage` | String | A clear explanation with technical details that might assist a developer calling our API.       |
 
@@ -278,7 +278,7 @@ To fit your needs we allow to customize which fields are included in our respons
 }
 ```
 
-At Firstbird we want to provide a powerful REST API which allows easy navigation through our services. Therefore we do not simply add the IDs of referenced resources to our responses but also provide links where you can find more detailed information about the referenced resource. If you take a look at the example response fields, you can see that fields do not provide detailed information but only the reference to it. All objects contain their ID in `id` property and a link to the REST API Resource in property `href`.
+For the Employee Referrals application, we want to provide a powerful REST API which allows easy navigation through our services. Therefore we do not simply add the IDs of referenced resources to our responses but also provide links where you can find more detailed information about the referenced resource. If you take a look at the example response fields, you can see that fields do not provide detailed information but only the reference to it. All objects contain their ID in `id` property and a link to the REST API Resource in property `href`.
 
 > The following example shows expanded fields:
 
@@ -286,9 +286,9 @@ At Firstbird we want to provide a powerful REST API which allows easy navigation
 {
   "company": {
     "id": "00000000-0000-0000-0000-000000000000",
-    "name": "Firstbird",
-    "domainName": "1bird",
-    "website": "www.firstbird.eu"
+    "name": "Radancy",
+    "domainName": "radancy",
+    "website": "www.radancy.com"
   },
   "location": {
     "name": "Paris",
@@ -312,7 +312,7 @@ At Firstbird we want to provide a powerful REST API which allows easy navigation
     "companyId": "00000000-0000-0000-0000-000000000000",
     "firstName": "Birdy",
     "lastName": "Pigeon",
-    "email": "birdy.pigeon@firstbird.com",
+    "email": "example.name@radancy.com",
     "locale": "en_US",
     "roles": [
       "ROLE_TALENT_SCOUT"
@@ -346,9 +346,9 @@ At Firstbird we want to provide a powerful REST API which allows easy navigation
   },
   "contactPerson": {
     "companyId": "00000000-0000-0000-0000-000000000000",
-    "firstName": "Birdy",
-    "lastName": "Pigeon",
-    "email": "birdy.pigeon@firstbird.com",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "John.Smith@radancy.com",
     "locale": "en_US",
     "roles": [
       "ROLE_TALENT_SCOUT"

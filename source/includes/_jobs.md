@@ -1,16 +1,16 @@
 # Jobs
 
-Jobs are one of the main pillars of Firstbird
+Jobs are one of the main pillars of the Employee Referrals application
 
 Jobs can have different statuses:
 
 | Status           | Description                                                                                                                                    |
 | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
-| DRAFT            | Those Jobs are only visible to Company Administrators and Recruiters before they get published to all Talent Scouts                            |
-| ACTIVE_PUBLISHED | Those Jobs are visible to all Talent Scouts and can be shared and candidates can be referred for those Jobs                                    |
-| ACTIVE_CLOSED    | Those Jobs are only visible to Recruiters and Company Administrators, candidates who got a shared link to that job before can’t apply anymore. |
-| ARCHIVED         | Candidates can’t apply to those Jobs anymore                                                                                                   |
-| DELETED          | Those jobs aren’t visible anymore                                                                                                              |
+| DRAFT            | These Jobs are only visible to Company Administrators and Recruiters before they get published to all Talent Scouts                            |
+| ACTIVE_PUBLISHED | These Jobs are visible to all Talent Scouts and can be shared and candidates can be referred for those Jobs                                    |
+| ACTIVE_CLOSED    | These Jobs are only visible to Recruiters and Company Administrators, candidates who received a shared link to that job before can’t apply anymore. |
+| ARCHIVED         | Candidates can’t apply to these Jobs anymore                                                                                                   |
+| DELETED          | These jobs aren’t visible anymore                                                                                                              |
 
 Jobs can also be flagged as **Hot** which means they are hard to achieve. Most of the time this flag is used for visual indication on the UI.
 

@@ -33,12 +33,12 @@ This endpoint retrieves all Reward Plans that are configured for your company.
       "details": {
         "items": [
            {
-              "description":"250€ Amazon Gift Card",
+              "description":"$250 Amazon Gift Card",
               "value":250,
               "paymentDate":"CANDIDATE_IS_HIRED"
            },
            {
-              "description":"400€ Amazon Gift Card",
+              "description":"$400 Amazon Gift Card",
               "value":400,
               "paymentDate":"4_MONTHS_AFTER_EMPLOYMENT"
            }
