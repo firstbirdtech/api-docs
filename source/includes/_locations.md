@@ -1,6 +1,6 @@
 # Locations
 
-Locations represent the geographical entities of your company. We here at Firstbird have only one Location which is **Vienna**
+Locations represent the geographical entities of your company. We here at Radancy have multiple locations such as New York, Vienna and many more.
 
 ## Get All Locations
 

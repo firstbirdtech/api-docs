@@ -160,7 +160,7 @@ To delete a user profile, use the following request:
 {
   "first_name":"Test",
   "last_name":"User",
-  "email_address":"test.user@firstbird.com",
+  "email_address":"test.user@radancy.com",
   "personnel_number":"1234",
   "active":true
 }
@@ -185,4 +185,4 @@ Delete a user profile without pre-provisioning
 `DELETE /v1/companies/{companyId}/users/{email}`
 
 **Note for Deleting user without pre-provisioning:**
-* This will delete the user in Firstbird irreversibly 
+* This will delete the user in the Employee Referrals systems irreversibly 
