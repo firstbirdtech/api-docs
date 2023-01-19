@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Firstbird API Documentation</title>
-
+    <title>Radancy's Employee Referrals - API Documentation</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -112,13 +112,13 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="firstbird-api-documentation">Firstbird API Documentation</h1>
+        <h1 id="radancy-39-s-employee-referrals-api-documentation">Radancy&rsquo;s Employee Referrals - API Documentation</h1>
 
 <p>This section covers the Core Concepts of the Firstbird REST API, as well as serving as a complete reference for all of the Firstbird resources as well as the operations that it is possible to perform with them. The documentation also includes information about the Firstbird Webhooks integration which you can use to be informed of the latest actions in your Firstbird account.</p>
 
           <h1 id="concepts">Concepts</h1>
 
-<p>The following information is essential to understanding how the Firstbird API functions. You should familiarize yourself with it before moving on to the rest of this guide.</p>
+<p>The following information is essential to understanding how the Employee Referrals API functions. You should familiarize yourself with it before moving on to the rest of this guide.</p>
 
 <h2 id="base-url">Base URL</h2>
 
@@ -128,11 +128,11 @@
 https://api.1brd.com
 </code></p>
 
-<p>This is the base URL for Firstbird’s public API. Please note that we only support <code class="prettyprint">HTTPS</code></p>
+<p>This is the base URL for Employee Referrals’s public API. Please note that we only support <code class="prettyprint">HTTPS</code></p>
 
 <h2 id="resource-format">Resource Format</h2>
 
-<p>The Firstbird REST API currently only supports JSON resource representations.</p>
+<p>The Employee Referrals REST API currently only supports JSON resource representations.</p>
 
 <h2 id="authentication">Authentication</h2>
 
@@ -165,7 +165,7 @@ grant_type=client_credentials&amp;scope=read%20write
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>As Firstbird uses OAuth2 authentication mechanism, you can authenticate your services using OAuth2 Client Credentials authentication method. To authenticate a Company Administrator needs to generate an API key and API secret within the account settings. With the key and the secret you can request a so called Bearer token from our API with the request to the right.</p>
+<p>As the Employee Referrals system uses OAuth2 authentication mechanism, you can authenticate your services using OAuth2 Client Credentials authentication method. To authenticate a Company Administrator needs to generate an API key and API secret within the account settings. With the key and the secret you can request a so called Bearer token from our API with the request to the right.</p>
 
 <h3 id="authenticating-requests">Authenticating Requests</h3>
 
@@ -304,7 +304,7 @@ Authorization: Bearer youraccesstoken
 
 <h2 id="deleting-resources">Deleting Resources</h2>
 
-<p>To delete a resource, make an HTTP <code class="prettyprint">DELETE</code> request to the resource URL. Note that not all Firstbird API resources support <code class="prettyprint">DELETE</code>.</p>
+<p>To delete a resource, make an HTTP <code class="prettyprint">DELETE</code> request to the resource URL. Note that not all Employee Referrals API resources support <code class="prettyprint">DELETE</code>.</p>
 
 <h3 id="status-codes">Status Codes</h3>
 
@@ -370,7 +370,7 @@ Authorization: Bearer youraccesstoken
 <tr>
 <td style="text-align: left"><code class="prettyprint">code</code></td>
 <td style="text-align: left">Number</td>
-<td style="text-align: left">A Firstbird specific error code that can be used to obtain more information.</td>
+<td style="text-align: left">An Employee Referrals specific error code that can be used to obtain more information.</td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="prettyprint">message</code></td>
@@ -555,7 +555,7 @@ Authorization: Bearer youraccesstoken
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>At Firstbird we want to provide a powerful REST API which allows easy navigation through our services. Therefore we do not simply add the IDs of referenced resources to our responses but also provide links where you can find more detailed information about the referenced resource. If you take a look at the example response fields, you can see that fields do not provide detailed information but only the reference to it. All objects contain their ID in <code class="prettyprint">id</code> property and a link to the REST API Resource in property <code class="prettyprint">href</code>.</p>
+<p>For the Employee Referrals application, we want to provide a powerful REST API which allows easy navigation through our services. Therefore we do not simply add the IDs of referenced resources to our responses but also provide links where you can find more detailed information about the referenced resource. If you take a look at the example response fields, you can see that fields do not provide detailed information but only the reference to it. All objects contain their ID in <code class="prettyprint">id</code> property and a link to the REST API Resource in property <code class="prettyprint">href</code>.</p>
 
 <blockquote>
 <p>The following example shows expanded fields:</p>
@@ -563,9 +563,9 @@ Authorization: Bearer youraccesstoken
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Firstbird"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1bird"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.firstbird.eu"</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Radancy"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radancy"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.radancy.com"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
@@ -589,7 +589,7 @@ Authorization: Bearer youraccesstoken
     </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Birdy"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pigeon"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"birdy.pigeon@firstbird.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.name@radancy.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="w">
@@ -623,9 +623,9 @@ Authorization: Bearer youraccesstoken
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"contactPerson"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Birdy"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pigeon"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"birdy.pigeon@firstbird.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John.Smith@radancy.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="w">
@@ -667,7 +667,7 @@ Warning 299 api-gateway Endpoint deprecated
 
           <h1 id="errors">Errors</h1>
 
-<p>The firstbird API uses the following error codes:</p>
+<p>The Employee Referrals API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -915,7 +915,7 @@ Warning 299 api-gateway Endpoint deprecated
 
           <h1 id="departments">Departments</h1>
 
-<p>Departments represent any unit of organization within your company, as an example, we here at Firstbird have the departments <strong>Sales</strong>, <strong>IT and Marketing</strong> &amp; <strong>PR</strong></p>
+<p>Departments represent any unit of organization within your company, as an example, we here at Radancy have the departments <strong>Sales</strong>, <strong>IT and Marketing</strong> &amp; <strong>PR</strong></p>
 
 <h2 id="get-all-departments">Get All Departments</h2>
 
@@ -1599,7 +1599,7 @@ Warning 299 api-gateway Endpoint deprecated
 
           <h1 id="jobs">Jobs</h1>
 
-<p>Jobs are one of the main pillars of Firstbird</p>
+<p>Jobs are one of the main pillars of the Employee Referrals application</p>
 
 <p>Jobs can have different statuses:</p>
 
@@ -1611,23 +1611,23 @@ Warning 299 api-gateway Endpoint deprecated
 </thead><tbody>
 <tr>
 <td style="text-align: left">DRAFT</td>
-<td style="text-align: left">Those Jobs are only visible to Company Administrators and Recruiters before they get published to all Talent Scouts</td>
+<td style="text-align: left">These Jobs are only visible to Company Administrators and Recruiters before they get published to all Talent Scouts</td>
 </tr>
 <tr>
 <td style="text-align: left">ACTIVE_PUBLISHED</td>
-<td style="text-align: left">Those Jobs are visible to all Talent Scouts and can be shared and candidates can be referred for those Jobs</td>
+<td style="text-align: left">These Jobs are visible to all Talent Scouts and can be shared and candidates can be referred for those Jobs</td>
 </tr>
 <tr>
 <td style="text-align: left">ACTIVE_CLOSED</td>
-<td style="text-align: left">Those Jobs are only visible to Recruiters and Company Administrators, candidates who got a shared link to that job before can’t apply anymore.</td>
+<td style="text-align: left">These Jobs are only visible to Recruiters and Company Administrators, candidates who received a shared link to that job before can’t apply anymore.</td>
 </tr>
 <tr>
 <td style="text-align: left">ARCHIVED</td>
-<td style="text-align: left">Candidates can’t apply to those Jobs anymore</td>
+<td style="text-align: left">Candidates can’t apply to these Jobs anymore</td>
 </tr>
 <tr>
 <td style="text-align: left">DELETED</td>
-<td style="text-align: left">Those jobs aren’t visible anymore</td>
+<td style="text-align: left">These jobs aren’t visible anymore</td>
 </tr>
 </tbody></table>
 
@@ -2177,7 +2177,7 @@ Warning 299 api-gateway Endpoint deprecated
 <p>This is an example request body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hey, would you like to join our company?"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="w">
@@ -2196,7 +2196,7 @@ Warning 299 api-gateway Endpoint deprecated
 
           <h1 id="job-applications">Job Applications</h1>
 
-<p>Job Applications are the other main pillar of your Account at Firstbird.</p>
+<p>Job Applications are the other main pillar of your Account with Employee Referrals.</p>
 
 <p>Job Applications can have following statuses:</p>
 
@@ -2810,7 +2810,7 @@ Also if you send a request without applicantImage, the associated Image will be 
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applicant"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.applicant@firstbird.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.applicant@radancy.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://somesocialmediaplattform.com/users/TestApplicant"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2826,7 +2826,7 @@ Also if you send a request without applicantImage, the associated Image will be 
 
           <h1 id="users">Users</h1>
 
-<p>Users are one of the main pillars of Firstbird.</p>
+<p>Users are one of the main pillars of the Employee Referrals application. </p>
 
 <h2 id="get-all-users">Get All Users</h2>
 
@@ -2855,7 +2855,7 @@ Also if you send a request without applicantImage, the associated Image will be 
       </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000002"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/departments/00000000-0000-0000-0000-000000000002"</span><span class="w">
@@ -3055,7 +3055,7 @@ Also if you send a request without applicantImage, the associated Image will be 
 
           <h1 id="files">Files</h1>
 
-<p>Files are managed via the endpoints described below and are used in various places in Firstbird (e.g. Job Brandings). Wherever you need to specify a file, you always reference them by their Id.</p>
+<p>Files are managed via the endpoints described below and are used in various places throughout the Employee Referrals application (e.g. Job Brandings). Wherever you need to specify a file, you always reference them by their Id.</p>
 
 <h2 id="upload-a-file-binary">Upload a File: Binary</h2>
 
@@ -3217,12 +3217,12 @@ Also if you send a request without applicantImage, the associated Image will be 
       </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"250€ Amazon Gift Card"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"$250 Amazon Gift Card"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"value"</span><span class="p">:</span><span class="mi">250</span><span class="p">,</span><span class="w">
               </span><span class="nt">"paymentDate"</span><span class="p">:</span><span class="s2">"CANDIDATE_IS_HIRED"</span><span class="w">
            </span><span class="p">},</span><span class="w">
            </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"400€ Amazon Gift Card"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"$400 Amazon Gift Card"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"value"</span><span class="p">:</span><span class="mi">400</span><span class="p">,</span><span class="w">
               </span><span class="nt">"paymentDate"</span><span class="p">:</span><span class="s2">"4_MONTHS_AFTER_EMPLOYMENT"</span><span class="w">
            </span><span class="p">}</span><span class="w">
@@ -3324,19 +3324,19 @@ Also if you send a request without applicantImage, the associated Image will be 
 
           <h1 id="webhooks">Webhooks</h1>
 
-<p>Use webhooks to be notified about events that happen in a Firstbird account.</p>
+<p>Use webhooks to be notified about events that happen in the Employee Referrals system.</p>
 
 <h2 id="webhook-terminology">Webhook terminology</h2>
 
 <p>An event is an account occurrence, such as a new job application being received, a referral added, or an applicant being hired. Each occurrence has a corresponding event object.
-Webhook endpoints are URLs defined by users to which Firstbird sends events. A single event may be sent to many webhook endpoints.
+Webhook endpoints are URLs defined by users to which the Employee Referrals system sends events. A single event may be sent to many webhook endpoints.
 Webhooks refers to the overall concept of sending notifications to webhook endpoints.</p>
 
 <p>&ndash;</p>
 
 <h2 id="why-using-webhooks">Why using webhooks</h2>
 
-<p>Interacting with a third-party API like Firstbird&rsquo;s can introduce two problems:</p>
+<p>Interacting with a third-party API like Employee Referrals&rsquo; can introduce two problems:</p>
 
 <ul>
 <li>Services not directly responsible for making an API request may still need to know the response of that request</li>
@@ -3344,14 +3344,14 @@ Webhooks refers to the overall concept of sending notifications to webhook endpo
 </ul>
 
 <p>Webhooks solve these problems by letting you register a URL that we will notify anytime an event happens in your account.
-When the event occurs—for example, when a job application was received, Firstbird creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. Firstbird then sends the event object to any URLs in your account&rsquo;s webhooks settings via an HTTP(s) POST request.</p>
+When the event occurs—for example, when a job application was received, the Employee Referrals system creates an event object. This object contains all the relevant information about what just happened, including the type of event and the data associated with that event. The Employee Referrals system then sends the event object to any URLs in your account&rsquo;s webhooks settings via an HTTP(s) POST request.</p>
 
 <p>You might use webhooks as the basis to:</p>
 
 <ul>
 <li>Send new e-mails to applicants on specific events</li>
 <li>Forward the job application to your ATS</li>
-<li>Integrate your whole hiring process with Firstbird</li>
+<li>Integrate your whole hiring process with Radancy&rsquo;s Employee Referrals</li>
 </ul>
 
 <h2 id="configuring-webhooks">Configuring Webhooks</h2>
@@ -3377,8 +3377,7 @@ contain multiple event envelopes, containing the type of the event and the paylo
 
 <h2 id="acknowledge-webhooks">Acknowledge webhooks</h2>
 
-<p>Following HTTP response status values are considered as success: <code class="prettyprint">2XX</code>, <code class="prettyprint">3XX</code>. If your configured URL returns any of this status values, Firstbird considers this
-webhook as successfully delivered.</p>
+<p>Following HTTP response status values are considered as success: <code class="prettyprint">2XX</code>, <code class="prettyprint">3XX</code>. If your configured URL returns any of this status values, the Employee Referrals system considers this webhook as successfully delivered.</p>
 
 <p>If the request to your configured URL returns with a status of <code class="prettyprint">4XX</code> or <code class="prettyprint">5XX</code> we will consider that as a failure (e.g. your receiving server has been unavailable) and
 are going to retry the delivery for 24 hours which exponential increasing intervals between the retries.</p>
@@ -3409,17 +3408,17 @@ are going to retry the delivery for 24 hours which exponential increasing interv
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"main_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
@@ -3470,17 +3469,17 @@ are going to retry the delivery for 24 hours which exponential increasing interv
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"applicant"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"main_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
@@ -3532,17 +3531,17 @@ are going to retry the delivery for 24 hours which exponential increasing interv
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"main_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
@@ -3726,9 +3725,9 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0001-0000-000000000000"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wien"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="w">
@@ -3751,9 +3750,9 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0001-0000-000000000000"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mister"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finch"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mister.finch@firstbird.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wien"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="w">
@@ -3778,7 +3777,7 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 </thead><tbody>
 <tr>
 <td style="text-align: left">job_application.received</td>
-<td style="text-align: left">A job application has been created inside Firstbird. The type fields indicates how it has been created.</td>
+<td style="text-align: left">A job application has been created inside Employee Referrals. The type fields indicates how it has been created.</td>
 </tr>
 <tr>
 <td style="text-align: left">job_application.edited</td>
@@ -3810,11 +3809,11 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 </tr>
 <tr>
 <td style="text-align: left">points.gained</td>
-<td style="text-align: left">A user gained points for actions within Firstbird.</td>
+<td style="text-align: left">A user gained points for actions within Employee Referrals.</td>
 </tr>
 <tr>
 <td style="text-align: left">points.revoked</td>
-<td style="text-align: left">A user got points revoked that were gained earlier within Firstbird.</td>
+<td style="text-align: left">A user got points revoked that were gained earlier within Employee Referrals.</td>
 </tr>
 </tbody></table>
 
@@ -3848,7 +3847,7 @@ On the second step the candidate can now be forwarded to an external URL to comp
 
 <h3 id="requirement">Requirement</h3>
 
-<p>The Candidate Experience Package has to be unlocked explicitly per Company Account on Firstbird side. The CEP is an add-on package.</p>
+<p>The Candidate Experience Package has to be unlocked explicitly per Company Account by Radancy. The CEP is an add-on package.</p>
 
 <h2 id="job-import-with-external-url">Job-Import with external URL</h2>
 
@@ -3890,9 +3889,9 @@ On the second step the candidate can now be forwarded to an external URL to comp
 <h2 id="request-basic-referral-information">Request basic referral information</h2>
 
 <p>Once a candidate has completed the first step the user is forwarded to the <code class="prettyprint">jobPostingUrl</code>. 
-A query parameter <strong>referralId</strong> is added to this URL which references the referral in Firstbird.
+A query parameter <strong>referralId</strong> is added to this URL which references the referral in Employee Referrals.
 Note that the referralId is different from the applicationId.
-This referralId can be used to request basic information the candidate has added to Firstbird. </p>
+This referralId can be used to request basic information the candidate has added to Employee Referrals. </p>
 
 <p><code class="prettyprint">GET /v1/companies/{companyId}/applications?sourceId={referralId}&amp;expand=applicant</code></p>
 
@@ -3929,7 +3928,7 @@ That means to move a Job Application from “Accepted Referral” to “In Progr
 
 <p><strong>Important to know</strong></p>
 
-<p>All fields are mandatory. Changing a field will update the Job Application information on Firstbird side!</p>
+<p>All fields are mandatory. Changing a field will update the Job Application information in Employee Referrals!</p>
 
 <h4 id="endpoint-to-move-the-job-application-to-quot-in-progress-quot">Endpoint to move the job application to &ldquo;In Progress&rdquo;</h4>
 
@@ -3959,7 +3958,7 @@ First disable the mandatory files in the Company Account Preferences!</p>
 <blockquote>
 <p>One caveat is that User-Pre-Provisioning just provides basic user profile information that is
 linked when a user registers, which means that the pre-provisioned profiles are only listed in
-the user list once they have registered themselves in Firstbird.</p>
+the user list once they have registered themselves in the Employee Referrals application. </p>
 </blockquote>
 
 <h2 id="ingest-user-profiles">Ingest User Profiles</h2>
@@ -3973,7 +3972,7 @@ the user list once they have registered themselves in Firstbird.</p>
       </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"Vienna"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"department"</span><span class="p">:</span><span class="s2">"IT"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -3981,7 +3980,7 @@ the user list once they have registered themselves in Firstbird.</p>
       </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User2"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1235"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user2@firstbird.com"</span><span class="w">
+      </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user2@radancy.com"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4045,13 +4044,13 @@ This will stage all users for provisioning.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"active"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>To create a new user profile, use following request:</p>
+<p>To create a new user profile, use the following request:</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -4099,7 +4098,7 @@ This will stage all users for provisioning.</p>
 <tr>
 <td style="text-align: left">active</td>
 <td style="text-align: left">No</td>
-<td style="text-align: left">A <code class="prettyprint">boolean</code> value to activate or deactivate a user in firstbird. Default value is <code class="prettyprint">true</code>.</td>
+<td style="text-align: left">A <code class="prettyprint">boolean</code> value to activate or deactivate a user in Employee Referrals. Default value is <code class="prettyprint">true</code>.</td>
 </tr>
 </tbody></table>
 
@@ -4111,13 +4110,13 @@ This will stage all users for provisioning.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"active"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>To update a user profile, use following request:</p>
+<p>To update a user profile, use the following request:</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -4149,7 +4148,7 @@ This will stage all users for provisioning.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@firstbird.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_address"</span><span class="p">:</span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"personnel_number"</span><span class="p">:</span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"active"</span><span class="p">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4177,7 +4176,7 @@ This will stage all users for provisioning.</p>
 
 <h2 id="delete-a-user-profile">Delete a User Profile</h2>
 
-<p>To delete a user profile, use following request:</p>
+<p>To delete a user profile, use the following request:</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -4213,7 +4212,7 @@ This will stage all users for provisioning.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>To get a user profile, use following request:</p>
+<p>To get a user profile, use the following request:</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
