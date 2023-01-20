@@ -390,4 +390,4 @@ Warning 299 api-gateway Endpoint deprecated
 
 ## Breaking Changes
 
-We prioritize providing you with a reliable and consistent experience, and as such, we ensure that there will be no breaking API changes. We will always provide clear communication ahead of any updates or changes to our API.
+We prioritize providing you with a reliable and consistent experience, and as such, we ensure that there will be no breaking API changes.
