@@ -387,3 +387,7 @@ Example:
 HTTP/1.1 200 Ok
 Warning 299 api-gateway Endpoint deprecated 
 ```
+
+## Breaking Changes
+
+We prioritize providing you with a reliable and consistent experience, and as such, we ensure that there will be no breaking API changes. We will always provide clear communication ahead of any updates or changes to our API.
