@@ -9,7 +9,7 @@ Webhooks refers to the overall concept of sending notifications to webhook endpo
 
 --
 
-##Why using webhooks
+## Why using webhooks
 Interacting with a third-party API like Employee Referrals' can introduce two problems:
 
 * Services not directly responsible for making an API request may still need to know the response of that request
@@ -58,6 +58,66 @@ As our webhooks don't provide authentication mechanisms, you shouldn't take the 
 You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52.57.83.207.
 
 ## Available Events
+
+> job_application.created 
+
+```json
+{
+  "job_application": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "job_id": "00000000-0000-0000-0000-000000000000",
+      "rating": "A, B or C",
+      "created_by_user_id": "00000000-0000-0000-0000-000000000000",
+      "status": "IN_PROGRESS, HIRED or CLOSED",
+      "applicant_image": "http://example.com/applicant_image.png",
+      "attachments": [
+          "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"
+      ]
+  },
+  "company_id": "00000000-0000-0000-0000-000000000000",
+  "applicant": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "test.user@radancy.com",
+      "phone_number": "123456789"
+  },
+  "job": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "company_id": "00000000-0000-0000-0000-000000000000",
+      "location_id": "00000000-0000-0000-0000-000000000000",
+      "contact_person_id": "00000000-0000-0000-0000-000000000000",
+      "reward_id": "00000000-0000-0000-0000-000000000000",
+      "department_id": "00000000-0000-0000-0000-000000000000",
+      "reference_number": "ref-no",
+      "title": "Developer",
+      "description": "Java Backend Dev",
+      "end_date": "1970-01-01 12:00:00.000Z",
+      "status": "DRAFT, ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED or DELETED",
+      "hot": true,
+      "responsible_persons": [
+          "00000000-0000-0000-0000-000000000000",
+          "00000000-0000-0000-0000-000000000000"
+      ],
+      "creation_date": "1970-01-01 12:00:00.000Z"
+  },
+  "referrer": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "company_id": "00000000-0000-0000-0000-000000000000",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "test.user@radancy.com",
+      "locale": "en_US",
+      "main_role": "ROLE_TALENT_SCOUT",
+      "location_id": "00000000-0000-0000-0000-000000000000",
+      "department_id": "00000000-0000-0000-0000-000000000000",
+      "status": "ACTIVE or INACTIVE",
+      "incognito": false,
+      "time_zone": "Europe/Vienna"
+  },
+  "date_time": "1970-01-01 12:00:00.000Z",
+}
+```
 
 > job_application.received by link or referral
 
@@ -440,6 +500,7 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
 
 | type                           | Description                                                                                             |
 | :----------------------------- | :------------------------------------------------------------------------------------------------------ |
+| job_application.created        | A job application has been created from referral. Sent before job_application.received                  |
 | job_application.received       | A job application has been created inside Employee Referrals. The type fields indicates how it has been created. |
 | job_application.edited         | One of your recruiters edited a job application                                                         |
 | job_application.deleted        | One of your recruiters deleted a job application                                                        |
