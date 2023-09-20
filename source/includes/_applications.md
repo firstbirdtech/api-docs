@@ -253,7 +253,7 @@ This will return the URL to the actual file. Be aware, that the URL is valid for
         "id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
         "href": "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"
       },
-      "referralType": "REFERRAL",
+      "feedbackType": "REFERRAL",
       "connection": "John Does is a former coworker",
       "reason": "I highly recommend this candidate"
     }
