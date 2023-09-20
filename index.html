@@ -2604,7 +2604,7 @@ This will return the URL to the actual file. Be aware, that the URL is valid for
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/users/dddddddd-dddd-dddd-dddd-dddddddddddd"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"referralType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REFERRAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"feedbackType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REFERRAL"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"connection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Does is a former coworker"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I highly recommend this candidate"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3395,6 +3395,66 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <h2 id="available-events">Available Events</h2>
 
 <blockquote>
+<p>job_application.created </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"applicant_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/applicant_image.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"contact_person_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reward_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref-no"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Java Backend Dev"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAFT, ACTIVE_PUBLISHED, ACTIVE_CLOSED, ARCHIVED or DELETED"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"responsible_persons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"main_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_TALENT_SCOUT"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"department_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE or INACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"incognito"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01 12:00:00.000Z"</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
 <p>job_application.received by link or referral</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -3779,6 +3839,10 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 <th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">job_application.created</td>
+<td style="text-align: left">A job application has been created from referral. Sent before job_application.received</td>
+</tr>
 <tr>
 <td style="text-align: left">job_application.received</td>
 <td style="text-align: left">A job application has been created inside Employee Referrals. The type fields indicates how it has been created.</td>
