@@ -53,7 +53,7 @@ If the request to your configured URL returns with a status of `4XX` or `5XX` we
 are going to retry the delivery for 24 hours which exponential increasing intervals between the retries.
 
 ## Security Considerations
-Our webhooks could either be authenticated via Basic Auth or OAuth 2.0, or not authenticated at all.
+You may optionally secure your webhooks endpoints using Basic Authentication or an OAuth 2.0 client credentials flow. Nevertheless, it is good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id which allows you to request the referenced job application via our REST API).
 You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52.57.83.207.
 
 ## Available Events
