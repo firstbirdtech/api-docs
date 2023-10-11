@@ -53,8 +53,7 @@ If the request to your configured URL returns with a status of `4XX` or `5XX` we
 are going to retry the delivery for 24 hours which exponential increasing intervals between the retries.
 
 ## Security Considerations
-As our webhooks don't provide authentication mechanisms, you shouldn't take the values contained in the requests as granted. It is considered a good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id which allows you to request the referenced job application via our REST API)
-
+You may optionally secure your webhooks endpoints using Basic Authentication or an OAuth 2.0 client credentials flow. Nevertheless, it is good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id which allows you to request the referenced job application via our REST API).
 You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52.57.83.207.
 
 ## Available Events
@@ -66,21 +65,15 @@ You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52
   "job_application": {
       "id": "00000000-0000-0000-0000-000000000000",
       "job_id": "00000000-0000-0000-0000-000000000000",
-      "rating": "A, B or C",
       "created_by_user_id": "00000000-0000-0000-0000-000000000000",
-      "status": "IN_PROGRESS, HIRED or CLOSED",
-      "applicant_image": "http://example.com/applicant_image.png",
-      "attachments": [
-          "https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"
-      ]
+      "status": "PENDING"
   },
   "company_id": "00000000-0000-0000-0000-000000000000",
   "applicant": {
       "id": "00000000-0000-0000-0000-000000000000",
       "first_name": "Test",
       "last_name": "User",
-      "email": "test.user@radancy.com",
-      "phone_number": "123456789"
+      "email": "test.user@radancy.com"
   },
   "job": {
       "id": "00000000-0000-0000-0000-000000000000",
