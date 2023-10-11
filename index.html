@@ -3388,9 +3388,8 @@ are going to retry the delivery for 24 hours which exponential increasing interv
 
 <h2 id="security-considerations">Security Considerations</h2>
 
-<p>As our webhooks don&rsquo;t provide authentication mechanisms, you shouldn&rsquo;t take the values contained in the requests as granted. It is considered a good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id which allows you to request the referenced job application via our REST API)</p>
-
-<p>You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52.57.83.207.</p>
+<p>You may optionally secure your webhooks endpoints using Basic Authentication or an OAuth 2.0 client credentials flow. Nevertheless, it is good practice to request the contained values by their reference id (e.g. job_application.received contains the job application id which allows you to request the referenced job application via our REST API).
+You can restrict the webhooks to only accept them from our IPs: 52.57.76.133, 52.57.83.207.</p>
 
 <h2 id="available-events">Available Events</h2>
 
@@ -3401,21 +3400,15 @@ are going to retry the delivery for 24 hours which exponential increasing interv
   </span><span class="nt">"job_application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A, B or C"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"created_by_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_PROGRESS, HIRED or CLOSED"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"applicant_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/applicant_image.png"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"https://api.1brd.com/v1/companies/00000000-0000-0000-0000-000000000000/applications/d648096f-c3f4-4121-af9a-5377753e467e/files/a3beb15a-84ac-4646-a20b-7aa5faf982a7"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"applicant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.user@radancy.com"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
