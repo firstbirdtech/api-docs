@@ -6,7 +6,7 @@ Please note that the base URL for user provisioning is
 
 > One caveat is that User-Pre-Provisioning just provides basic user profile information that is
 > linked when a user registers, which means that the pre-provisioned profiles are only listed in
-> the user list once they have registered themselves in the Employee Referrals application. 
+> the user list once they have registered themselves in the Employee Referrals application.
 
 ## Ingest User Profiles
 
@@ -14,7 +14,7 @@ Please note that the base URL for user provisioning is
 
 ```json
 {
-  "users": [ 
+  "users": [
     {
       "first_name":"Test",
       "last_name":"User",
@@ -114,6 +114,7 @@ To update a user profile, use the following request:
 ## Deactivate a User Profile
 
 For deactivating a user profile, set the `active` field to false in the body and call the endpoint for updating a profile as follows.
+Note: this only works for pre-provisioned users.
 
 > This is an example request body
 
@@ -137,6 +138,35 @@ For deactivating a user profile, set the `active` field to false in the body and
 | Query Parameter | Required | Description                                                                    |
 | :-------------- | :------- | :----------------------------------------------------------------------------- |
 | identifier      | Yes      | You may use either of the `personnel_number` or the email address of the user. |
+
+## Change User Profile Status
+
+Directly change a user profile's enabled state.
+This works with any type of user provisioning.
+
+> This is an example request body
+
+```json
+{
+  "employeeId":"123",
+  "active":false
+}
+```
+
+### HTTP Request
+
+`PUT /v1/companies/{companyId}/users/profile/status`
+
+### UserStatusChange Request Body
+
+Provide either `email` or `employeeId` (`personnel_number`) as `string` to identify the user.
+Set `active` to `true` to activate the user, `false` to disable the user.
+
+| Field name       | Required | Description                           |
+| :--------------- | :------- | :------------------------------------ |
+| email            | No       | Email address                         |
+| employeeId       | No       | The id of the employee in your system |
+| active           | Yes      | Set user to active or not             |
 
 ## Delete a User Profile
 
@@ -185,4 +215,4 @@ Delete a user profile without pre-provisioning
 `DELETE /v1/companies/{companyId}/users/{email}`
 
 **Note for Deleting user without pre-provisioning:**
-* This will delete the user in the Employee Referrals systems irreversibly 
+* This will delete the user in the Employee Referrals systems irreversibly
