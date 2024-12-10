@@ -4019,7 +4019,7 @@ First disable the mandatory files in the Company Account Preferences!</p>
 <blockquote>
 <p>One caveat is that User-Pre-Provisioning just provides basic user profile information that is
 linked when a user registers, which means that the pre-provisioned profiles are only listed in
-the user list once they have registered themselves in the Employee Referrals application. </p>
+the user list once they have registered themselves in the Employee Referrals application.</p>
 </blockquote>
 
 <h2 id="ingest-user-profiles">Ingest User Profiles</h2>
@@ -4028,7 +4028,7 @@ the user list once they have registered themselves in the Employee Referrals app
 <p>This is an example request body</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> 
+  </span><span class="nt">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
@@ -4201,7 +4201,8 @@ This will stage all users for provisioning.</p>
 
 <h2 id="deactivate-a-user-profile">Deactivate a User Profile</h2>
 
-<p>For deactivating a user profile, set the <code class="prettyprint">active</code> field to false in the body and call the endpoint for updating a profile as follows.</p>
+<p>For deactivating a user profile, set the <code class="prettyprint">active</code> field to false in the body and call the endpoint for updating a profile as follows.
+Note: this only works for pre-provisioned users.</p>
 
 <blockquote>
 <p>This is an example request body</p>
@@ -4232,6 +4233,53 @@ This will stage all users for provisioning.</p>
 <td style="text-align: left">identifier</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">You may use either of the <code class="prettyprint">personnel_number</code> or the email address of the user.</td>
+</tr>
+</tbody></table>
+
+<h2 id="change-user-profile-status">Change User Profile Status</h2>
+
+<p>Directly change a user profile&rsquo;s enabled state.
+This works with any type of user provisioning.</p>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"employeeId"</span><span class="p">:</span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"active"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /v1/companies/{companyId}/users/profile/status</code></p>
+
+<h3 id="userstatuschange-request-body">UserStatusChange Request Body</h3>
+
+<p>Provide either <code class="prettyprint">email</code> or <code class="prettyprint">employeeId</code> (<code class="prettyprint">personnel_number</code>) as <code class="prettyprint">string</code> to identify the user.
+Set <code class="prettyprint">active</code> to <code class="prettyprint">true</code> to activate the user, <code class="prettyprint">false</code> to disable the user.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Field name</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">Email address</td>
+</tr>
+<tr>
+<td style="text-align: left">employeeId</td>
+<td style="text-align: left">No</td>
+<td style="text-align: left">The id of the employee in your system</td>
+</tr>
+<tr>
+<td style="text-align: left">active</td>
+<td style="text-align: left">Yes</td>
+<td style="text-align: left">Set user to active or not</td>
 </tr>
 </tbody></table>
 
@@ -4302,7 +4350,7 @@ This will stage all users for provisioning.</p>
 <p><code class="prettyprint">DELETE /v1/companies/{companyId}/users/{email}</code></p>
 
 <p><strong>Note for Deleting user without pre-provisioning:</strong>
-* This will delete the user in the Employee Referrals systems irreversibly </p>
+* This will delete the user in the Employee Referrals systems irreversibly</p>
 
           <h1 id="status-page">Status Page</h1>
 
