@@ -196,6 +196,12 @@ To create a user using the SCIM Radancy Referrals provisioning API, you can use 
 }
 ```
 
+The accepted values for the field `urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User:role` are:
+
+* `ROLE_TALENT_SCOUT`
+* `ROLE_RECRUITER`
+* `ROLE_COMPANY_ADMIN`
+
 > This is an example response body:
 
 ```json
