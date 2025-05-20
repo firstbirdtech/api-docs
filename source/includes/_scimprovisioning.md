@@ -478,6 +478,7 @@ The fields that are supported for filtering are:
 | externalId     |
 | userName       |
 | email          |
+| active         |
 
 The following operators are supported:
 
