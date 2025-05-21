@@ -18,6 +18,7 @@ includes:
   - rewardplans
   - webhooks
   - cep
+  - scimprovisioning
   - userprovisioning
   - statuspage
 
