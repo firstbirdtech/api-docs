@@ -4010,6 +4010,560 @@ That means to move a Job Application from “Accepted Referral” to “In Progr
 <p>Customers may have set the attachments to mandatory, which block the job application to be finished as it will complain about missing files. 
 First disable the mandatory files in the Company Account Preferences!</p>
 
+          <h1 id="scim-provisioning">SCIM provisioning</h1>
+
+<p>The SCIM Microsoft Entra provisioning is a feature that allows you to manage user accounts in the Employee Referrals application using Microsoft Entra. This feature is useful for organizations that use Microsoft Entra as their identity provider and want to automate the user provisioning process.</p>
+
+<h2 id="scim-admin-credentials">SCIM Admin Credentials</h2>
+
+<p>To set up SCIM Microsoft Entra provisioning, you need to have the following credentials:</p>
+
+<ul>
+<li><strong>Tenant URL</strong>: The URL of your Radancy Referrals tenant. It follows the format <code class="prettyprint">https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/</code>.</li>
+<li><strong>Bearer Token</strong>: The token used to authenticate your requests.</li>
+</ul>
+
+<p>The COMPANY ID is the unique identifier for your organization in the Employee Referrals application. You can find it in the Company ID Information of your Employee Referrals application in the account preferences, in the Integrations tab, under API Key Management.</p>
+
+<p>To obtain the Bearer Token, you need to create a new API key in the Employee Referrals application. This token will be used to authenticate your requests to the SCIM Microsoft Entra provisioning API.</p>
+
+<h2 id="acquiring-an-oauth-token">Acquiring an OAuth Token</h2>
+
+<p>To acquire an OAuth token, you need to follow these steps in the Radancy Referrals application:</p>
+
+<ol>
+<li><strong>Retrieve OAuth2 ClientId and Client Secret</strong>: In the Employee Referrals application, navigate to the Integrations tab in the account settings and create a new API key. </li>
+<li><strong>Encode the ClientId and Client Secret</strong>: Use Base64 encoding to encode the ClientId and Client Secret in the format <code class="prettyprint">ClientId:ClientSecret</code>. This will be used in the Authorization header of your requests.</li>
+</ol>
+
+<h3 id="request-an-oauth-token">Request an OAuth Token</h3>
+
+<p>To request an OAuth token, you need to send a POST request to the following endpoint:</p>
+
+<p><code class="prettyprint">POST https://auth.1brd.com/oauth/token</code></p>
+
+<p><code class="prettyprint">Content-Type: application/x-www-form-urlencoded</code></p>
+
+<p><code class="prettyprint">Accept: application/json</code></p>
+
+<p><code class="prettyprint">Authorization: Basic {ClientId:ClientSecret Base64 encoded}</code></p>
+
+<blockquote>
+<p>The authentication response will return a JSON object containing the access token, which you can use to authenticate your requests to the SCIM Microsoft Entra provisioning API.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2e6cc2fa-6a70-4dfe-b3ab-b012f25462db"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YourAccessToken"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483646</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read write"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ede67ad4-60ac-4526-8c54-083d6e83ae46"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The access token can be configured in the <code class="prettyprint">Bearer Token</code> field in the Microsoft Entra provisioning settings.</p>
+
+<h2 id="scim-microsoft-entra-provisioning-api">SCIM Microsoft Entra provisioning API</h2>
+
+<p>The SCIM Microsoft Entra provisioning API allows you to manage user accounts in the Employee Referrals application. The API follows the SCIM 2.0 standard and provides the following endpoints:</p>
+
+<ul>
+<li><p><strong>GET https://customer.services.1brd.com/api/scim/v2/ServiceProviderConfig</strong>: Retrieve the service provider configuration for the SCIM Radancy Referrals provisioning API.</p></li>
+<li><p><strong>GET https://customer.services.1brd.com/api/scim/v2/ResourceTypes</strong>: Retrieve the resource types for the SCIM Radancy Referrals provisioning API.</p></li>
+<li><p><strong>GET https://customer.services.1brd.com/api/scim/v2/Schemas</strong>: Retrieve the schemas for the SCIM Radancy Referrals provisioning API.</p></li>
+<li><p><strong>GET https://customer.services.1brd.com/api/scim/v2/Schemas/User</strong>: Retrieve the schema for the User resource type.</p></li>
+<li><p><strong>GET https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users</strong>: Retrieve a list of users in the Employee Referrals application.</p></li>
+<li><p><strong>GET https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users/{USER ID}</strong>: Retrieve a specific user by their ID.</p></li>
+<li><p><strong>POST https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users</strong>: Create a new user in the Employee Referrals application.</p></li>
+<li><p><strong>PUT https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users/{USER ID}</strong>: Update an existing user in the Employee Referrals application.</p></li>
+<li><p><strong>PATCH https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users/{USER ID}</strong>: Update a specific user by their ID.</p></li>
+<li><p><strong>DELETE https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users/{USER ID}</strong>: Delete a user from the Employee Referrals application.</p></li>
+</ul>
+
+<h2 id="custom-user-attributes">Custom User Attributes</h2>
+
+<p>The SCIM Microsoft Entra provisioning API supports custom attributes. You can use custom attributes to store additional information about users in the Employee Referrals application. Custom attributes are defined in the Employee Referrals application and can be used in the SCIM Microsoft Entra provisioning API.</p>
+
+<p>The supported custom attributes for the SCIM Microsoft Entra provisioning API are as follows: </p>
+
+<table><thead>
+<tr>
+<th>SCIM Custom Attribute</th>
+<th>Radancy Referrals Attribute</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User:locationName</td>
+<td>user location name</td>
+<td>no</td>
+</tr>
+<tr>
+<td>urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User:role</td>
+<td>user role</td>
+<td>no</td>
+</tr>
+<tr>
+<td>urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber</td>
+<td>user employee id</td>
+<td>no</td>
+</tr>
+<tr>
+<td>urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department</td>
+<td>user department name</td>
+<td>no</td>
+</tr>
+</tbody></table>
+
+<h2 id="service-provider-configuration">Service Provider Configuration</h2>
+
+<p>Returns Radancy Referrals SCIM service provider configuration, including supported features and capabilities.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/ServiceProviderConfig</code></p>
+
+<h2 id="schemas">Schemas</h2>
+
+<p>Radancy Referrals supports schemas for Users. Querying the schemas endpoint returns the SCIM attributes.</p>
+
+<h2 id="resource-types">Resource Types</h2>
+
+<p>Returns the resource types supported by Radancy Referrals SCIM provisioning API.</p>
+
+<h2 id="get-a-user">Get a User</h2>
+
+<p>To get a user using the SCIM Referrals provisioning API, you can use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users/{id}</code></p>
+
+<h3 id="example-request">Example Request</h3>
+
+<p><code class="prettyprint">GET https://customer.services.1brd.com/api/customers/00000000-0000-0000-0000-000000000000/scim/v2/Users/00000000-0000-0000-0000-000000000001</code></p>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:core:2.0:User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mustermann"</span><span class="p">,</span><span class="w">
+    </span><span class="err">}</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Development"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"employeeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Austria"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_RECRUITER"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="create-a-user">Create a User</h2>
+
+<p>In Radancy Referrals, the <code class="prettyprint">userName</code> field must match the email address of the user.
+To create a user using the SCIM Radancy Referrals provisioning API, you can use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users</code></p>
+
+<h3 id="example-request">Example Request</h3>
+
+<p><code class="prettyprint">POST https://customer.services.1brd.com/api/customers/00000000-0000-0000-0000-000000000000/scim/v2/Users</code></p>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:core:2.0:User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mustermann"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"employeeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Development"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_RECRUITER"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The accepted values for the field <code class="prettyprint">urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User:role</code> are:</p>
+
+<ul>
+<li><code class="prettyprint">ROLE_TALENT_SCOUT</code></li>
+<li><code class="prettyprint">ROLE_RECRUITER</code></li>
+<li><code class="prettyprint">ROLE_COMPANY_ADMIN</code></li>
+</ul>
+
+<blockquote>
+<p>This is an example response body:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:core:2.0:User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mustermann"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"employeeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Development"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_RECRUITER"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="update-a-user">Update a User</h2>
+
+<p>In Radancy Referrals, the <code class="prettyprint">userName</code> field must match the email address of the user.
+To update a user using the SCIM Radancy Referrals provisioning API, you can use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users/{id}</code></p>
+
+<h3 id="example-request">Example Request</h3>
+
+<p><code class="prettyprint">PUT https://customer.services.1brd.com/api/customers/00000000-0000-0000-0000-000000000001/scim/v2/Users/00000000-0000-0000-0000-000000000001</code></p>
+
+<blockquote>
+<p>This is an example request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:core:2.0:User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mustermann"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"employeeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"654321"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Development"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vienna"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_RECRUITER"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>This is an example response body:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:core:2.0:User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mustermann"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"employeeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"654321"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Development"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vienna"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_RECRUITER"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="patch-a-user">Patch a User</h2>
+
+<p>To patch a user using the SCIM Radancy Referrals provisioning API, you can use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users/{id}</code></p>
+
+<h3 id="example-request">Example Request</h3>
+
+<p><code class="prettyprint">PATCH https://customer.services.1brd.com/api/customers/00000000-0000-0000-0000-000000000001/scim/v2/Users/00000000-0000-0000-0000-000000000001</code></p>
+
+<blockquote>
+<p>This is an example request body:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:api:messages:2.0:PatchOp"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"Operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replace"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"userName"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.updated@test.com"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replace"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emails[type eq \"work\"].value"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.updated@test.com"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Software Engineer"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>This is an example response body:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:core:2.0:User"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.updated@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mustermann"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.updated@test.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Software Engineer"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vienna"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_RECRUITER"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-a-list-of-users">Get a List of Users</h2>
+
+<p>To get a list of users using the SCIM Radancy Referrals provisioning API, you can use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users</code></p>
+
+<h3 id="example-request">Example Request</h3>
+
+<p><code class="prettyprint">GET https://customer.services.1brd.com/api/customers/00000000-0000-0000-0000-000000000001/scim/v2/Users</code></p>
+
+<blockquote>
+<p>This request returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"totalResults"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"itemsPerPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"startIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"urn:ietf:params:scim:api:messages:2.0:ListResponse"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"Resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"urn:ietf:params:scim:schemas:core:2.0:User"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.mustermann"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"userName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.updated@test.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mustermann"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vienna"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"max.updated@test.com"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nt">"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Software Engineer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"urn:ietf:params:scim:schemas:extension:RadancyReferralsExtension:2.0:User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"locationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vienna"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROLE_RECRUITER"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="filtering-users">Filtering Users</h3>
+
+<p>You can filter users by using the <code class="prettyprint">filter</code> query parameter. The filter syntax is based on the SCIM 2.0 specification.</p>
+
+<p>The fields that are supported for filtering are:</p>
+
+<table><thead>
+<tr>
+<th>SCIM Attribute</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>employeenumber</td>
+</tr>
+<tr>
+<td>externalId</td>
+</tr>
+<tr>
+<td>userName</td>
+</tr>
+<tr>
+<td>email</td>
+</tr>
+<tr>
+<td>active</td>
+</tr>
+</tbody></table>
+
+<p>The following operators are supported:</p>
+
+<table><thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eq</td>
+<td>equal</td>
+</tr>
+<tr>
+<td>ne</td>
+<td>not equal</td>
+</tr>
+</tbody></table>
+
+<p>Example filter queries:</p>
+
+<p><code class="prettyprint">GET https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users?filter=userName eq \&quot;max.mustermann@example.com\&quot;</code></p>
+
+<h2 id="delete-a-user">Delete a User</h2>
+
+<p>To delete a user using the SCIM Radancy Referrals provisioning API, you can use the following request:</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://customer.services.1brd.com/api/customers/{COMPANY ID}/scim/v2/Users/{id}</code></p>
+
+<h3 id="example-request">Example Request</h3>
+
+<p><code class="prettyprint">DELETE https://customer.services.1brd.com/api/customers/00000000-0000-0000-0000-000000000001/scim/v2/Users/00000000-0000-0000-0000-000000000001</code></p>
+
           <h1 id="user-provisioning">User Provisioning</h1>
 
 <p>Please note that the base URL for user provisioning is</p>
